@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy50n8fm3t3o6"]
+[gd_scene format=3 uid="uid://dy50n8fm3t3o6"]
 
 [ext_resource type="Script" uid="uid://4f6skfjdkd76" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cs3t31xfsrywp" path="res://world/world.tscn" id="1_ig7tw"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=1695867837]
 script = ExtResource("1_0xm2m")
 
-[node name="World" parent="." instance=ExtResource("1_ig7tw")]
+[node name="World" parent="." unique_id=890814892 instance=ExtResource("1_ig7tw")]
 
-[node name="GUI" type="AspectRatioContainer" parent="."]
+[node name="GUI" type="AspectRatioContainer" parent="." unique_id=864065388]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

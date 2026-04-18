@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://6r63no5njc8c"]
+
+[ext_resource type="PackedScene" uid="uid://vwph3t41sjuk" path="res://objects/player/player.tscn" id="1_2rvaj"]
+[ext_resource type="Texture2D" uid="uid://dtdh3db48isp8" path="res://icon.svg" id="2_snda6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8eox"]
+albedo_texture = ExtResource("2_snda6")
+metallic = 0.72
+metallic_specular = 0.42
+roughness = 0.31
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ra1lw"]
+material = SubResource("StandardMaterial3D_i8eox")
+size = Vector3(18, 1, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huwvj"]
+size = Vector3(18, 1, 18)
+
+[sub_resource type="Environment" id="Environment_2rvaj"]
+ambient_light_energy = 4.0
+
+[node name="TestMap" type="Node3D" unique_id=34298709]
+
+[node name="Character" parent="." unique_id=824811208 instance=ExtResource("1_2rvaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69684047, 1.8031249, 2.298313)
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=634913152]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -5, 0)
+mesh = SubResource("BoxMesh_ra1lw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=2129206428]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1997067091]
+shape = SubResource("BoxShape3D_huwvj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=547818075]
+environment = SubResource("Environment_2rvaj")

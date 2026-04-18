@@ -5,7 +5,7 @@ var gui : Control
 
 @onready var main_menu_scene : PackedScene = preload("res://gui/main_menu/main_menu.tscn")
 
-@onready var level_scene : PackedScene = preload("res://levels/example/example.tscn")
+@onready var level_scene : PackedScene = preload("res://levels/test-map.tscn")
 @onready var room_gui_scene : PackedScene = preload("res://gui/rooms/rooms.tscn")
 
 @onready var pause_menu_scene : PackedScene = preload("res://gui/pause_menu/pause_menu.tscn")
@@ -45,9 +45,9 @@ func unpause() -> void:
 	for child in gui.get_children():
 		child.queue_free()
 
-	var room_gui : RoomInterface = room_gui_scene.instantiate()
-	gui.add_child(room_gui)
-	room_gui.set_room_number(room_number)
+	#var room_gui : RoomInterface = room_gui_scene.instantiate()
+	#gui.add_child(room_gui)
+	#room_gui.set_room_number(room_number)
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	state = WorldState.ROOMS
@@ -63,12 +63,12 @@ func instantiate_level() -> void:
 	for gui_child in gui.get_children():
 		gui_child.queue_free()
 
-	var room_gui : RoomInterface = room_gui_scene.instantiate()
-	gui.add_child(room_gui)
-	room_gui.set_room_number(room_number)
+	#var room_gui : RoomInterface = room_gui_scene.instantiate()
+	#gui.add_child(room_gui)
+	#room_gui.set_room_number(room_number)
 
 	var level = level_scene.instantiate()
-	level.set_room(room_number)
+	#level.set_room(room_number)
 	add_child(level)
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
