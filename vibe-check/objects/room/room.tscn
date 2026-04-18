@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://vxjlnuyqtjkb"]
+
+[ext_resource type="Texture2D" uid="uid://dtdh3db48isp8" path="res://icon.svg" id="1_i8eox"]
+[ext_resource type="Script" uid="uid://br7k0y167wqcv" path="res://objects/room/room.gd" id="1_mqkir"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8eox"]
+albedo_texture = ExtResource("1_i8eox")
+metallic = 0.72
+metallic_specular = 0.42
+roughness = 0.31
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mqkir"]
+material = SubResource("StandardMaterial3D_i8eox")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mqkir"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8eox"]
+size = Vector3(1.0285645, 1, 1.0463257)
+
+[node name="Room" type="Node3D"]
+script = ExtResource("1_mqkir")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -5, 0)
+mesh = SubResource("BoxMesh_mqkir")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_mqkir")
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 15, 0)
+mesh = SubResource("BoxMesh_mqkir")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ceiling"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling/StaticBody3D"]
+shape = SubResource("BoxShape3D_mqkir")
+
+[node name="Right" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5, 10)
+mesh = SubResource("BoxMesh_mqkir")
+
+[node name="Area3D" type="Area3D" parent="Right"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.013214111)
+shape = SubResource("BoxShape3D_i8eox")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right/StaticBody3D"]
+shape = SubResource("BoxShape3D_mqkir")
+
+[node name="Left" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5, -10)
+mesh = SubResource("BoxMesh_mqkir")
+
+[node name="Area3D" type="Area3D" parent="Left"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0099487305)
+shape = SubResource("BoxShape3D_i8eox")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left/StaticBody3D"]
+shape = SubResource("BoxShape3D_mqkir")
+
+[node name="Back" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -10, 5, 0)
+mesh = SubResource("BoxMesh_mqkir")
+
+[node name="Area3D" type="Area3D" parent="Back"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010009766, 0, 0)
+shape = SubResource("BoxShape3D_i8eox")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Back"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back/StaticBody3D"]
+shape = SubResource("BoxShape3D_mqkir")
+
+[node name="Forward" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 5, 0)
+mesh = SubResource("BoxMesh_mqkir")
+
+[node name="Area3D" type="Area3D" parent="Forward"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Forward/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004272461, 0, 0)
+shape = SubResource("BoxShape3D_i8eox")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Forward"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Forward/StaticBody3D"]
+shape = SubResource("BoxShape3D_mqkir")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.333983, -0.06448078)
+light_energy = 15.13
+light_volumetric_fog_energy = 1.293
+spot_range = 2574.642
+spot_attenuation = 1.39
+spot_angle = 180.0
+spot_angle_attenuation = 0.57434964
+
+[connection signal="area_entered" from="Right/Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Right/Area3D" to="." method="_on_area_player_entered"]
+[connection signal="body_entered" from="Left/Area3D" to="." method="_on_area_player_entered"]
+[connection signal="body_entered" from="Back/Area3D" to="." method="_on_area_player_entered"]
+[connection signal="body_entered" from="Forward/Area3D" to="." method="_on_area_player_entered"]
