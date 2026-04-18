@@ -24,6 +24,8 @@ ambient_light_energy = 4.0
 
 [node name="Character" parent="." unique_id=824811208 instance=ExtResource("1_2rvaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69684047, 1.8031249, 2.298313)
+headbob_frequency = 1.0
+headbob_amplitude = 0.06
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=634913152]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -5, 0)
