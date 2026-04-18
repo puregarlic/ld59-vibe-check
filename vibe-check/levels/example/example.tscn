@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://y7x2cgcbkprp"]
+
+[ext_resource type="Texture2D" uid="uid://dtdh3db48isp8" path="res://icon.svg" id="1_3m2oo"]
+[ext_resource type="Script" uid="uid://esxk2qtp51d4" path="res://levels/example/example.gd" id="1_88376"]
+[ext_resource type="PackedScene" uid="uid://vxjlnuyqtjkb" path="res://objects/room/room.tscn" id="2_svgxy"]
+[ext_resource type="PackedScene" uid="uid://vwph3t41sjuk" path="res://objects/player/player.tscn" id="4_swoly"]
+
+[node name="Example" type="Node3D"]
+script = ExtResource("1_88376")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99988174, 0)
+billboard = 1
+texture = ExtResource("1_3m2oo")
+
+[node name="Room" parent="." instance=ExtResource("2_svgxy")]
+
+[node name="Character" parent="." instance=ExtResource("4_swoly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69684047, 1.8031249, 2.298313)

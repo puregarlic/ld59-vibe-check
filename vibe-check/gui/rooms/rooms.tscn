@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhgb1c43stkb6"]
+
+[ext_resource type="Script" uid="uid://b6pqdmhpiy6nq" path="res://gui/rooms/rooms.gd" id="1_lynyt"]
+
+[node name="Rooms" type="VBoxContainer"]
+z_index = 20
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lynyt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "[wave amp=30.0 freq=1.5][tornado radius=3.0 freq=0.5 connected=1][b]Room: [rainbow freq=5.0 sat=0.4 val=1.0 speed=0.1]0[/rainbow][/b][/tornado][/wave]"
+fit_content = true
