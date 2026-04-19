@@ -1,6 +1,6 @@
 extends AnimatedSprite3D
 
-@export var vibe = Types.Vibe.GOOD
+
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
 
 func _process(_delta: float) -> void:

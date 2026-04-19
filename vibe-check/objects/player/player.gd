@@ -3,9 +3,12 @@ class_name Player
 
 #movement and camera control variables
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
-@export var jump_impulse : float = 10
+@export var jump_impulse : float = 10.0
 @export var speed : float = 14.0
 @export var sprint_speed : float = 28.0
+@export var slap_force : float = 20.0
+@export var slap_force_y_scale : float = 0.15
+@export var slap_force_z_scale : float = 10
 @export var look_pitch_max_angle : int = 80
 var mouse_sensitivity : float = 0.002
 
@@ -20,8 +23,8 @@ var headbob_time : float = 0.0
 var scan_time : float = 1.0
 var bad_vibes_proximity : float = 1.0
 var pass_vibe_check : bool
-var scan_target : BystanderTest
-var current_scan_target : BystanderTest
+var scan_target : Slapper
+var current_scan_target : Slapper
 var scanning : bool = false
 
 func _ready() -> void:
@@ -36,11 +39,19 @@ func _physics_process(delta: float) -> void:
 		move_speed = sprint_speed
 	if Input.is_action_just_released("sprint"):
 		move_speed = speed
-
+	
+	
 	var input := Input.get_vector("left", "right", "forward", "back")
 	var movement_dir := transform.basis * Vector3(input.x, 0, input.y)
 	velocity.x = movement_dir.x * move_speed
 	velocity.z = movement_dir.z * move_speed
+	
+	if Input.is_action_just_pressed("debug_slap"):
+		velocity.y = slap_force * slap_force_y_scale
+		#await get_tree().create_timer(0.1).timeout
+		velocity.z = slap_force * slap_force_z_scale
+		
+		
 	
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_impulse
@@ -69,9 +80,6 @@ func _physics_process(delta: float) -> void:
 		scanning = false
 		print("we broke from our target")
 	
-	
-	
-
 
 func headbob(headbob_time):
 	var headbob_position = Vector3.ZERO
@@ -89,9 +97,10 @@ func scan_timer_end():
 		print("timer out")
 		if Input.is_action_pressed("interact") and scan_target == current_scan_target and scanning == true:
 			print("scan complete")
-			#if current_scan_target.vibes == good:
-				#pass_vibe_check = true
-				#print("GOOD VIBES FOUND")
-			#if current_scan_target.vibes == bad:
-				#pass_vibe_check = false
-				#print("BAD VIBES DETECTED")
+			if current_scan_target.vibe == Types.Vibe.GOOD:
+				pass_vibe_check = true
+				print("GOOD VIBES FOUND")
+			if current_scan_target.vibe == Types.Vibe.BAD:
+				pass_vibe_check = false
+				print("BAD VIBES DETECTED")
+				#current_scan_target.obliterate()

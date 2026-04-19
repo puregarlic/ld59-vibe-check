@@ -1,6 +1,8 @@
 class_name Slapper
 extends CharacterBody3D
 
+@export var vibe = Types.Vibe.GOOD
+
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 

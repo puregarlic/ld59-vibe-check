@@ -53,7 +53,6 @@ environment = SubResource("Environment_2rvaj")
 
 [node name="BystanderTest" type="CharacterBody3D" parent="." unique_id=443345217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5951941, 0)
-collision_layer = 9
 script = ExtResource("3_ra1lw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BystanderTest" unique_id=518790269]
@@ -65,6 +64,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_snda6")
 
 [node name="Slapper" parent="." unique_id=1170690246 instance=ExtResource("3_snda6")]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="MeshInstance3D" parent="." unique_id=717677997]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -81.83382)

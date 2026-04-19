@@ -24,7 +24,7 @@ target_position = Vector3(0, 0, -5)
 collision_mask = 8
 hit_back_faces = false
 
-[node name="RightHandTemp" type="MeshInstance3D" parent="Camera3D" unique_id=573273421]
+[node name="PhoneHandTemp" type="MeshInstance3D" parent="Camera3D" unique_id=573273421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.2, -0.5)
 mesh = SubResource("BoxMesh_cqmt1")
 skeleton = NodePath("../..")
