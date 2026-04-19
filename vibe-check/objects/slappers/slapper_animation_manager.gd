@@ -6,14 +6,18 @@ var _is_looping: bool = false
 
 func _process(_delta: float) -> void:
 	var slapper_forward = -get_parent().global_transform.basis.z
-	var angle_from_player_to_me = rad_to_deg(
-		slapper_forward.signed_angle_to(
-			global_position.direction_to(player_reference.global_position),
-			Vector3.UP
-		)
+	slapper_forward.y = 0.0
+	slapper_forward = slapper_forward.normalized()
+
+	var dir_to_player = global_position.direction_to(player_reference.global_position)
+	dir_to_player.y = 0.0
+	dir_to_player = dir_to_player.normalized()
+
+	var viewer_angle = rad_to_deg(
+		dir_to_player.signed_angle_to(slapper_forward, Vector3.UP)
 	)
 
-	var new_anim = get_anim_set_from_angle(angle_from_player_to_me)
+	var new_anim = get_anim_set_from_angle(viewer_angle)
 	if new_anim != animation:
 		animation = new_anim
 		if _is_looping:
