@@ -102,13 +102,14 @@ func receive_slap(from_position: Vector3) -> void:
 	_in_knockback = true
 
 func scan_timer_end():
-		print("timer out")
-		if Input.is_action_pressed("interact") and scan_target == current_scan_target and scanning == true:
-			print("scan complete")
-			if current_scan_target.vibe == Types.Vibe.GOOD:
-				pass_vibe_check = true
-				print("GOOD VIBES FOUND")
-			if current_scan_target.vibe == Types.Vibe.BAD:
-				pass_vibe_check = false
-				print("BAD VIBES DETECTED")
-				#current_scan_target.obliterate()
+	print("timer out")
+	if Input.is_action_pressed("interact") and scan_target == current_scan_target and scanning == true:
+		print("scan complete")
+		SignalBus.scan_success.emit()
+		if current_scan_target.vibe == Types.Vibe.GOOD:
+			pass_vibe_check = true
+			print("GOOD VIBES FOUND")
+		if current_scan_target.vibe == Types.Vibe.BAD:
+			pass_vibe_check = false
+			print("BAD VIBES DETECTED")
+			#current_scan_target.obliterate()

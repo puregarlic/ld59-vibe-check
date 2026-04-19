@@ -2,8 +2,26 @@
 
 [ext_resource type="Script" uid="uid://rqp3ou2ecut5" path="res://objects/player/player.gd" id="1_0pn13"]
 [ext_resource type="PackedScene" uid="uid://c25fuq4ujs31n" path="res://objects/right_hand/right_hand.tscn" id="2_g7ett"]
+[ext_resource type="Script" uid="uid://bvl8t7jgigwxo" path="res://objects/player/scan_timer.gd" id="2_ssrue"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oslkc"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ssrue"]
+viewport_path = NodePath("PhoneUiViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jnjyq"]
+viewport_path = NodePath("PhoneUiViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnkmh"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ssrue")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_jnjyq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xkryw"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gnkmh")
+size = Vector2(0.922, 2.027)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cqmt1"]
 size = Vector3(0.2, 0.02, 0.5)
@@ -25,17 +43,18 @@ target_position = Vector3(0, 0, -5)
 collision_mask = 8
 hit_back_faces = false
 
+[node name="RightHand" parent="Camera3D" unique_id=1692933553 instance=ExtResource("2_g7ett")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.31603372, -0.13180709, -0.3301502)
+
+[node name="MeshInstance3D2" parent="Camera3D/RightHand" index="2" unique_id=1908146493]
+transform = Transform3D(0.58681905, -0.619062, -0.5219256, 0.08237629, 0.6868761, -0.722092, 0.80551714, 0.38074338, 0.45406765, -1.4904782, 0.5164744, 1.0345821)
+mesh = SubResource("PlaneMesh_xkryw")
+
 [node name="PhoneHandTemp" type="MeshInstance3D" parent="Camera3D" unique_id=573273421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.2, -0.5)
 visible = false
 mesh = SubResource("BoxMesh_cqmt1")
 skeleton = NodePath("../..")
-
-[node name="RightHand" parent="Camera3D" unique_id=1692933553 instance=ExtResource("2_g7ett")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.31239694, -0.13180709, -0.3301502)
-
-[node name="MeshInstance3D2" parent="Camera3D/RightHand" index="2" unique_id=1908146493]
-transform = Transform3D(0.58681905, -0.619062, -0.5219256, 0.08237629, 0.6868761, -0.722092, 0.80551714, 0.38074338, 0.45406765, -1.4904782, 0.5164744, 1.0345821)
 
 [node name="LeftHandTemp" type="MeshInstance3D" parent="Camera3D" unique_id=587150050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.2, -0.5)
@@ -44,5 +63,7 @@ skeleton = NodePath("../..")
 
 [node name="ScanTimer" type="Timer" parent="." unique_id=217176576]
 unique_name_in_owner = true
+one_shot = true
+script = ExtResource("2_ssrue")
 
 [editable path="Camera3D/RightHand"]

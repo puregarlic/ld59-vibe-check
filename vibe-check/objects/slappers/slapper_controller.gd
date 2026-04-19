@@ -26,6 +26,8 @@ func _ready() -> void:
 	slap_triggered.connect(_on_slap_triggered)
 	if player_reference:
 		add_collision_exception_with(player_reference)
+	if vibe == Types.Vibe.BAD:
+		add_to_group("bad")
 
 func _physics_process(delta: float) -> void:
 	if _slap_cooldown_remaining > 0.0:
