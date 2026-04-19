@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+#movement and camera control variables
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var jump_impulse : float = 10
 @export var speed : float = 14.0
@@ -10,10 +11,21 @@ var mouse_sensitivity : float = 0.002
 
 var movement : Callable
 
+#head bobbing variables
 @export_group("headbob")
 @export var headbob_frequency : float = 2.0
 @export var headbob_amplitude : float = 0.04
 var headbob_time : float = 0.0
+
+var scan_time : float = 1.0
+var bad_vibes_proximity : float = 1.0
+var pass_vibe_check : bool
+var scan_target : BystanderTest
+var current_scan_target : BystanderTest
+var scanning : bool = false
+
+func _ready() -> void:
+	%ScanTimer.timeout.connect(scan_timer_end)
 
 func _physics_process(delta: float) -> void:
 	velocity.y += -gravity * delta
@@ -37,6 +49,29 @@ func _physics_process(delta: float) -> void:
 	
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$Camera3D.transform.origin = headbob(headbob_time) + Vector3(0, 1, 0)
+	
+	scan_target = %ScanCast.get_collider()
+	
+	if Input.is_action_just_pressed("interact") and scan_target != null:
+		current_scan_target = scan_target
+		%ScanTimer.wait_time = scan_time * bad_vibes_proximity
+		%ScanTimer.start()
+		scanning = true
+		print("we're scanning a target!")
+	if Input.is_action_just_released("interact") and scanning == true:
+		%ScanTimer.stop()
+		current_scan_target = null
+		scanning = false
+		print("we broke from our target")
+	if Input.is_action_pressed("interact") and scan_target != current_scan_target and scanning == true:
+		%ScanTimer.stop()
+		current_scan_target = null
+		scanning = false
+		print("we broke from our target")
+	
+	
+	
+
 
 func headbob(headbob_time):
 	var headbob_position = Vector3.ZERO
@@ -49,3 +84,14 @@ func _input(event: InputEvent) -> void:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(look_pitch_max_angle), deg_to_rad(look_pitch_max_angle))
+
+func scan_timer_end(): 
+		print("timer out")
+		if Input.is_action_pressed("interact") and scan_target == current_scan_target and scanning == true:
+			print("scan complete")
+			#if current_scan_target.vibes == good:
+				#pass_vibe_check = true
+				#print("GOOD VIBES FOUND")
+			#if current_scan_target.vibes == bad:
+				#pass_vibe_check = false
+				#print("BAD VIBES DETECTED")
