@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://c25fuq4ujs31n"]
+
+[ext_resource type="Texture2D" uid="uid://hfgj4jx7hm08" path="res://objects/right_hand/assets/RightHand_Phone.png" id="1_ba1s2"]
+[ext_resource type="PackedScene" uid="uid://cyl2lefbu55f5" path="res://objects/right_hand/phone_ui_viewport.tscn" id="1_gcqte"]
+[ext_resource type="Texture2D" uid="uid://bjljwnq5o2f54" path="res://objects/right_hand/assets/RightHand_Empty.png" id="2_gcqte"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qiakr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ba1s2")
+}],
+"loop": true,
+"name": &"phone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gcqte")
+}],
+"loop": true,
+"name": &"phoneless",
+"speed": 5.0
+}]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gcqte"]
+viewport_path = NodePath("PhoneUiViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ba1s2"]
+viewport_path = NodePath("PhoneUiViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcqte"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_gcqte")
+emission_enabled = true
+emission_energy_multiplier = 100.0
+emission_texture = SubResource("ViewportTexture_ba1s2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gcqte"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gcqte")
+size = Vector2(0.922, 2.027)
+
+[node name="RightHand" type="Node3D" unique_id=1692933553]
+
+[node name="PhoneUiViewport" parent="." unique_id=213579180 instance=ExtResource("1_gcqte")]
+
+[node name="MeshInstance3D" type="AnimatedSprite3D" parent="." unique_id=1347465624]
+sprite_frames = SubResource("SpriteFrames_qiakr")
+animation = &"phone"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1908146493]
+transform = Transform3D(0.9100255, -0.36506894, -0.19641379, -0.022041388, 0.43051744, -0.9023132, 0.41396582, 0.82545716, 0.3837353, -0.6942841, 0.26771295, 0.80396485)
+mesh = SubResource("PlaneMesh_gcqte")

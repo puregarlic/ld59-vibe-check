@@ -28,11 +28,11 @@ func _update_directional_animation() -> void:
 		animation = new_anim
 		if _is_looping:
 			play()
-	
-	
+
+
 func get_anim_set_from_angle(angle):
 	var a = abs(angle)
-	
+
 	if a <= 22.5:
 		return "facing_directly_forward"
 	elif a >= 157.5:
@@ -43,7 +43,7 @@ func get_anim_set_from_angle(angle):
 		return "facing_directly_right" if angle > 0 else "facing_directly_left"
 	else: # 112.5 to 157.5
 		return "facing_away_right" if angle > 0 else "facing_away_left"
-	
+
 func _on_ai_transition_to(phase: Types.Phase, _state: Types.TransitionState) -> void:
 	match phase:
 		Types.Phase.PAUSED, Types.Phase.TURNING, Types.Phase.SCAN_ALERT:

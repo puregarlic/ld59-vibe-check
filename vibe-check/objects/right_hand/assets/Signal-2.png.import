@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjljwnq5o2f54"
-path="res://.godot/imported/RightHand_Empty.png-941de120521d80b47516bf3266336944.ctex"
+uid="uid://ixcss0qfys20"
+path="res://.godot/imported/Signal-2.png-5890ad7213e0a476d082b575b855269c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/player/assets/RightHand_Empty.png"
-dest_files=["res://.godot/imported/RightHand_Empty.png-941de120521d80b47516bf3266336944.ctex"]
+source_file="res://objects/right_hand/assets/Signal-2.png"
+dest_files=["res://.godot/imported/Signal-2.png-5890ad7213e0a476d082b575b855269c.ctex"]
 
 [params]
 

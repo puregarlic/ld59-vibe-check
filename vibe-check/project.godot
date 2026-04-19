@@ -33,6 +33,7 @@ window/stretch/mode="viewport"
 [global_group]
 
 player=""
+bad=""
 map_manager=""
 
 [input]
