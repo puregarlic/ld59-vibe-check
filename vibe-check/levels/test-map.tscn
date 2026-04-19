@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://vwph3t41sjuk" path="res://objects/player/player.tscn" id="1_2rvaj"]
 [ext_resource type="Texture2D" uid="uid://dtdh3db48isp8" path="res://icon.svg" id="2_snda6"]
-[ext_resource type="Script" uid="uid://dh3odv1ryivjc" path="res://levels/bystander_test.gd" id="3_snda6"]
+[ext_resource type="Script" uid="uid://dh3odv1ryivjc" path="res://levels/bystander_test.gd" id="3_ra1lw"]
+[ext_resource type="PackedScene" uid="uid://c7j5redmovla" path="res://objects/slappers/slapper.tscn" id="3_snda6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8eox"]
 albedo_texture = ExtResource("2_snda6")
@@ -19,7 +20,7 @@ size = Vector3(18, 1, 18)
 size = Vector3(18, 1, 18)
 
 [sub_resource type="Environment" id="Environment_2rvaj"]
-ambient_light_energy = 4.0
+background_energy_multiplier = 1.89
 
 [sub_resource type="SphereMesh" id="SphereMesh_2rvaj"]
 radius = 1.0
@@ -29,7 +30,7 @@ height = 2.0
 
 [node name="TestMap" type="Node3D" unique_id=34298709]
 
-[node name="Character" parent="." unique_id=824811208 instance=ExtResource("1_2rvaj")]
+[node name="Character" parent="." unique_id=824811208 groups=["player"] instance=ExtResource("1_2rvaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69684047, 1.8031249, 2.298313)
 headbob_frequency = 1.0
 headbob_amplitude = 0.06
@@ -49,7 +50,7 @@ environment = SubResource("Environment_2rvaj")
 [node name="BystanderTest" type="CharacterBody3D" parent="." unique_id=443345217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5951941, 0)
 collision_layer = 9
-script = ExtResource("3_snda6")
+script = ExtResource("3_ra1lw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BystanderTest" unique_id=518790269]
 mesh = SubResource("SphereMesh_2rvaj")
@@ -58,3 +59,5 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BystanderTest" unique_id=2073767794]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_snda6")
+
+[node name="Slapper" parent="." unique_id=1170690246 instance=ExtResource("3_snda6")]

@@ -1,2 +1,2 @@
-extends CharacterBody3D
 class_name BystanderTest
+extends CharacterBody3D

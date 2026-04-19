@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cbfqyyv5uepnj"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"caught",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move_east",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move_north",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move_northeast",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move_northwest",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move_south",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move_southeast",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move_southwest",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move_west",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"pause",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"slap",
+"speed": 5.0
+}]
