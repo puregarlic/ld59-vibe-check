@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cf34usbu1r8j1"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=748537357]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="FeedbackText" type="VBoxContainer" parent="." unique_id=2012832699]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FeedbackText" unique_id=1535582455]
+clip_contents = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=3.0][tornado radius=1.0 freq=70.0 connected=1]Baddies Remaining: [b]0[/b][/tornado][/wave]"
+fit_content = true
