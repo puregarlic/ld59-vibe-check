@@ -6,10 +6,11 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var jump_impulse : float = 10.0
 @export var speed : float = 14.0
 @export var sprint_speed : float = 28.0
-@export var slap_force : float = 20.0
-@export var slap_force_y_scale : float = 0.15
-@export var slap_force_z_scale : float = 10
+@export var slap_horizontal_force : float = 5.0
+@export var slap_vertical_force : float = 3.0
 @export var look_pitch_max_angle : int = 80
+
+var _in_knockback : bool = false
 var mouse_sensitivity : float = 0.002
 
 var movement : Callable
@@ -41,22 +42,19 @@ func _physics_process(delta: float) -> void:
 		move_speed = speed
 	
 	
-	var input := Input.get_vector("left", "right", "forward", "back")
-	var movement_dir := transform.basis * Vector3(input.x, 0, input.y)
-	velocity.x = movement_dir.x * move_speed
-	velocity.z = movement_dir.z * move_speed
-	
-	if Input.is_action_just_pressed("debug_slap"):
-		velocity.y = slap_force * slap_force_y_scale
-		#await get_tree().create_timer(0.1).timeout
-		velocity.z = slap_force * slap_force_z_scale
-		
-		
-	
+	if not _in_knockback:
+		var input := Input.get_vector("left", "right", "forward", "back")
+		var movement_dir := transform.basis * Vector3(input.x, 0, input.y)
+		velocity.x = movement_dir.x * move_speed
+		velocity.z = movement_dir.z * move_speed
+
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_impulse
-	
+
 	move_and_slide()
+
+	if _in_knockback and is_on_floor():
+		_in_knockback = false
 	
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$Camera3D.transform.origin = headbob(headbob_time) + Vector3(0, 1, 0)
@@ -93,7 +91,17 @@ func _input(event: InputEvent) -> void:
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(look_pitch_max_angle), deg_to_rad(look_pitch_max_angle))
 
-func scan_timer_end(): 
+func receive_slap(from_position: Vector3) -> void:
+	var dir = global_position - from_position
+	dir.y = 0.0
+	dir = dir.normalized()
+	var heat = GlobalDifficulty.heat_multiplier
+	velocity.x = dir.x * slap_horizontal_force * heat
+	velocity.z = dir.z * slap_horizontal_force * heat
+	velocity.y = slap_vertical_force * heat
+	_in_knockback = true
+
+func scan_timer_end():
 		print("timer out")
 		if Input.is_action_pressed("interact") and scan_target == current_scan_target and scanning == true:
 			print("scan complete")

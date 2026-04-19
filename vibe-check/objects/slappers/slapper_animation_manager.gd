@@ -11,9 +11,7 @@ func _process(_delta: float) -> void:
 		)
 	)	
 
-	var anim_set = get_anim_set_from_angle(angle_from_player_to_me)
-	%Label.text = "angle: " + str(angle_from_player_to_me) + "\nanim: " + anim_set
-	animation = anim_set
+	animation = get_anim_set_from_angle(angle_from_player_to_me)
 	
 func get_anim_set_from_angle(angle):
 	var a = abs(angle)
@@ -21,7 +19,7 @@ func get_anim_set_from_angle(angle):
 	if a <= 22.5:
 		return "facing_directly_forward"
 	elif a >= 157.5:
-		return "facing_directly_backward"
+		return "facing_directly_away"
 	elif a <= 67.5:
 		return "facing_forward_right" if angle > 0 else "facing_forward_left"
 	elif a <= 112.5:
@@ -38,5 +36,11 @@ func _on_ai_transition_to(phase: Types.Phase, _state: Types.TransitionState) -> 
 			frame = 0
 			stop()
 		Types.Phase.MOVING:
+			frame = 0
+			play()
+		Types.Phase.SCAN_ALERT:
+			frame = 0
+			stop()
+		Types.Phase.SCAN_CHARGE:
 			frame = 0
 			play()

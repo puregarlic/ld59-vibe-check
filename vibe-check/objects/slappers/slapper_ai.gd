@@ -1,40 +1,64 @@
 extends Node
 
-signal transition_to(phase, transition_time)
-var transition_state = Types.TransitionState.new()
+signal transition_to(phase: Types.Phase, state: Types.TransitionState)
+
+const PAUSED_RANGE := Vector2(6.0, 12.0)
+const TURNING_RANGE := Vector2(1.0, 2.0)
+const MOVING_RANGE := Vector2(5.0, 15.0)
+const SCAN_ALERT_RANGE := Vector2(1.2, 1.6)
+
+var _phase: Types.Phase = Types.Phase.PAUSED
+var _timer: Timer
 
 func _ready() -> void:
-	transition()
-	
-func transition():
-	match transition_state.current_phase:
-		Types.Phase.PAUSED:
-			transition_state.current_phase = Types.Phase.TURNING
-		Types.Phase.TURNING:
-			transition_state.current_phase = Types.Phase.MOVING
-		Types.Phase.MOVING:
-			transition_state.current_phase = Types.Phase.PAUSED
-	
-	set_state()
-	set_transition_time()
-	transition_to.emit(transition_state.current_phase, transition_state)
+	_timer = Timer.new()
+	_timer.one_shot = true
+	_timer.timeout.connect(_advance)
+	add_child(_timer)
+	_enter(Types.Phase.PAUSED)
 
-func set_state():
-	match transition_state.current_phase:
+func on_scan_detected() -> void:
+	if _phase == Types.Phase.SCAN_ALERT or _phase == Types.Phase.SCAN_CHARGE:
+		return
+	_enter(Types.Phase.SCAN_ALERT)
+
+func end_scan_response() -> void:
+	_enter(Types.Phase.PAUSED)
+
+func _enter(phase: Types.Phase) -> void:
+	_phase = phase
+	_timer.stop()
+	var duration := _duration_for(phase)
+	var state := Types.TransitionState.new()
+	state.current_phase = phase
+	state.time = duration
+	transition_to.emit(phase, state)
+	if duration > 0.0:
+		_timer.start(duration)
+
+func _advance() -> void:
+	match _phase:
 		Types.Phase.PAUSED:
-			transition_state.time_state.delay_range_min = 6.0
-			transition_state.time_state.delay_range_max = 12.0
+			_enter(Types.Phase.TURNING)
 		Types.Phase.TURNING:
-			transition_state.time_state.delay_range_min = 1
-			transition_state.time_state.delay_range_max = 2
+			_enter(Types.Phase.MOVING)
 		Types.Phase.MOVING:
-			transition_state.time_state.delay_range_min = 5.0
-			transition_state.time_state.delay_range_max = 15.0
-			
-func set_transition_time():
-	transition_state.time = randf_range(
-		transition_state.time_state.delay_range_min * GlobalDifficulty.heat_multiplier,
-		transition_state.time_state.delay_range_max * GlobalDifficulty.heat_multiplier
-	)
-	
-	get_tree().create_timer(transition_state.time).timeout.connect(transition)
+			_enter(Types.Phase.PAUSED)
+		Types.Phase.SCAN_ALERT:
+			_enter(Types.Phase.SCAN_CHARGE)
+
+func _duration_for(phase: Types.Phase) -> float:
+	match phase:
+		Types.Phase.PAUSED:
+			return _scaled(PAUSED_RANGE)
+		Types.Phase.TURNING:
+			return _scaled(TURNING_RANGE)
+		Types.Phase.MOVING:
+			return _scaled(MOVING_RANGE)
+		Types.Phase.SCAN_ALERT:
+			return _scaled(SCAN_ALERT_RANGE)
+		_:
+			return 0.0
+
+func _scaled(range_vec: Vector2) -> float:
+	return randf_range(range_vec.x, range_vec.y) / GlobalDifficulty.heat_multiplier
