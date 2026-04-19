@@ -4,6 +4,7 @@ class_name Player
 #movement and camera control variables
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var jump_impulse : float = 10.0
+@export var coyote_time : float = 0.12
 @export var speed : float = 14.0
 @export var sprint_speed : float = 28.0
 @export var slap_horizontal_force : float = 5.0
@@ -11,6 +12,8 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var look_pitch_max_angle : int = 80
 
 var _in_knockback : bool = false
+var _coyote_timer : float = 0.0
+var _was_on_floor : bool = false
 var mouse_sensitivity : float = 0.002
 
 var movement : Callable
@@ -51,9 +54,18 @@ func _physics_process(delta: float) -> void:
 		velocity.x = movement_dir.x * move_speed
 		velocity.z = movement_dir.z * move_speed
 
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = jump_impulse
+	if is_on_floor():
+		_coyote_timer = coyote_time
+	elif _was_on_floor and velocity.y <= 0.0:
+		_coyote_timer = coyote_time
+	else:
+		_coyote_timer = max(_coyote_timer - delta, 0.0)
 
+	if _coyote_timer > 0.0 and Input.is_action_just_pressed("jump"):
+		velocity.y = jump_impulse
+		_coyote_timer = 0.0
+
+	_was_on_floor = is_on_floor()
 	move_and_slide()
 
 	if _in_knockback and is_on_floor():

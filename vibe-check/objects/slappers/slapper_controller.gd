@@ -7,6 +7,8 @@ signal slap_triggered
 @export var vibe = Types.Vibe.GOOD
 @export var scan_alert_audio: AudioStreamPlayer3D
 
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 @onready var _ai: Node = $AI
 @onready var _animated_sprite: AnimatedSprite3D = $"Animated Sprite"
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
@@ -51,6 +53,9 @@ func _physics_process(delta: float) -> void:
 
 	if _should_check_scan() and _player_in_detection_cone():
 		scan_detected.emit()
+
+	if not is_on_floor():
+		velocity.y -= gravity * delta
 
 	move_and_slide()
 
