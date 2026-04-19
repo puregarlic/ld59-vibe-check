@@ -52,7 +52,8 @@ shape = SubResource("BoxShape3D_huwvj")
 environment = SubResource("Environment_2rvaj")
 
 [node name="BystanderTest" type="CharacterBody3D" parent="." unique_id=443345217]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5951941, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5132866, 1.5951941, 0)
+collision_layer = 9
 script = ExtResource("3_ra1lw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BystanderTest" unique_id=518790269]

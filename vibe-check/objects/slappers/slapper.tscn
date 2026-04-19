@@ -8,13 +8,17 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aslyu"]
 height = 1.7
 
+[sub_resource type="SphereMesh" id="SphereMesh_33oxu"]
+radius = 0.1
+height = 0.2
+
 [node name="Slapper" type="CharacterBody3D" unique_id=1884064883]
 script = ExtResource("1_y7cy8")
 
 [node name="Animated Sprite" type="AnimatedSprite3D" parent="." unique_id=9490633]
 billboard = 2
 sprite_frames = ExtResource("2_33oxu")
-animation = &"facing_directly_forward"
+animation = &"slap"
 script = ExtResource("3_33oxu")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1828079078]
@@ -34,6 +38,10 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1975086829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7792841)
+mesh = SubResource("SphereMesh_33oxu")
 
 [connection signal="transition_to" from="AI" to="." method="_on_ai_transition_to"]
 [connection signal="transition_to" from="AI" to="Animated Sprite" method="_on_ai_transition_to"]

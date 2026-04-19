@@ -25,8 +25,8 @@ func set_state():
 			transition_state.time_state.delay_range_min = 6.0
 			transition_state.time_state.delay_range_max = 12.0
 		Types.Phase.TURNING:
-			transition_state.time_state.delay_range_min = 1.5
-			transition_state.time_state.delay_range_max = 4.0
+			transition_state.time_state.delay_range_min = 1
+			transition_state.time_state.delay_range_max = 2
 		Types.Phase.MOVING:
 			transition_state.time_state.delay_range_min = 5.0
 			transition_state.time_state.delay_range_max = 15.0
