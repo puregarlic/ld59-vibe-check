@@ -46,6 +46,93 @@ environment = SubResource("Environment_2rvaj")
 
 [node name="Map Geometry" type="Node3D" parent="." unique_id=1676576505]
 
+[node name="The Thunderdome" type="CSGBox3D" parent="Map Geometry" unique_id=1786336926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.00654, -12.181351, 69.76349)
+use_collision = true
+size = Vector3(75, 26, 79)
+
+[node name="Great Wall2" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=1990078247]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 11.599304, 56.175697, -35.23191)
+use_collision = true
+size = Vector3(107.52731, 40.66394, 79)
+
+[node name="Great Wall" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=693553704]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.24958, 34.088013, -35.23191)
+use_collision = true
+size = Vector3(91.753845, 10, 79)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map Geometry/The Thunderdome" unique_id=1915874331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.457314, 2.2315807, -7.180847)
+radius = 1.0
+height = 25.0
+sides = 50
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map Geometry/The Thunderdome" unique_id=320633610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.457314, 1.5974016, -1.1184845)
+radius = 1.0
+height = 25.0
+sides = 50
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map Geometry/The Thunderdome" unique_id=1257787484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.189144, 0)
+radius = 15.0
+height = 100.0
+sides = 50
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=1250255141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.03115, 9.748388, -3.2874298)
+size = Vector3(30, 15, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=1024211711]
+transform = Transform3D(0.6844834, 0, 0.7290284, 0, 1, 0, -0.7290284, 0, 0.6844834, -20.178307, 19.534065, 17.228539)
+size = Vector3(30, 15, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=448325933]
+transform = Transform3D(0.68454707, 0, -0.72896856, 0, 1, 0, 0.72896856, 0, 0.68454707, 18.030807, 42.499554, 17.228539)
+size = Vector3(30, 15, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=551576114]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.671135, 28.227028, 22.22799)
+size = Vector3(30, 15, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=260981936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.58017, 19.534065, 26.068398)
+size = Vector3(30, 25, 15)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map Geometry/The Thunderdome/CSGBox3D4" unique_id=311142212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0783806, 0)
+operation = 2
+size = Vector3(35, 15, 12)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=2108279755]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.03115, 19.534065, -23.510017)
+size = Vector3(23.258545, 15, 1)
+
+[node name="Bridge3" type="CSGBox3D" parent="Map Geometry" unique_id=772155489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.20094)
+use_collision = true
+size = Vector3(15, 2, 45)
+
+[node name="Bridge3" type="CSGBox3D" parent="Map Geometry/Bridge3" unique_id=926218268]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9068756, 0, 20.045048)
+use_collision = true
+size = Vector3(10, 2, 125)
+
+[node name="Interstitial_Platform" type="CSGBox3D" parent="Map Geometry" unique_id=1982399715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.389946, -34.376476, 50.913033)
+use_collision = true
+size = Vector3(15, 75, 15)
+
+[node name="Bridge2" type="CSGBox3D" parent="Map Geometry" unique_id=1468321522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.63571, -20.580032, -29.137512)
+use_collision = true
+size = Vector3(25, 75, 100)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/Bridge2" unique_id=277847880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.157486, 29.025251, -32.74259)
+operation = 2
+size = Vector3(40, 13, 10)
+
 [node name="FieldWithBuildings" type="CSGBox3D" parent="Map Geometry" unique_id=2037754855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, -155.88127)
 use_collision = true
