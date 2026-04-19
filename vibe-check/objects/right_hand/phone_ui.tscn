@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bm8telxp8qulq" path="res://objects/right_hand/assets/Signal-3.png" id="4_07s7v"]
 
 [sub_resource type="Gradient" id="Gradient_1ynx6"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.25490198, 0, 0, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_y7f64"]
 gradient = SubResource("Gradient_1ynx6")

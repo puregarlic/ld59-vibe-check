@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://hfgj4jx7hm08" path="res://objects/right_hand/assets/RightHand_Phone.png" id="1_ba1s2"]
 [ext_resource type="PackedScene" uid="uid://cyl2lefbu55f5" path="res://objects/right_hand/phone_ui_viewport.tscn" id="1_gcqte"]
 [ext_resource type="Texture2D" uid="uid://bjljwnq5o2f54" path="res://objects/right_hand/assets/RightHand_Empty.png" id="2_gcqte"]
-[ext_resource type="Texture2D" uid="uid://3td16qi3dw3t" path="res://objects/right_hand/phone_viewport.tres" id="3_0ie1n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qiakr"]
 animations = [{
@@ -24,10 +23,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_gcqte"]
+resource_local_to_scene = true
+viewport_path = NodePath("PhoneUiViewport")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcqte"]
-albedo_texture = ExtResource("3_0ie1n")
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_gcqte")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gcqte"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_gcqte")
 size = Vector2(0.922, 2.027)
 
