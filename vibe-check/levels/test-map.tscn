@@ -51,41 +51,32 @@ mesh = SubResource("CylinderMesh_snda6")
 
 [node name="Slapper" parent="." unique_id=1170690246 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.677716, 0, -3.3734484)
-collision_layer = 9
 
 [node name="Slapper2" parent="." unique_id=1884064883 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.06632)
-collision_layer = 9
 
 [node name="Slapper3" parent="." unique_id=1913817024 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60945, 0, 0)
-collision_layer = 9
 
 [node name="Slapper4" parent="." unique_id=301088089 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.052031, 0, 0)
-collision_layer = 9
 vibe = 1
 
 [node name="Slapper5" parent="." unique_id=90988691 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.0253158)
-collision_layer = 9
 
 [node name="Slapper6" parent="." unique_id=975471049 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.779316, 0, 0)
-collision_layer = 9
 
 [node name="Slapper7" parent="." unique_id=1793373884 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.653482, 0, 0.2818179)
-collision_layer = 9
 
 [node name="Slapper8" parent="." unique_id=2104345341 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6518402, 0, -3.1775289)
-collision_layer = 9
 vibe = 1
 
 [node name="Slapper9" parent="." unique_id=19391605 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0376973, 0, 2.0299082)
-collision_layer = 9
 
 [node name="MapManager" type="Node3D" parent="." unique_id=1011402257 groups=["map_manager"]]
 script = ExtResource("1_ra1lw")
