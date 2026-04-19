@@ -2,16 +2,23 @@ extends AnimatedSprite3D
 
 
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
+var _is_looping: bool = false
 
 func _process(_delta: float) -> void:
+	var slapper_forward = -get_parent().global_transform.basis.z
 	var angle_from_player_to_me = rad_to_deg(
-		(-transform.basis.z).signed_angle_to(
+		slapper_forward.signed_angle_to(
 			global_position.direction_to(player_reference.global_position),
 			Vector3.UP
 		)
-	)	
+	)
 
-	animation = get_anim_set_from_angle(angle_from_player_to_me)
+	var new_anim = get_anim_set_from_angle(angle_from_player_to_me)
+	if new_anim != animation:
+		animation = new_anim
+		if _is_looping:
+			play()
+	
 	
 func get_anim_set_from_angle(angle):
 	var a = abs(angle)
@@ -29,18 +36,11 @@ func get_anim_set_from_angle(angle):
 	
 func _on_ai_transition_to(phase: Types.Phase, _state: Types.TransitionState) -> void:
 	match phase:
-		Types.Phase.PAUSED:
+		Types.Phase.PAUSED, Types.Phase.TURNING, Types.Phase.SCAN_ALERT:
+			_is_looping = false
 			frame = 0
 			stop()
-		Types.Phase.TURNING:
-			frame = 0
-			stop()
-		Types.Phase.MOVING:
-			frame = 0
-			play()
-		Types.Phase.SCAN_ALERT:
-			frame = 0
-			stop()
-		Types.Phase.SCAN_CHARGE:
+		Types.Phase.MOVING, Types.Phase.SCAN_CHARGE:
+			_is_looping = true
 			frame = 0
 			play()

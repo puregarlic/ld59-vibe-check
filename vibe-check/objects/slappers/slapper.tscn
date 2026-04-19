@@ -18,9 +18,10 @@ script = ExtResource("1_y7cy8")
 scan_alert_audio = NodePath("AudioStreamPlayer3D")
 
 [node name="Animated Sprite" type="AnimatedSprite3D" parent="." unique_id=1262946104]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.17898059, 0)
 billboard = 2
 sprite_frames = ExtResource("4_33oxu")
-animation = &"facing_directly_forward"
+animation = &"caught"
 script = ExtResource("3_wr7b3")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1828079078]
@@ -37,3 +38,4 @@ mesh = SubResource("SphereMesh_33oxu")
 stream = ExtResource("5_wr7b3")
 
 [connection signal="transition_to" from="AI" to="." method="_on_ai_transition_to"]
+[connection signal="transition_to" from="AI" to="Animated Sprite" method="_on_ai_transition_to"]
