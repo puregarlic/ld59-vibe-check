@@ -9,6 +9,7 @@ signal slap_triggered
 
 @onready var _ai: Node = $AI
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
+@onready var map_manager_reference: MapManager = get_tree().get_first_node_in_group("map_manager")
 
 var _current_phase: Types.Phase = Types.Phase.PAUSED
 var _target_angle: float = 0.0
@@ -86,6 +87,7 @@ func _update_scan_charge(delta: float) -> void:
 
 func _on_slap_triggered() -> void:
 	player_reference.receive_slap(global_position)
+	map_manager_reference.phone_slap_trigger(global_position)
 
 func _on_ai_transition_to(phase: Types.Phase, state: Types.TransitionState) -> void:
 	_current_phase = phase

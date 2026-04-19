@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://6r63no5njc8c"]
 
 [ext_resource type="PackedScene" uid="uid://vwph3t41sjuk" path="res://objects/player/player.tscn" id="1_2rvaj"]
+[ext_resource type="Script" uid="uid://w506qydhvxfd" path="res://levels/map_manager.gd" id="1_ra1lw"]
 [ext_resource type="Texture2D" uid="uid://dtdh3db48isp8" path="res://icon.svg" id="2_snda6"]
 [ext_resource type="PackedScene" uid="uid://c7j5redmovla" path="res://objects/slappers/slapper.tscn" id="3_snda6"]
 
@@ -29,12 +30,6 @@ height = 28.732
 
 [node name="Character" parent="." unique_id=824811208 groups=["player"] instance=ExtResource("1_2rvaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69684047, 1.8031249, 2.298313)
-jump_impulse = null
-speed = null
-sprint_speed = null
-slap_horizontal_force = null
-slap_vertical_force = null
-look_pitch_max_angle = null
 headbob_frequency = 1.0
 headbob_amplitude = 0.06
 
@@ -89,3 +84,6 @@ collision_layer = 9
 [node name="Slapper9" parent="." unique_id=19391605 instance=ExtResource("3_snda6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0376973, 0, 2.0299082)
 collision_layer = 9
+
+[node name="MapManager" type="Node3D" parent="." unique_id=1011402257 groups=["map_manager"]]
+script = ExtResource("1_ra1lw")

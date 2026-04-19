@@ -8,7 +8,8 @@
 size = Vector3(0.2, 0.02, 0.5)
 
 [node name="Player" type="CharacterBody3D" unique_id=54693143]
-collision_layer = 3
+collision_layer = 35
+collision_mask = 17
 script = ExtResource("1_0pn13")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=231747960]
@@ -23,6 +24,7 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -5)
 collision_mask = 8
 hit_back_faces = false
+debug_shape_custom_color = Color(0.66520673, 0.0001807791, 0.61534655, 1)
 
 [node name="PhoneHandTemp" type="MeshInstance3D" parent="Camera3D" unique_id=573273421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.2, -0.5)
@@ -36,3 +38,4 @@ skeleton = NodePath("../..")
 
 [node name="ScanTimer" type="Timer" parent="." unique_id=217176576]
 unique_name_in_owner = true
+one_shot = true

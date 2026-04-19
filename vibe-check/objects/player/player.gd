@@ -28,6 +28,9 @@ var scan_target : Slapper
 var current_scan_target : Slapper
 var scanning : bool = false
 
+var holding_phone : bool = true
+
+
 func _ready() -> void:
 	%ScanTimer.timeout.connect(scan_timer_end)
 
@@ -61,18 +64,18 @@ func _physics_process(delta: float) -> void:
 	
 	scan_target = %ScanCast.get_collider()
 	
-	if Input.is_action_just_pressed("interact") and scan_target != null:
+	if Input.is_action_just_pressed("interact") and scan_target != null and holding_phone == true:
 		current_scan_target = scan_target
 		%ScanTimer.wait_time = scan_time * bad_vibes_proximity
 		%ScanTimer.start()
 		scanning = true
 		print("we're scanning a target!")
-	if Input.is_action_just_released("interact") and scanning == true:
+	if Input.is_action_just_released("interact") and scanning == true and holding_phone == true:
 		%ScanTimer.stop()
 		current_scan_target = null
 		scanning = false
 		print("we broke from our target")
-	if Input.is_action_pressed("interact") and scan_target != current_scan_target and scanning == true:
+	if Input.is_action_pressed("interact") and scan_target != current_scan_target and scanning == true and holding_phone == true:
 		%ScanTimer.stop()
 		current_scan_target = null
 		scanning = false
@@ -100,6 +103,8 @@ func receive_slap(from_position: Vector3) -> void:
 	velocity.z = dir.z * slap_horizontal_force * heat
 	velocity.y = slap_vertical_force * heat
 	_in_knockback = true
+	holding_phone = false
+	scanning = false
 
 func scan_timer_end():
 		print("timer out")
