@@ -1,2 +1,0 @@
-class_name BystanderTest
-extends CharacterBody3D

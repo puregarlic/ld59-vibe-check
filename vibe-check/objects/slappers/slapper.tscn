@@ -20,6 +20,7 @@ scan_alert_audio = NodePath("AudioStreamPlayer3D")
 [node name="Animated Sprite" type="AnimatedSprite3D" parent="." unique_id=1262946104]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.17898059, 0)
 billboard = 2
+texture_filter = 0
 sprite_frames = ExtResource("4_33oxu")
 animation = &"caught"
 script = ExtResource("3_wr7b3")
