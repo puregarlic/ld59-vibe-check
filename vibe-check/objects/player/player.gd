@@ -33,15 +33,15 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y += -gravity * delta
-	
+
 	var move_speed = speed
-	
+
 	if Input.is_action_pressed("sprint"):
 		move_speed = sprint_speed
 	if Input.is_action_just_released("sprint"):
 		move_speed = speed
-	
-	
+
+
 	if not _in_knockback:
 		var input := Input.get_vector("left", "right", "forward", "back")
 		var movement_dir := transform.basis * Vector3(input.x, 0, input.y)
@@ -55,12 +55,12 @@ func _physics_process(delta: float) -> void:
 
 	if _in_knockback and is_on_floor():
 		_in_knockback = false
-	
+
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$Camera3D.transform.origin = headbob(headbob_time) + Vector3(0, 1, 0)
-	
+
 	scan_target = %ScanCast.get_collider()
-	
+
 	if Input.is_action_just_pressed("interact") and scan_target != null:
 		current_scan_target = scan_target
 		%ScanTimer.wait_time = scan_time * bad_vibes_proximity
@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 		current_scan_target = null
 		scanning = false
 		print("we broke from our target")
-	
+
 
 func headbob(headbob_time):
 	var headbob_position = Vector3.ZERO
