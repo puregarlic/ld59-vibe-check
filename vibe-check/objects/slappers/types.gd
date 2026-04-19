@@ -1,5 +1,7 @@
 class_name Types
+
 enum Phase { PAUSED, TURNING, MOVING }
+enum Vibe { GOOD, BAD }
 
 class TransitionState:
 	var current_phase = Types.Phase.PAUSED
