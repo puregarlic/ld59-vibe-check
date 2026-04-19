@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c7j5redmovla"]
 
 [ext_resource type="Script" uid="uid://b5030vwynre5r" path="res://objects/slappers/slapper_controller.gd" id="1_y7cy8"]
-[ext_resource type="SpriteFrames" uid="uid://uvd21xlhrp1w" path="res://objects/slappers/assets/animations/directions_variant1.tres" id="2_33oxu"]
-[ext_resource type="Script" uid="uid://hqnt5v2oycog" path="res://objects/slappers/slapper_animation_manager.gd" id="3_33oxu"]
 [ext_resource type="Script" uid="uid://tqnhvosmy2jj" path="res://objects/slappers/slapper_ai.gd" id="3_kd8f1"]
+[ext_resource type="Script" uid="uid://hqnt5v2oycog" path="res://objects/slappers/slapper_animation_manager.gd" id="3_wr7b3"]
+[ext_resource type="SpriteFrames" uid="uid://uvd21xlhrp1w" path="res://objects/slappers/assets/animations/directions_variant1.tres" id="4_33oxu"]
 [ext_resource type="AudioStream" uid="uid://db5hq5cbi5p5u" path="res://objects/slappers/assets/huh.mp3" id="5_wr7b3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aslyu"]
@@ -17,11 +17,11 @@ height = 0.2
 script = ExtResource("1_y7cy8")
 scan_alert_audio = NodePath("AudioStreamPlayer3D")
 
-[node name="Animated Sprite" type="AnimatedSprite3D" parent="." unique_id=9490633]
+[node name="Animated Sprite" type="AnimatedSprite3D" parent="." unique_id=1262946104]
 billboard = 2
-sprite_frames = ExtResource("2_33oxu")
-animation = &"slap"
-script = ExtResource("3_33oxu")
+sprite_frames = ExtResource("4_33oxu")
+animation = &"facing_directly_forward"
+script = ExtResource("3_wr7b3")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1828079078]
 shape = SubResource("CapsuleShape3D_aslyu")
@@ -37,4 +37,3 @@ mesh = SubResource("SphereMesh_33oxu")
 stream = ExtResource("5_wr7b3")
 
 [connection signal="transition_to" from="AI" to="." method="_on_ai_transition_to"]
-[connection signal="transition_to" from="AI" to="Animated Sprite" method="_on_ai_transition_to"]
