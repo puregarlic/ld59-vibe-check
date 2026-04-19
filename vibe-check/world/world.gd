@@ -5,7 +5,7 @@ var gui : Control
 
 @onready var main_menu_scene : PackedScene = preload("res://gui/main_menu/main_menu.tscn")
 
-@onready var level_scene : PackedScene = preload("res://levels/test-map.tscn")
+@onready var level_scene : PackedScene = preload("res://levels/The Map.tscn")
 @onready var room_gui_scene : PackedScene = preload("res://gui/rooms/rooms.tscn")
 
 @onready var pause_menu_scene : PackedScene = preload("res://gui/pause_menu/pause_menu.tscn")

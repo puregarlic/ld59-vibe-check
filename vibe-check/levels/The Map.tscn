@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://bt5g06vcvti36"]
+
+[ext_resource type="PackedScene" uid="uid://vwph3t41sjuk" path="res://objects/player/player.tscn" id="1_ogrup"]
+[ext_resource type="PackedScene" uid="uid://c7j5redmovla" path="res://objects/slappers/slapper.tscn" id="3_qx38l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_enq1c"]
+sky_top_color = Color(0.38400003, 0.5642667, 0.8, 1)
+sky_horizon_color = Color(0.85, 0.5617084, 0.5355, 1)
+sky_curve = 0.13058262
+sky_energy_multiplier = 1.15
+ground_bottom_color = Color(0.45049998, 0.48097497, 0.53, 1)
+ground_horizon_color = Color(0.79679996, 0.8095266, 0.83, 1)
+
+[sub_resource type="Sky" id="Sky_u1hnl"]
+sky_material = SubResource("ProceduralSkyMaterial_enq1c")
+
+[sub_resource type="Environment" id="Environment_2rvaj"]
+background_mode = 2
+sky = SubResource("Sky_u1hnl")
+ambient_light_sky_contribution = 0.15
+glow_bloom = 0.58
+glow_hdr_threshold = 2.84
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.4509804, 0.48235294, 0.5294118, 1)
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_height = -5.0
+fog_height_density = 0.5
+fog_depth_begin = -200.0
+fog_depth_end = 2329.9
+volumetric_fog_density = 11.25
+adjustment_enabled = true
+adjustment_contrast = 1.2
+adjustment_saturation = 1.8
+
+[node name="The Map" type="Node3D" unique_id=34298709]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=429812943]
+transform = Transform3D(1, 0, 0, 0, -0.9854078, 0.17020957, 0, -0.17020957, -0.9854078, 0, 0, 0)
+light_color = Color(1, 0.991, 0.90999997, 1)
+light_specular = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=547818075]
+environment = SubResource("Environment_2rvaj")
+
+[node name="Map Geometry" type="Node3D" parent="." unique_id=1676576505]
+
+[node name="FieldWithBuildings" type="CSGBox3D" parent="Map Geometry" unique_id=2037754855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, -155.88127)
+use_collision = true
+size = Vector3(195, 26, 200)
+
+[node name="Building1" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=1020656875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.63571, 22, 63.123344)
+size = Vector3(50, 20, 50)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Building1" unique_id=1449370227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.106, 0, 0)
+operation = 2
+size = Vector3(40, 18, 40)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Building1" unique_id=922080065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5014114, 0, -8.840958)
+size = Vector3(5, 20, 25)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Building1/CSGBox3D" unique_id=1081900113]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.287735, -2.2665596, 10.063255)
+size = Vector3(5, 15, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Building1" unique_id=536010821]
+transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 5.483246, -0.4722824, -26.735481)
+size = Vector3(38.426025, 2, 5)
+
+[node name="Asssemblage" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=1541210594]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -67.14183, 14.489624, -4.88002)
+size = Vector3(70, 30, 10)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Asssemblage" unique_id=388012891]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -32.05156, 0, -12.115265)
+size = Vector3(45, 20, 10)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Asssemblage/CSGBox3D" unique_id=1076964076]
+transform = Transform3D(0.5041508, 0, 0.8636156, 0, 1, 0, -0.8636156, 0, 0.5041508, 15.529537, 0, 34.97026)
+size = Vector3(45, 20, 10)
+
+[node name="Cylinder" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=473225740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.126297, 32.1766, 54.932358)
+radius = 40.0
+height = 40.0
+sides = 50
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Cylinder" unique_id=709443332]
+transform = Transform3D(0.9063077, -0.42261824, 0, 0.42261824, 0.9063077, 0, 0, 0, 1, -69.87164, 4.944914, 3.016388)
+size = Vector3(67.492615, 2, 1)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Map Geometry/FieldWithBuildings/Cylinder" unique_id=1591150529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.192833, 0)
+radius = 20.0
+radial_segments = 30
+rings = 50
+
+[node name="The Hole" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=933153236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.42271, 0, -41.223846)
+operation = 2
+radius = 55.0
+height = 50.0
+sides = 50
+
+[node name="HolePillar1" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=193546286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.772694, -12.88431, -37.615067)
+radius = 5.0
+height = 50.0
+sides = 50
+
+[node name="HolePillar2" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=2075048738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.916195, -13.094334, -52.52719)
+radius = 10.0
+height = 50.0
+sides = 50
+
+[node name="HolePillar3" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=2010342511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.871796, -17.62777, -52.52719)
+radius = 8.0
+height = 50.0
+sides = 50
+
+[node name="HolePillar4" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=1561100305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.786919, -20.285954, -75.23013)
+radius = 5.0
+height = 60.965332
+sides = 50
+
+[node name="BackAccess" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=1759283677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.81981, -16.34889, -84.4848)
+radius = 2.0
+height = 60.965332
+sides = 50
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=2144444770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.118446, -25.518093, -95.21973)
+size = Vector3(15, 100, 15)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=1401133608]
+transform = Transform3D(0.8866802, -0.4623832, 0, 0.4623832, 0.8866802, 0, 0, 0, 1, 91.50944, 3.997841, -53.332535)
+size = Vector3(15, 10, 15)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=1612875182]
+transform = Transform3D(-0.97854507, 0, 0.20603335, 0, 1, 0, -0.20603335, 0, -0.97854507, -38.99486, -8.589418, -71.56746)
+use_collision = true
+size = Vector3(117.26902, 78.01953, 10)
+
+[node name="StartingRoom" type="CSGBox3D" parent="Map Geometry" unique_id=1287994912]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+use_collision = true
+size = Vector3(13, 1, 20)
+
+[node name="LeftWall" type="CSGCylinder3D" parent="Map Geometry/StartingRoom" unique_id=1003721119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 0)
+use_collision = true
+radius = 13.0
+height = 19.0
+sides = 50
+
+[node name="LeftWallCuttout" type="CSGCylinder3D" parent="Map Geometry/StartingRoom/LeftWall" unique_id=1915237238]
+transform = Transform3D(0.48151785, 0, 0, 0, 1, 0, 0, 0, 1, 10.083, 2.5, 0)
+operation = 2
+radius = 11.0
+height = 4.0
+sides = 36
+
+[node name="RightWall" type="CSGCylinder3D" parent="Map Geometry/StartingRoom" unique_id=1710884540]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 14.5, 0, 0)
+use_collision = true
+radius = 13.0
+height = 19.0
+sides = 50
+
+[node name="RightWallCuttout" type="CSGCylinder3D" parent="Map Geometry/StartingRoom/RightWall" unique_id=1655395134]
+transform = Transform3D(0.48151785, 0, 0, 0, 1, 0, 0, 0, 1, 10.083, 2.5, 0)
+operation = 2
+radius = 11.0
+height = 4.0
+sides = 36
+
+[node name="Bridge" type="CSGBox3D" parent="Map Geometry" unique_id=39466753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.22838)
+use_collision = true
+size = Vector3(15, 2, 45)
+
+[node name="Character" parent="." unique_id=824811208 groups=["player"] instance=ExtResource("1_ogrup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2937584, 4.54288)
+headbob_frequency = 1.0
+headbob_amplitude = 0.06
+
+[node name="Slapper" parent="." unique_id=1884064883 instance=ExtResource("3_qx38l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28970718, 3.0642865, -11.281452)

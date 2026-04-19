@@ -34,6 +34,7 @@ window/stretch/mode="viewport"
 
 player=""
 bad=""
+map_manager=""
 
 [input]
 
@@ -90,6 +91,8 @@ interact={
 3d_physics/layer_1="physics_collisions"
 3d_physics/layer_2="room_transitions"
 3d_physics/layer_4="slappers"
+3d_physics/layer_5="phone"
+3d_physics/layer_6="player"
 
 [physics]
 

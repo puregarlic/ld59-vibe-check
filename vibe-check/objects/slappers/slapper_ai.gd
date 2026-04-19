@@ -18,12 +18,15 @@ func _ready() -> void:
 	_enter(Types.Phase.PAUSED)
 
 func on_scan_detected() -> void:
-	if _phase == Types.Phase.SCAN_ALERT or _phase == Types.Phase.SCAN_CHARGE:
+	if _phase == Types.Phase.SCAN_ALERT or _phase == Types.Phase.SCAN_CHARGE or _phase == Types.Phase.SLAPPING:
 		return
 	_enter(Types.Phase.SCAN_ALERT)
 
 func end_scan_response() -> void:
 	_enter(Types.Phase.PAUSED)
+
+func start_slap() -> void:
+	_enter(Types.Phase.SLAPPING)
 
 func _enter(phase: Types.Phase) -> void:
 	_phase = phase

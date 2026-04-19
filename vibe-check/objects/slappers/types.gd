@@ -1,6 +1,6 @@
 class_name Types
 
-enum Phase { PAUSED, TURNING, MOVING, SCAN_ALERT, SCAN_CHARGE }
+enum Phase { PAUSED, TURNING, MOVING, SCAN_ALERT, SCAN_CHARGE, SLAPPING }
 enum Vibe { GOOD, BAD }
 
 class TransitionState:
