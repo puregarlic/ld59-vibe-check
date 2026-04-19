@@ -3,8 +3,14 @@ extends AnimatedSprite3D
 
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
 var _is_looping: bool = false
+var _is_slapping: bool = false
 
 func _process(_delta: float) -> void:
+	if _is_slapping:
+		return
+	_update_directional_animation()
+
+func _update_directional_animation() -> void:
 	var slapper_forward = -get_parent().global_transform.basis.z
 	slapper_forward.y = 0.0
 	slapper_forward = slapper_forward.normalized()
@@ -41,10 +47,20 @@ func get_anim_set_from_angle(angle):
 func _on_ai_transition_to(phase: Types.Phase, _state: Types.TransitionState) -> void:
 	match phase:
 		Types.Phase.PAUSED, Types.Phase.TURNING, Types.Phase.SCAN_ALERT:
+			_is_slapping = false
 			_is_looping = false
+			_update_directional_animation()
 			frame = 0
 			stop()
 		Types.Phase.MOVING, Types.Phase.SCAN_CHARGE:
+			_is_slapping = false
 			_is_looping = true
+			_update_directional_animation()
+			frame = 0
+			play()
+		Types.Phase.SLAPPING:
+			_is_slapping = true
+			_is_looping = false
+			animation = "slap"
 			frame = 0
 			play()
