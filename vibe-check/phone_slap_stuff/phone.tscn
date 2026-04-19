@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b7kfm3w2ety1g"]
+
+[ext_resource type="Script" uid="uid://b4p5a3mwd8sqv" path="res://phone_slap_stuff/phone.gd" id="1_0w3ga"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c3df8"]
+bounce = 0.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3df8"]
+size = Vector3(0.06, 0.1, 0.02)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c3df8"]
+size = Vector3(0.06, 0.1, 0.02)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c3df8"]
+size = Vector2(6, 10)
+
+[node name="Phone" type="Node3D" unique_id=863160446]
+script = ExtResource("1_0w3ga")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=219781822]
+collision_layer = 0
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_c3df8")
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1587236223]
+shape = SubResource("BoxShape3D_c3df8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1679471400]
+mesh = SubResource("BoxMesh_c3df8")
+
+[node name="Sprite3D" type="Sprite3D" parent="RigidBody3D" unique_id=1710516506]
+offset = Vector2(0, 10)
+billboard = 1
+texture = SubResource("PlaceholderTexture2D_c3df8")
