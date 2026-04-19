@@ -1,4 +1,10 @@
 [gd_scene format=3 uid="uid://cyl2lefbu55f5"]
 
+[ext_resource type="PackedScene" uid="uid://c36p8h3web6cj" path="res://objects/right_hand/phone_ui.tscn" id="1_51i6j"]
+
 [node name="PhoneUiViewport" type="SubViewport" unique_id=213579180]
 size = Vector2i(625, 688)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=48304107]
+
+[node name="Control" parent="CanvasLayer" unique_id=781020103 instance=ExtResource("1_51i6j")]
