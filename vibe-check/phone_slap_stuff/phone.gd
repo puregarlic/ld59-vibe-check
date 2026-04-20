@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _on_pickup_delay_timeout() -> void:
 	phone_pickup_area.monitoring = true
+	print("pickup delay finished")
 
 ## this function slaps
 func slap(slapper_global_pos: Vector3) -> void:

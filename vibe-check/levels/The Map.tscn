@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bt5g06vcvti36"]
 
 [ext_resource type="PackedScene" uid="uid://vwph3t41sjuk" path="res://objects/player/player.tscn" id="1_ogrup"]
+[ext_resource type="Script" uid="uid://w506qydhvxfd" path="res://levels/map_manager.gd" id="3_ogrup"]
 [ext_resource type="PackedScene" uid="uid://c7j5redmovla" path="res://objects/slappers/slapper.tscn" id="3_qx38l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_enq1c"]
@@ -153,6 +154,8 @@ size = Vector3(117.26902, 78.01953, 10)
 [node name="StartingRoom" type="CSGBox3D" parent="Map Geometry" unique_id=1287994912]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 use_collision = true
+collision_layer = 17
+collision_mask = 17
 size = Vector3(13, 1, 20)
 
 [node name="LeftWall" type="CSGCylinder3D" parent="Map Geometry/StartingRoom" unique_id=1003721119]
@@ -194,4 +197,7 @@ headbob_frequency = 1.0
 headbob_amplitude = 0.06
 
 [node name="Slapper" parent="." unique_id=1884064883 instance=ExtResource("3_qx38l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28970718, 3.0642865, -11.281452)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28970718, 3.0642865, -11.471046)
+
+[node name="MapManager" type="Node3D" parent="." unique_id=1281809886 groups=["map_manager"]]
+script = ExtResource("3_ogrup")
