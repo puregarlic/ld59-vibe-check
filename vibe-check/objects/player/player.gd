@@ -5,7 +5,7 @@ class_name Player
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var jump_impulse : float = 10.0
 @export var coyote_time : float = 0.12
-@export var speed : float = 14.0
+@export var speed : float = 10.0
 @export var sprint_speed : float = 28.0
 @export var scan_move_speed : float = 5.0
 @export var slap_horizontal_force : float = 5.0
