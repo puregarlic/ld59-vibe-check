@@ -46,6 +46,22 @@ const PRE_SLAP: Array[AudioStream] = [
 	preload("res://sfx/voice/16 Pre-Slap Vibe Check_ps1_11k_lpf14k_8b.wav"),
 ]
 
+const PASS_VIBE: Array[AudioStream] = [
+	preload("res://sfx/voice/29 Pass Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/voice/30 Pass Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/voice/31 Pass Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/voice/32 Pass Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/voice/33 Pass Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+]
+
+const FAIL_VIBE: Array[AudioStream] = [
+	preload("res://sfx/voice/34 Fail Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/voice/35 Fail Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/voice/36 Fail Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/voice/37 Fail Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/voice/38 Fail Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"),
+]
+
 
 func random_pick(pool: Array) -> AudioStream:
 	return pool[randi() % pool.size()]

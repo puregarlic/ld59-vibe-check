@@ -34,7 +34,9 @@ var _fall_fade_tween : Tween = null
 
 @onready var scanner_progress_audio : AudioStreamPlayer = $ScannerProgressAudio
 @onready var postive_scan_audio : AudioStreamPlayer = $PositiveScanResultAudio
+@onready var positive_voice_line_audio : AudioStreamPlayer = $PositiveScanResultVoiceLine
 @onready var bad_vibes_scan_audio : AudioStreamPlayer = $BadVibesScanResultAudio
+@onready var bad_vibes_voice_line_audio : AudioStreamPlayer = $BadVibesScanResultVoiceLine
 
 @onready var footstep_audio : AudioStreamPlayer3D = $FootstepsAudio
 
@@ -86,6 +88,8 @@ var right_hand_tween: Tween
 
 func _ready() -> void:
 	%ScanTimer.timeout.connect(scan_timer_end)
+	positive_voice_line_audio.bus = &"Echo"
+	bad_vibes_voice_line_audio.bus = &"Echo"
 	SignalBus.left_hand_visibility.connect(update_left_hand_visibility)
 	holding_phone = true
 	_fall_vo_base_db = _fall_audio.volume_db
@@ -266,10 +270,14 @@ func scan_timer_end():
 		SignalBus.scan_success.emit()
 		scanner_progress_audio.stop()
 		if current_scan_target.vibe == Types.Vibe.GOOD:
+			positive_voice_line_audio.stream = VoicePools.random_pick(VoicePools.PASS_VIBE)
+			positive_voice_line_audio.play()
 			positive_scan_audio.play()
 			pass_vibe_check = true
 			print("GOOD VIBES FOUND")
 		if current_scan_target.vibe == Types.Vibe.BAD:
+			bad_vibes_voice_line_audio.stream = VoicePools.random_pick(VoicePools.FAIL_VIBE)
+			bad_vibes_voice_line_audio.play()
 			bad_vibes_scan_audio.play()
 			pass_vibe_check = false
 			print("BAD VIBES DETECTED")
