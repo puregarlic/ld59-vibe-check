@@ -23,7 +23,7 @@ var _turn_speed: float = 0.0
 var _slap_cooldown_remaining: float = 0.0
 var _slap_hold_timer: Timer
 
-const SCAN_DETECTION_ANGLE: float = 45.0
+const SCAN_DETECTION_ANGLE: float = 112.5
 const SCAN_CHARGE_SPEED: float = 8.0
 const SCAN_TURN_SPEED: float = 5.0
 const SLAP_DISTANCE: float = 2.0
@@ -38,8 +38,11 @@ var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _gravity_active: bool = true
 var _spawn_grace_remaining: float = SPAWN_GRAVITY_DURATION
 var _off_floor_time: float = 0.0
+var _scan_alert_default_volume_db: float = 0.0
 
 func _ready() -> void:
+	if scan_alert_audio:
+		_scan_alert_default_volume_db = scan_alert_audio.volume_db
 	scan_detected.connect(_ai.on_scan_detected)
 	slap_triggered.connect(_on_slap_triggered)
 	_animated_sprite.animation_finished.connect(_on_animation_finished)
@@ -193,7 +196,9 @@ func _on_ai_transition_to(phase: Types.Phase, state: Types.TransitionState) -> v
 		Types.Phase.SCAN_ALERT:
 			velocity = Vector3.ZERO
 			if scan_alert_audio:
-				scan_alert_audio.stream = VoicePools.random_pick(VoicePools.HUH)
+				var picked = VoicePools.random_pick(VoicePools.HUH)
+				scan_alert_audio.stream = picked
+				scan_alert_audio.volume_db = _scan_alert_default_volume_db + (-24.0 if picked == VoicePools.HUH[2] else 0.0)
 				scan_alert_audio.play()
 				scan_alert_visual.visible = true
 		Types.Phase.SLAPPING:

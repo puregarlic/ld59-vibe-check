@@ -6,21 +6,35 @@ const PAUSED_RANGE := Vector2(6.0, 12.0)
 const TURNING_RANGE := Vector2(1.0, 2.0)
 const MOVING_RANGE := Vector2(5.0, 15.0)
 const SCAN_ALERT_RANGE := Vector2(1.2, 1.6)
+const DOUBLE_DETECT_WINDOW: float = 5.0
 
 var _phase: Types.Phase = Types.Phase.PAUSED
 var _timer: Timer
+var _detection_count: int = 0
+var _detection_reset_timer: Timer
 
 func _ready() -> void:
 	_timer = Timer.new()
 	_timer.one_shot = true
 	_timer.timeout.connect(_advance)
 	add_child(_timer)
+	_detection_reset_timer = Timer.new()
+	_detection_reset_timer.one_shot = true
+	_detection_reset_timer.timeout.connect(func(): _detection_count = 0)
+	add_child(_detection_reset_timer)
 	_enter(Types.Phase.TURNING)
 
 func on_scan_detected() -> void:
 	if _phase == Types.Phase.SCAN_ALERT or _phase == Types.Phase.SCAN_CHARGE or _phase == Types.Phase.SLAPPING:
 		return
-	_enter(Types.Phase.SCAN_ALERT)
+	_detection_count += 1
+	if _detection_count >= 2:
+		_detection_reset_timer.stop()
+		_detection_count = 0
+		_enter(Types.Phase.SCAN_CHARGE)
+	else:
+		_detection_reset_timer.start(DOUBLE_DETECT_WINDOW)
+		_enter(Types.Phase.SCAN_ALERT)
 
 func end_scan_response() -> void:
 	_enter(Types.Phase.PAUSED)
@@ -51,7 +65,7 @@ func _advance() -> void:
 		Types.Phase.MOVING:
 			_enter(Types.Phase.PAUSED)
 		Types.Phase.SCAN_ALERT:
-			_enter(Types.Phase.SCAN_CHARGE)
+			_enter(Types.Phase.PAUSED)
 		Types.Phase.CAUGHT:
 			_enter(Types.Phase.CAUGHT)
 

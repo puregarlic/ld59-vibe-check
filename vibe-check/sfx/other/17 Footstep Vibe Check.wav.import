@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://q82w1ans1g1"
+path="res://.godot/imported/17 Footstep Vibe Check.wav-f585abadd0231905b836ac9775821b15.sample"
+
+[deps]
+
+source_file="res://sfx/other/17 Footstep Vibe Check.wav"
+dest_files=["res://.godot/imported/17 Footstep Vibe Check.wav-f585abadd0231905b836ac9775821b15.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -38,6 +38,7 @@ script = ExtResource("3_kd8f1")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1046356688]
 
 [node name="PreSlapAudio" type="AudioStreamPlayer3D" parent="." unique_id=1046356689]
+volume_db = -4.0
 
 [node name="SlapImpactAudio" type="AudioStreamPlayer3D" parent="." unique_id=1046356690]
 
