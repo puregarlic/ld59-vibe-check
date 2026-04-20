@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rqp3ou2ecut5" path="res://objects/player/player.gd" id="1_0pn13"]
 [ext_resource type="PackedScene" uid="uid://c25fuq4ujs31n" path="res://objects/right_hand/right_hand.tscn" id="2_g7ett"]
-[ext_resource type="Script" path="res://objects/player/scan_timer.gd" id="2_ssrue"]
+[ext_resource type="Script" uid="uid://bvl8t7jgigwxo" path="res://objects/player/scan_timer.gd" id="2_ssrue"]
 [ext_resource type="Texture2D" uid="uid://bjljwnq5o2f54" path="res://objects/right_hand/assets/RightHand_Empty.png" id="3_gnkmh"]
 [ext_resource type="Texture2D" uid="uid://6ex5vf4cfqxc" path="res://objects/player/assets/LeftHand.png" id="3_jnjyq"]
 [ext_resource type="AudioStream" uid="uid://dcifakhc6f8se" path="res://sfx/synthesized_sfx/Scanning in Progress Tone.wav" id="6_m4kly"]
@@ -11,21 +11,21 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oslkc"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_psowp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_m4kly"]
 viewport_path = NodePath("PhoneUiViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_45urx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xgwla"]
 viewport_path = NodePath("PhoneUiViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c34wb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bi5m7"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_psowp")
+albedo_texture = SubResource("ViewportTexture_m4kly")
 emission_enabled = true
-emission_texture = SubResource("ViewportTexture_45urx")
+emission_texture = SubResource("ViewportTexture_xgwla")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_45rsp"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_psowp"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_c34wb")
+material = SubResource("StandardMaterial3D_bi5m7")
 size = Vector2(0.922, 2.027)
 
 [node name="Player" type="CharacterBody3D" unique_id=54693143]
@@ -52,7 +52,7 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.31603372, -0.13180
 
 [node name="MeshInstance3D2" parent="Camera3D/RightHand" index="2" unique_id=1908146493]
 transform = Transform3D(0.58681905, -0.619062, -0.5219256, 0.08237629, 0.6868761, -0.722092, 0.80551714, 0.38074338, 0.45406765, -1.4904782, 0.5164744, 1.0345821)
-mesh = SubResource("PlaneMesh_45rsp")
+mesh = SubResource("PlaneMesh_psowp")
 
 [node name="RightHandEmpty" type="Sprite3D" parent="Camera3D" unique_id=1153968424]
 unique_name_in_owner = true
@@ -88,7 +88,15 @@ volume_db = -2.0
 stream = ExtResource("7_xgwla")
 volume_db = -4.0
 
+[node name="PositiveScanResultVoiceLine" type="AudioStreamPlayer" parent="." unique_id=710561714]
+stream = ExtResource("7_xgwla")
+volume_db = -4.0
+
 [node name="BadVibesScanResultAudio" type="AudioStreamPlayer" parent="." unique_id=1938324456]
+stream = ExtResource("8_bi5m7")
+volume_db = -10.0
+
+[node name="BadVibesScanResultVoiceLine" type="AudioStreamPlayer" parent="." unique_id=918565835]
 stream = ExtResource("8_bi5m7")
 volume_db = -4.0
 

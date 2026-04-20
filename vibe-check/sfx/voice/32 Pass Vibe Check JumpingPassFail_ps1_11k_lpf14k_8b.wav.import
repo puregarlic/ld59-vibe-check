@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1l5egl8kvoep"
+path="res://.godot/imported/32 Pass Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav-1e40a9aa7e8dbe9abba770415440c753.sample"
+
+[deps]
+
+source_file="res://sfx/voice/32 Pass Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav"
+dest_files=["res://.godot/imported/32 Pass Vibe Check JumpingPassFail_ps1_11k_lpf14k_8b.wav-1e40a9aa7e8dbe9abba770415440c753.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
