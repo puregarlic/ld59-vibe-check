@@ -21,7 +21,8 @@ enum WorldState {MAIN_MENU, ROOMS, PAUSED}
 var baddies := []
 
 @onready var main_menu_stream = preload("res://sfx/music/Vibe Check Menu.wav")
-@onready var level_stream = preload("res://sfx/music/Vibe Check Menu.wav")
+@onready var level_intro_stream = preload("res://sfx/music/Vibe Check Music Intro.wav")
+@onready var level_stream = preload("res://sfx/music/Vibe Check Music Main.wav")
 @onready var tutorial_stream = preload("res://sfx/music/Vibe Check Tutorial.wav")
 
 func _ready() -> void:
@@ -139,12 +140,14 @@ func instantiate_level() -> void:
 	$VoiceAudio.stream = VoicePools.FIND_THEM
 	$VoiceAudio.play()
 
-	# TODO swap the stream to level music -- atm its the main menu theme
-	$Music.stream = level_stream
-	$Music.play()
-
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	state = WorldState.ROOMS
+	
+	$Music.stream = level_intro_stream
+	$Music.play()
+	await $Music.finished
+	$Music.stream = level_stream
+	$Music.play()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
