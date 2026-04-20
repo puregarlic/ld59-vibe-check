@@ -19,7 +19,6 @@ func _ready() -> void:
 var _pending_spawners: int = 0
 
 func _on_spawner_complete(_spawner: Node) -> void:
-	print("_on_spawner_complete: %s" % _pending_spawners)
 	_pending_spawners -= 1
 	if _pending_spawners <= 0:
 		_assign_bad_vibes()
@@ -36,10 +35,8 @@ func _assign_bad_vibes() -> void:
 	SignalBus.baddies_spawned.emit()
 
 func phone_slap_trigger(from_position: Vector3) -> void:
-	print("phone spawned")
 	var instance = phone.instantiate()
 	add_child(instance)
 	var spawned_phone = get_child(-1)
 	spawned_phone.position = player_reference.global_position + Vector3(0, 2, 0)
 	spawned_phone.slap(from_position)
-	print(spawned_phone.position)

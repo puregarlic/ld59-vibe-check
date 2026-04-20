@@ -53,14 +53,11 @@ func _setup_echo_bus() -> void:
 
 func get_baddies():
 	baddies = get_tree().get_nodes_in_group("bad")
-	print(baddies.size())
 
 func baddie_scanned(baddie: Slapper) -> void:
 	var i := baddies.find(baddie)
-	print(baddies.size())
 	if i >= 0:
 		baddies.remove_at(i)
-		print("Removed baddie: %s" % baddies.size())
 		if baddies.is_empty():
 			win()
 

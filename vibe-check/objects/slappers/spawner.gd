@@ -36,8 +36,6 @@ func _run_diagnostic() -> void:
 	var hit := space.intersect_ray(ray)
 	if hit.is_empty():
 		push_warning("[Spawner] %s at %s: no collider found directly below (from %s to %s)." % [name, global_position, from, to])
-	else:
-		print("[Spawner] %s at %s: direct-down ray hit %s at %s" % [name, global_position, hit.collider, hit.position])
 
 func _spawn_slappers() -> void:
 	var num_slappers: int = randi_range(min_slap, max_slap)
@@ -57,7 +55,6 @@ func _spawn_slappers() -> void:
 		slapper.global_position = pos
 		placed.append(pos)
 		spawned += 1
-	print("[Spawner] %s spawned %d/%d slappers" % [name, spawned, num_slappers])
 
 func _find_valid_position(space: PhysicsDirectSpaceState3D, placed: Array[Vector3]) -> Variant:
 	var shape := CapsuleShape3D.new()
@@ -98,5 +95,4 @@ func _find_valid_position(space: PhysicsDirectSpaceState3D, placed: Array[Vector
 			overlap_fails += 1
 			continue
 		return spawn_pos
-	print("[Spawner] %s rejected all attempts (ray:%d high:%d sep:%d overlap:%d)" % [name, ray_fails, too_high_fails, separation_fails, overlap_fails])
 	return null

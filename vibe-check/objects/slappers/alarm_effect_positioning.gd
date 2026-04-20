@@ -8,5 +8,4 @@ func _process(delta: float) -> void:
 	if player_reference:
 		var local_point = to_local(player_reference.global_position)
 		var closest_offset = path.curve.get_closest_offset(local_point)
-		print(closest_offset)
 		progress = closest_offset

@@ -35,7 +35,6 @@ func _on_rigid_body_3d_body_entered(_body: Node) -> void:
 
 func _on_pickup_delay_timeout() -> void:
 	phone_pickup_area.monitoring = true
-	print("pickup delay finished")
 
 ## this function slaps
 func slap(slapper_global_pos: Vector3) -> void:
@@ -50,6 +49,5 @@ func slap(slapper_global_pos: Vector3) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print("you stepped on your phone!")
 	player_reference.holding_phone = true
 	self.queue_free()
