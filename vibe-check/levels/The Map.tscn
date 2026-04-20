@@ -713,7 +713,7 @@ headbob_amplitude = 0.06
 
 [node name="MapManager" type="Node3D" parent="." unique_id=405946474 groups=["map_manager"]]
 script = ExtResource("3_ogrup")
-num_bad_slappers = 1
+num_bad_slappers = 5
 
 [node name="Area3D" type="Area3D" parent="." unique_id=318167548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
