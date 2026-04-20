@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 
 @export var textures : Array[Texture2D] = [null, null, null, null]
 @export var distance_modifier: float = 0.75
@@ -12,7 +12,7 @@ func _ready() -> void:
 	var players = get_tree().get_nodes_in_group("player")
 	if not players.is_empty():
 		player = players[0]
-	$Signal.modulate = Color.hex(0xffffff00)
+	%Signal.modulate = Color.hex(0xffffff00)
 	SignalBus.scan_progress.connect(scan_progress)
 	SignalBus.scan_success.connect(scan_success)
 
@@ -60,9 +60,14 @@ func scan_progress(progress: float) -> void:
 	%ProgressBar.value = clamp(progress, 0.0, 1.0)
 
 func scan_success() -> void:
+	%Battery.visible = false
 	if scan_tween != null and scan_tween.is_running():
 		scan_tween.kill()
-	$Signal.modulate = Color.hex(0xffffffff)
+	%Signal.modulate = Color.hex(0xffffffff)
 
 	scan_tween = get_tree().create_tween()
-	scan_tween.tween_property($Signal, "modulate", Color.hex(0xffffff00), visible_duration)
+	scan_tween.tween_property(%Signal, "modulate", Color.hex(0xffffff00), visible_duration)
+	scan_tween.tween_callback(low_battery)
+
+func low_battery():
+	%Battery.visible = true

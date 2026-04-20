@@ -102,22 +102,22 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = movement_dir.x * move_speed
 			velocity.z = movement_dir.z * move_speed
-	
+
 	if is_on_floor():
 		_coyote_timer = coyote_time
 	elif _was_on_floor and velocity.y <= 0.0:
 		_coyote_timer = coyote_time
 	else:
 		_coyote_timer = max(_coyote_timer - delta, 0.0)
-	
+
 	if _coyote_timer > 0.0 and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_impulse
 		_coyote_timer = 0.0
-	
+
 	_was_on_floor = is_on_floor()
-	
+
 	move_and_slide()
-	
+
 	if _in_knockback and is_on_floor():
 		_in_knockback = false
 
@@ -230,7 +230,7 @@ func scan_timer_end():
 	var positive_scan_audio = postive_scan_audio
 	var bad_vibes_scan_audio = bad_vibes_scan_audio
 	var scanner_progress_audio = scanner_progress_audio
-	
+
 	print("timer out")
 	if Input.is_action_pressed("interact") and scan_target == current_scan_target and scanning == true:
 		SignalBus.scan_success.emit()
