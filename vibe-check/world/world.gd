@@ -25,6 +25,8 @@ var baddies := []
 @onready var tutorial_stream = preload("res://sfx/music/Vibe Check Tutorial.wav")
 
 func _ready() -> void:
+	_setup_echo_bus()
+	$VoiceAudio.bus = &"Echo"
 	SignalBus.start_game.connect(instantiate_level)
 	SignalBus.start_menu.connect(start_menu)
 	SignalBus.pause.connect(pause_menu)
@@ -32,6 +34,21 @@ func _ready() -> void:
 	SignalBus.baddie_scanned.connect(baddie_scanned)
 	SignalBus.failed.connect(loss)
 	SignalBus.baddies_spawned.connect(get_baddies)
+
+func _setup_echo_bus() -> void:
+	if AudioServer.get_bus_index("Echo") != -1:
+		return
+	AudioServer.add_bus()
+	var idx := AudioServer.bus_count - 1
+	AudioServer.set_bus_name(idx, "Echo")
+	AudioServer.set_bus_send(idx, "Master")
+	var delay := AudioEffectDelay.new()
+	delay.tap1_delay_ms = 280.0
+	delay.tap1_level_db = -8.0
+	delay.tap2_active = true
+	delay.tap2_delay_ms = 560.0
+	delay.tap2_level_db = -16.0
+	AudioServer.add_bus_effect(idx, delay)
 
 func get_baddies():
 	baddies = get_tree().get_nodes_in_group("bad")
