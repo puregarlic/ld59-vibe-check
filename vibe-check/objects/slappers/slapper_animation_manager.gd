@@ -2,8 +2,17 @@ extends AnimatedSprite3D
 
 
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
+@export var animations: Array[SpriteFrames]
+@export var slapper: Slapper
 var _is_looping: bool = false
 var _is_slapping: bool = false
+
+func _ready():
+	match slapper.variation:
+		Types.SlapperVariant.J1:
+			sprite_frames = animations[0]
+		Types.SlapperVariant.G:
+			sprite_frames = animations[1]
 
 func _process(_delta: float) -> void:
 	if _is_slapping:
