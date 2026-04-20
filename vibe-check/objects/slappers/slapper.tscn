@@ -40,11 +40,13 @@ script = ExtResource("3_kd8f1")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1046356688]
 
 [node name="PreSlapAudio" type="AudioStreamPlayer3D" parent="." unique_id=1046356689]
+volume_db = -4.0
 
 [node name="SlapImpactAudio" type="AudioStreamPlayer3D" parent="." unique_id=1046356690]
 
 [node name="CaughtAudio" type="AudioStreamPlayer3D" parent="." unique_id=1330202311]
 stream = SubResource("AudioStreamRandomizer_pyk75")
+volume_db = 4.0
 
 [node name="Alarm" type="Sprite3D" parent="." unique_id=727403242]
 transform = Transform3D(0.08034206, -0.059541192, 0, 0.059541192, 0.08034206, 0, 0, 0, 0.1, 0.16698417, 1.3286732, 0)
