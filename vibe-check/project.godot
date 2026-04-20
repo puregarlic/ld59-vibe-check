@@ -37,6 +37,7 @@ player=""
 map_manager=""
 bad=""
 world=""
+spawner=""
 
 [gui]
 

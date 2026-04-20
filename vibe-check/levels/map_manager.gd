@@ -7,7 +7,7 @@ var phone = preload("res://phone_slap_stuff/phone.tscn")
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
 
 func _ready() -> void:
-	await get_tree().process_frame
+	#await get_tree().root.ready
 	var spawners := get_tree().get_nodes_in_group("spawner")
 	_pending_spawners = spawners.size()
 	if _pending_spawners == 0:
