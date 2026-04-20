@@ -225,6 +225,7 @@ func receive_slap(from_position: Vector3) -> void:
 	_in_knockback = true
 	holding_phone = false
 	scanning = false
+	scanner_progress_audio.stop()
 
 func scan_timer_end():
 	var positive_scan_audio = postive_scan_audio

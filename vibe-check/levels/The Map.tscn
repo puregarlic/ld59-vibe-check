@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bmwnw7sqkjr3d" path="res://levels/world_environment.gd" id="3_qx38l"]
 [ext_resource type="PackedScene" path="res://gui/psx_filter/psx_filter.tscn" id="4_psx_filter"]
 [ext_resource type="Material" uid="uid://b8v3c1grainyc" path="res://levels/grainy-concrete-bl/grainy_concrete.tres" id="5_concrete"]
+[ext_resource type="Script" uid="uid://c4yrqdc6fot6c" path="res://levels/torus.gd" id="5_ea44n"]
 [ext_resource type="Texture2D" uid="uid://nvdx2quf7lfc" path="res://levels/handcrafted-pirate-ship-model-with-intricate-detailing-500x500.png" id="8_nrxw6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_enq1c"]
@@ -40,6 +41,12 @@ volumetric_fog_density = 11.25
 adjustment_enabled = true
 adjustment_contrast = 1.2
 adjustment_saturation = 1.8
+
+[sub_resource type="TorusMesh" id="TorusMesh_p1bsi"]
+inner_radius = 800.0
+outer_radius = 900.0
+rings = 20
+ring_segments = 20
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u1hnl"]
 size = Vector3(1000, 20, 1000)
@@ -706,6 +713,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.22838)
 use_collision = true
 size = Vector3(15, 2, 45)
 material = ExtResource("5_concrete")
+
+[node name="Torus" type="MeshInstance3D" parent="Map Geometry" unique_id=1323469076]
+transform = Transform3D(0.67351353, 0.12483494, -0.7285573, 0.46303865, 0.69703066, 0.54748815, 0.57617253, -0.70609105, 0.41165632, -345.8728, 1930.6919, 2240.5828)
+mesh = SubResource("TorusMesh_p1bsi")
+script = ExtResource("5_ea44n")
 
 [node name="Character" parent="." unique_id=824811208 groups=["player"] instance=ExtResource("1_ogrup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2937584, 4.54288)
