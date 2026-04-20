@@ -13,8 +13,9 @@ sky_top_color = Color(0.38400003, 0.5642667, 0.8, 1)
 sky_horizon_color = Color(0.85, 0.5617084, 0.5355, 1)
 sky_curve = 0.13058262
 sky_energy_multiplier = 1.15
-ground_bottom_color = Color(0.45049998, 0.48097497, 0.53, 1)
-ground_horizon_color = Color(0.79679996, 0.8095266, 0.83, 1)
+ground_bottom_color = Color(0.78431374, 0.8039216, 0.83137256, 1)
+ground_horizon_color = Color(0.82, 0.72242, 0.6478, 1)
+ground_curve = 0.045947947
 
 [sub_resource type="Sky" id="Sky_u1hnl"]
 sky_material = SubResource("ProceduralSkyMaterial_enq1c")
@@ -27,7 +28,7 @@ glow_bloom = 0.58
 glow_hdr_threshold = 2.84
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.4509804, 0.48235294, 0.5294118, 1)
+fog_light_color = Color(0.78268856, 0.8026231, 0.8325561, 1)
 fog_density = 1.0
 fog_sky_affect = 0.0
 fog_height = -5.0
@@ -44,6 +45,78 @@ size = Vector3(1000, 20, 1000)
 
 [node name="The Map" type="Node3D" unique_id=34298709]
 script = ExtResource("1_script")
+
+[node name="BG" type="Node3D" parent="." unique_id=1587453808]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="BG" unique_id=284066198]
+transform = Transform3D(0.99146533, 0.13037045, 0, -0.13037045, 0.99146533, 0, 0, 0, 1, 210.29295, -28.370178, -1688.589)
+size = Vector3(200, 1000, 200)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="BG" unique_id=573240107]
+transform = Transform3D(0.14146021, -0.4020784, -0.9046115, -0.118392184, 0.90037084, -0.41870734, 0.982839, 0.16632938, 0.07976369, -745.83075, -137.7427, -2852.6475)
+size = Vector3(200, 672.72626, 381.32642)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="BG" unique_id=2083554145]
+transform = Transform3D(0.99966425, 0.025915235, 0, -0.025915235, 0.99966425, 0, 0, 0, 1, 567.2185, -185.30089, -454.7246)
+size = Vector3(339.9131, 835.9493, 292.73584)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="BG" unique_id=1189547651]
+transform = Transform3D(0.99966425, 0.025915235, 0, -0.025915235, 0.99966425, 0, 0, 0, 1, -1755.2605, -273.41132, 1458.8984)
+size = Vector3(339.9131, 835.9493, 292.73584)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="BG" unique_id=1904186239]
+transform = Transform3D(0.99966425, 0.025915233, 0, -0.023844482, 0.9197863, 0.39169484, 0.010150863, -0.39156333, 0.9200952, -2764.3362, -20.628006, 1041.7993)
+size = Vector3(450.37354, 1205.4855, 475.5271)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="BG" unique_id=1160972982]
+transform = Transform3D(0.99966425, 0.025915233, 0, -0.024928082, 0.9615855, 0.27337167, 0.0070844907, -0.27327988, 0.96190846, -275.0819, -81.38347, 2502.5488)
+size = Vector3(339.9131, 835.9493, 292.73584)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="BG" unique_id=1559299653]
+transform = Transform3D(0.98149776, 0.18596415, 0.04560397, -0.19134313, 0.94378793, 0.26954097, 0.0070844903, -0.27327988, 0.96190834, -1564.3114, 155.08592, 3033.5947)
+size = Vector3(339.9131, 929.55676, 292.73584)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="BG" unique_id=469979717]
+transform = Transform3D(0.9327948, -0.34482408, -0.104835175, 0.36033857, 0.89800596, 0.25247106, 0.0070844903, -0.27327988, 0.96190834, 2500.786, -83.46501, 1398.0332)
+size = Vector3(339.9131, 835.9493, 292.73584)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="BG" unique_id=1781293918]
+transform = Transform3D(0.9760237, 0.2111628, 0.052803256, -0.21754935, 0.93847144, 0.26822352, 0.007084484, -0.27327985, 0.9619083, 1916.98, 96.7198, -2042.7085)
+size = Vector3(339.9131, 835.9493, 292.73584)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="BG" unique_id=152867076]
+transform = Transform3D(0.97592443, -0.21810919, 0, 0.21810919, 0.97592443, 0, 0, 0, 1, 1059.4061, -193.62537, -67.63434)
+size = Vector3(243.58447, 835.9493, 189.15942)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="BG" unique_id=2012743739]
+transform = Transform3D(0.93971056, -0.34197095, 0, 0.284302, 0.7812405, -0.5557298, 0.1900435, 0.52222526, 0.83136296, -761.18506, -25.8863, -827.6317)
+size = Vector3(200, 1128.75, 350.14746)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="BG" unique_id=2095869053]
+transform = Transform3D(0.73631847, 0.43885422, 0.5150164, -0.49110842, 0.87020767, -0.039381538, -0.46545404, -0.22393155, 0.8562751, -747.7887, -44.115078, -292.31982)
+size = Vector3(120.86377, 1128.75, 289.02966)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="BG" unique_id=208984449]
+transform = Transform3D(-0.5566833, -0.18877175, 0.8089925, -0.08752022, 0.9817467, 0.16885829, -0.8261015, 0.02319745, -0.5630436, 302.39035, -169.20815, 407.1027)
+size = Vector3(120.86377, 873.91223, 289.02966)
+material = ExtResource("5_concrete")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="BG" unique_id=794217197]
+transform = Transform3D(0.054899544, -0.16449761, 0.9848486, 0.5202451, 0.84658724, 0.11240345, -0.8522503, 0.5061916, 0.1320564, 1285.7731, -147.35507, 1606.9941)
+size = Vector3(211.86548, 1312.4785, 199.80048)
+material = ExtResource("5_concrete")
 
 [node name="Spawners" type="Node3D" parent="." unique_id=336701343]
 
