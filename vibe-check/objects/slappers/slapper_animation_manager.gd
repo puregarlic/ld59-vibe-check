@@ -6,6 +6,7 @@ extends AnimatedSprite3D
 @export var slapper: Slapper
 var _is_looping: bool = false
 var _is_slapping: bool = false
+var _is_dying: bool = false
 
 func _ready():
 	match slapper.variation:
@@ -15,7 +16,7 @@ func _ready():
 			sprite_frames = animations[1]
 
 func _process(_delta: float) -> void:
-	if _is_slapping:
+	if _is_slapping or _is_dying:
 		return
 	_update_directional_animation()
 
@@ -61,18 +62,33 @@ func _on_ai_transition_to(phase: Types.Phase, _state: Types.TransitionState) -> 
 		Types.Phase.PAUSED, Types.Phase.TURNING, Types.Phase.SCAN_ALERT:
 			_is_slapping = false
 			_is_looping = false
+			_is_dying = false
 			_update_directional_animation()
 			frame = 0
 			stop()
 		Types.Phase.MOVING, Types.Phase.SCAN_CHARGE:
 			_is_slapping = false
 			_is_looping = true
+			_is_dying = false
 			_update_directional_animation()
 			frame = 0
 			play()
 		Types.Phase.SLAPPING:
 			_is_slapping = true
 			_is_looping = false
+			_is_dying = false
 			animation = "slap"
 			frame = 0
 			play()
+		Types.Phase.CAUGHT:
+			_is_slapping = false
+			_is_looping = false
+			_is_dying = true
+			animation = "caught"
+			frame = randi_range(0, 1)
+			stop()
+			var tween = get_tree().create_tween()
+			tween.tween_property(self, "global_position", Vector3(global_position.x, global_position.y - 10, global_position.z), 5.0)
+			tween.tween_callback(slapper.queue_free)
+			await tween.finished
+			SignalBus.baddie_killed.emit()
