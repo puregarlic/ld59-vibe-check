@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://ch7fm1j4hefnr" path="res://gui/loss_hud/loss_hud.gd" id="1_xw1rx"]
 
 [sub_resource type="Gradient" id="Gradient_0ux83"]
-colors = PackedColorArray(1, 1, 1, 0.47058824, 1, 1, 1, 0.47058824)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_kp30d"]
 resource_local_to_scene = true
 gradient = SubResource("Gradient_0ux83")
 
 [node name="LossHud" type="TextureRect" unique_id=1959954496]
+modulate = Color(1, 1, 1, 0.19607843)
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("GradientTexture1D_kp30d")

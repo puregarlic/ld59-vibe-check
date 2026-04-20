@@ -226,7 +226,7 @@ func scan_timer_end():
 	var positive_scan_audio = postive_scan_audio
 	var bad_vibes_scan_audio = bad_vibes_scan_audio
 	var scanner_progress_audio = scanner_progress_audio
-	
+
 	print("timer out")
 	if Input.is_action_pressed("interact") and scan_target == current_scan_target and scanning == true:
 		SignalBus.scan_success.emit()
