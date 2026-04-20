@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://pf2nhjdqhx5i"]
+
+[ext_resource type="Script" uid="uid://ctqxs5dcutg58" path="res://objects/slappers/spawner.gd" id="1_xf0d4"]
+
+[node name="Spawner" type="Node3D" unique_id=1254017531]
+script = ExtResource("1_xf0d4")

@@ -15,7 +15,7 @@ func _ready() -> void:
 	_timer.one_shot = true
 	_timer.timeout.connect(_advance)
 	add_child(_timer)
-	_enter(Types.Phase.PAUSED)
+	_enter(Types.Phase.TURNING)
 
 func on_scan_detected() -> void:
 	if _phase == Types.Phase.SCAN_ALERT or _phase == Types.Phase.SCAN_CHARGE or _phase == Types.Phase.SLAPPING:

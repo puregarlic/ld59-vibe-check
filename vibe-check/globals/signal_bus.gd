@@ -20,3 +20,6 @@ signal scan_success(progress: float)
 
 @warning_ignore("unused_signal")
 signal baddie_scanned(progress: Slapper)
+
+@warning_ignore("unused_signal")
+signal failed

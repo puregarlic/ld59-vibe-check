@@ -44,6 +44,7 @@ func _ready() -> void:
 	add_child(_slap_hold_timer)
 	if player_reference:
 		add_collision_exception_with(player_reference)
+	add_to_group("slapper")
 	if vibe == Types.Vibe.BAD:
 		add_to_group("bad")
 
