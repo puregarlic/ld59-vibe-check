@@ -123,63 +123,63 @@ material = ExtResource("5_concrete")
 
 [node name="Spawners -- FieldWithBuildings" type="Node3D" parent="Spawners" unique_id=146934840]
 
-[node name="Spawner_Starting_Room" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1254017531 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Starting_Room" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1254017531 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5472088, 0)
 min_slap = 13
 max_slap = 25
 spawn_radius = 50.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_Low" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1368622369 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_Low" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1368622369 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.049677, 0.5472088, -115.495285)
 min_slap = 25
 max_slap = 50
 spawn_radius = 75.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_TopBuilding" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1408760442 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_TopBuilding" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1408760442 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.32129, 23.899668, -88.47291)
 max_slap = 6
 spawn_radius = 10.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_BelowTopBuilding2" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1502728008 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_BelowTopBuilding2" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1502728008 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.32129, 6.8163013, -82.05098)
 max_slap = 6
 spawn_radius = 10.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_Behind" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1479520289 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_Behind" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1479520289 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.32129, 6.8163013, -162.08513)
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_MoreBehind" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=2107821300 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_MoreBehind" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=2107821300 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.519, 6.8163013, -249.16885)
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_SphereTop1" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=917893975 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_SphereTop1" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=917893975 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.827667, 47.869873, -88.90411)
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_SphereTop2" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1979933791 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_SphereTop2" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1979933791 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.900085, 47.869873, -104.33467)
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_SphereBottom" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1762459275 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_SphereBottom" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1762459275 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.30436, 12.191635, -68.605286)
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
-[node name="Spawner_FieldWithBuildings_ThePit" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=382650308 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_FieldWithBuildings_ThePit" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=382650308 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.984116, 4.3452835, -210.7547)
 max_slap = 13
 spawn_radius = 50.0
@@ -187,43 +187,43 @@ ground_probe_height = 20.0
 
 [node name="Spawners -- The Thunderdome" type="Node3D" parent="Spawners" unique_id=1141620395]
 
-[node name="Spawner_Thunderdome1" parent="Spawners/Spawners -- The Thunderdome" unique_id=322565753 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Thunderdome1" parent="Spawners/Spawners -- The Thunderdome" unique_id=322565753 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.295876, 2.590311, 46.69143)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Thunderdome2" parent="Spawners/Spawners -- The Thunderdome" unique_id=82706922 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Thunderdome2" parent="Spawners/Spawners -- The Thunderdome" unique_id=82706922 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.295876, 2.590311, 94.26929)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Thunderdome3" parent="Spawners/Spawners -- The Thunderdome" unique_id=1334041276 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Thunderdome3" parent="Spawners/Spawners -- The Thunderdome" unique_id=1334041276 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.91644, 2.590311, 94.26929)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Thunderdome4" parent="Spawners/Spawners -- The Thunderdome" unique_id=988400034 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Thunderdome4" parent="Spawners/Spawners -- The Thunderdome" unique_id=988400034 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.63574, 2.590311, 57.381706)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Thunderdome5" parent="Spawners/Spawners -- The Thunderdome" unique_id=557689910 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Thunderdome5" parent="Spawners/Spawners -- The Thunderdome" unique_id=557689910 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.63574, 2.590311, 84.89988)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Thunderdome6" parent="Spawners/Spawners -- The Thunderdome" unique_id=1453710624 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Thunderdome6" parent="Spawners/Spawners -- The Thunderdome" unique_id=1453710624 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.17734, 5.2500286, 94.95105)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Thunderdome7" parent="Spawners/Spawners -- The Thunderdome" unique_id=1783091542 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Thunderdome7" parent="Spawners/Spawners -- The Thunderdome" unique_id=1783091542 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.60005, 5.2500286, 53.023468)
 max_slap = 6
 spawn_radius = 25.0
@@ -231,56 +231,56 @@ ground_probe_height = 20.0
 
 [node name="Spawners -- The Gauntlet" type="Node3D" parent="Spawners" unique_id=1357805283]
 
-[node name="Spawner_Gauntlet" parent="Spawners/Spawners -- The Gauntlet" unique_id=1574158939 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet" parent="Spawners/Spawners -- The Gauntlet" unique_id=1574158939 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.953156, 5.2500286, 53.023468)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Gauntlet2" parent="Spawners/Spawners -- The Gauntlet" unique_id=2119295006 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet2" parent="Spawners/Spawners -- The Gauntlet" unique_id=2119295006 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.953156, 5.2500286, 93.375694)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Gauntlet5" parent="Spawners/Spawners -- The Gauntlet" unique_id=1934014757 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet5" parent="Spawners/Spawners -- The Gauntlet" unique_id=1934014757 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.00768, 30.428175, 69.78413)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Gauntlet6" parent="Spawners/Spawners -- The Gauntlet" unique_id=67752469 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet6" parent="Spawners/Spawners -- The Gauntlet" unique_id=67752469 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.32973, 1.8822651, 32.276386)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Gauntlet7" parent="Spawners/Spawners -- The Gauntlet" unique_id=336439212 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet7" parent="Spawners/Spawners -- The Gauntlet" unique_id=336439212 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.84192, 25.086231, 6.6204376)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Gauntlet8" parent="Spawners/Spawners -- The Gauntlet" unique_id=207393251 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet8" parent="Spawners/Spawners -- The Gauntlet" unique_id=207393251 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.93414, 6.705456, 5.019701)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Gauntlet9" parent="Spawners/Spawners -- The Gauntlet" unique_id=274980014 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet9" parent="Spawners/Spawners -- The Gauntlet" unique_id=274980014 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.21957, 4.3208237, 0.632082)
 max_slap = 6
 spawn_radius = 25.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Gauntlet3" parent="Spawners/Spawners -- The Gauntlet" unique_id=158269089 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet3" parent="Spawners/Spawners -- The Gauntlet" unique_id=158269089 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.26404, 5.2500286, 93.375694)
 min_slap = 13
 max_slap = 6
 spawn_radius = 100.0
 ground_probe_height = 20.0
 
-[node name="Spawner_Gauntlet4" parent="Spawners/Spawners -- The Gauntlet" unique_id=728087685 instance=ExtResource("1_iuhjy")]
+[node name="Spawner_Gauntlet4" parent="Spawners/Spawners -- The Gauntlet" unique_id=728087685 groups=["spawner"] instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.8463, 6.2247753, 93.375694)
 max_slap = 6
 spawn_radius = 100.0

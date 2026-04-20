@@ -106,7 +106,7 @@ func pause_menu() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	state = WorldState.PAUSED
 	$Music.stream_paused = true
-	
+
 func unpause() -> void:
 	for child in gui.get_children():
 		child.queue_free()
@@ -141,7 +141,7 @@ func instantiate_level() -> void:
 	# TODO swap the stream to level music -- atm its the main menu theme
 	$Music.stream = level_stream
 	$Music.play()
-	
+
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	state = WorldState.ROOMS
 

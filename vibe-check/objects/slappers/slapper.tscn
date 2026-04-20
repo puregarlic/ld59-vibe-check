@@ -10,6 +10,9 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aslyu"]
 height = 1.7
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pyk75"]
+streams_count = 1
+
 [node name="Slapper" type="CharacterBody3D" unique_id=1884064883 node_paths=PackedStringArray("scan_alert_audio", "scan_alert_visual", "pre_slap_audio", "slap_impact_audio")]
 collision_layer = 8
 script = ExtResource("1_y7cy8")
@@ -39,6 +42,9 @@ script = ExtResource("3_kd8f1")
 [node name="PreSlapAudio" type="AudioStreamPlayer3D" parent="." unique_id=1046356689]
 
 [node name="SlapImpactAudio" type="AudioStreamPlayer3D" parent="." unique_id=1046356690]
+
+[node name="CaughtAudio" type="AudioStreamPlayer3D" parent="." unique_id=1330202311]
+stream = SubResource("AudioStreamRandomizer_pyk75")
 
 [node name="Alarm" type="Sprite3D" parent="." unique_id=727403242]
 transform = Transform3D(0.08034206, -0.059541192, 0, 0.059541192, 0.08034206, 0, 0, 0, 0.1, 0.16698417, 1.3286732, 0)
