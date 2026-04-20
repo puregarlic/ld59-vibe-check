@@ -26,6 +26,13 @@ const SLAP_COOLDOWN: float = 10.0
 const SLAP_HOLD_DURATION: float = 0.5
 const EDGE_PROBE_DISTANCE: float = 1.5
 const EDGE_PROBE_DEPTH: float = 3.0
+const SPAWN_GRAVITY_DURATION: float = 1.0
+const FALL_DESPAWN_DURATION: float = 5.0
+
+var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var _gravity_active: bool = true
+var _spawn_grace_remaining: float = SPAWN_GRAVITY_DURATION
+var _off_floor_time: float = 0.0
 
 func _ready() -> void:
 	scan_detected.connect(_ai.on_scan_detected)
@@ -56,9 +63,25 @@ func _physics_process(delta: float) -> void:
 	if _should_check_scan() and _player_in_detection_cone():
 		scan_detected.emit()
 
-	velocity.y = 0.0
+	if is_on_floor():
+		_gravity_active = false
+		_off_floor_time = 0.0
+	else:
+		_off_floor_time += delta
+		if _off_floor_time > FALL_DESPAWN_DURATION:
+			queue_free()
+			return
+		if _gravity_active:
+			_spawn_grace_remaining -= delta
+			if _spawn_grace_remaining <= 0.0:
+				_gravity_active = false
 
-	if _edge_ahead():
+	if _gravity_active:
+		velocity.y -= _gravity * delta
+	else:
+		velocity.y = 0.0
+
+	if not _gravity_active and _edge_ahead():
 		if _current_phase == Types.Phase.MOVING:
 			_redirect_from_edge()
 		else:
