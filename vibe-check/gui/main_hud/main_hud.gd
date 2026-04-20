@@ -1,4 +1,5 @@
 extends MarginContainer
+class_name MainHud
 
 #[wave amp=20.0 freq=3.0]
 #[shake rate=30.0 level=10 connected=0]

@@ -68,9 +68,11 @@ func win():
 	$Music.stream_paused = true
 	$VoiceAudio.stream = VoicePools.SUCCESS
 	$VoiceAudio.play()
+	var seconds = (gui.get_child(0) as MainHud).elapsed
 	for child in gui.get_children():
 		child.queue_free()
-	var win_hud = win_hud_scene.instantiate()
+	var win_hud : WinHud = win_hud_scene.instantiate()
+	win_hud.set_time(seconds)
 	gui.add_child(win_hud)
 
 func loss():
