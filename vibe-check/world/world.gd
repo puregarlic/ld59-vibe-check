@@ -20,6 +20,10 @@ enum WorldState {MAIN_MENU, ROOMS, PAUSED}
 
 var baddies := []
 
+@onready var main_menu_stream = preload("res://sfx/music/Vibe Check Menu.wav")
+@onready var level_stream = preload("res://sfx/music/Vibe Check Menu.wav")
+@onready var tutorial_stream = preload("res://sfx/music/Vibe Check Tutorial.wav")
+
 func _ready() -> void:
 	SignalBus.start_game.connect(instantiate_level)
 	SignalBus.start_menu.connect(start_menu)
@@ -43,6 +47,7 @@ func baddie_scanned(baddie: Slapper) -> void:
 			win()
 
 func win():
+	$Music.stream_paused = true
 	$VoiceAudio.stream = VoicePools.SUCCESS
 	$VoiceAudio.play()
 	for child in gui.get_children():
@@ -51,6 +56,7 @@ func win():
 	gui.add_child(win_hud)
 
 func loss():
+	$Music.stream_paused = true
 	$VoiceAudio.stream = VoicePools.FAILURE
 	$VoiceAudio.play()
 	for child in gui.get_children():
@@ -66,11 +72,13 @@ func start_menu() -> void:
 	gui.add_child(menu)
 
 	for child in get_children():
-		if child.name != "VoiceAudio":
+		if child.name != "VoiceAudio" and child.name != "Music":
 			child.queue_free()
 
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	state = WorldState.MAIN_MENU
+	$Music.stream = main_menu_stream
+	$Music.play()
 
 func pause_menu() -> void:
 	for child in gui.get_children():
@@ -80,7 +88,8 @@ func pause_menu() -> void:
 
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	state = WorldState.PAUSED
-
+	$Music.stream_paused = true
+	
 func unpause() -> void:
 	for child in gui.get_children():
 		child.queue_free()
@@ -91,13 +100,14 @@ func unpause() -> void:
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	state = WorldState.ROOMS
+	$Music.stream_paused = false
 
 func instantiate_level() -> void:
 	for gui_child in gui.get_children():
 		gui_child.queue_free()
 
 	for child in get_children():
-		if child == $VoiceAudio:
+		if child == $VoiceAudio or child == $Music:
 			continue
 		child.queue_free()
 		await child.tree_exited
@@ -111,6 +121,10 @@ func instantiate_level() -> void:
 	$VoiceAudio.stream = VoicePools.FIND_THEM
 	$VoiceAudio.play()
 
+	# TODO swap the stream to level music -- atm its the main menu theme
+	$Music.stream = level_stream
+	$Music.play()
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	state = WorldState.ROOMS
 

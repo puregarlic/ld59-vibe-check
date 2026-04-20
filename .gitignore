@@ -16,3 +16,10 @@ data_*/
 mono_crash.*.json
 .DS_Store
 **/.DS_Store
+
+# Nix
+.direnv/
+.envrc
+flake.nix
+flake.lock
+nohup.out

@@ -6,3 +6,6 @@
 script = ExtResource("1_6xmxd")
 
 [node name="VoiceAudio" type="AudioStreamPlayer" parent="." unique_id=2024507717]
+volume_db = -6.0
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1493576846]
