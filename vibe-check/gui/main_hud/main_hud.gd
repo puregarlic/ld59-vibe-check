@@ -12,6 +12,9 @@ extends MarginContainer
 var remaining : int = 0
 var elapsed : float = 0.0
 
+var guide : bool = false
+var guide_tween : Tween
+
 func _ready() -> void:
 	update_text(remaining, GlobalDifficulty.heat_multiplier)
 	update_stopwatch(elapsed)
@@ -24,6 +27,12 @@ func _process(delta: float) -> void:
 		%Timer.start()
 	elapsed += delta
 	update_stopwatch(elapsed)
+
+	if Input.is_action_pressed("guide") and guide == false:
+		show_guide()
+
+	if not Input.is_action_pressed("guide") and guide == true:
+		hide_guide()
 
 func update_stopwatch(seconds: float) -> void:
 	var minutes := int(seconds) / 60
@@ -54,3 +63,23 @@ func get_remaining_baddies() -> int:
 
 func _on_timer_timeout() -> void:
 	update_text(get_remaining_baddies(), GlobalDifficulty.heat_multiplier)
+
+func _on_prompt_timer_timeout() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(%Prompt, "modulate", Color(1.0, 1.0, 1.0, 0.0), 3.0)
+
+func show_guide() -> void:
+	SignalBus.left_hand_visibility.emit(false)
+	if guide_tween:
+		guide_tween.kill()
+	guide_tween = get_tree().create_tween()
+	guide_tween.tween_property(%Guide, "position", Vector2(0.0, 0.0), 0.25)
+	guide = true
+
+func hide_guide() -> void:
+	if guide_tween:
+		guide_tween.kill()
+	guide_tween = get_tree().create_tween()
+	guide_tween.tween_property(%Guide, "position", Vector2(-2000.0, 0.0), 0.25)
+	guide_tween.tween_callback(SignalBus.left_hand_visibility.emit.bind(true))
+	guide = false

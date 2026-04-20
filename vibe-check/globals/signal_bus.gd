@@ -29,3 +29,6 @@ signal failed
 
 @warning_ignore("unused_signal")
 signal baddies_spawned
+
+@warning_ignore("unused_signal")
+signal left_hand_visibility

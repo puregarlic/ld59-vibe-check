@@ -57,8 +57,9 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.31713885, -0.12436
 visible = false
 texture = ExtResource("3_gnkmh")
 
-[node name="LeftHandTemp" type="Sprite3D" parent="Camera3D" unique_id=569488683]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.5499829, -0.24912758, -0.5)
+[node name="LeftHand" type="Sprite3D" parent="Camera3D" unique_id=569488683]
+unique_name_in_owner = true
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.5500599, -0.24912758, -0.5)
 texture = ExtResource("3_jnjyq")
 
 [node name="ScanTimer" type="Timer" parent="." unique_id=217176576]
@@ -67,5 +68,13 @@ one_shot = true
 script = ExtResource("2_ssrue")
 
 [node name="FallAudio" type="AudioStreamPlayer" parent="." unique_id=217176577]
+
+[node name="ScreamCast" type="RayCast3D" parent="." unique_id=1692291216]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32215363, 0)
+target_position = Vector3(0, -6, 0)
+hit_from_inside = true
+debug_shape_custom_color = Color(0.75066656, 0.32, 1, 1)
+debug_shape_thickness = 5
 
 [editable path="Camera3D/RightHand"]

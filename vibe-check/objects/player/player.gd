@@ -50,10 +50,13 @@ var holding_phone : bool :
 			%RightHand.visible = false
 			%RightHandEmpty.visible = true
 		holding_phone = value
+@onready var initial_left_hand_position = %LeftHand.position
+var left_hand_tween: Tween
 
 
 func _ready() -> void:
 	%ScanTimer.timeout.connect(scan_timer_end)
+	SignalBus.left_hand_visibility.connect(update_left_hand_visibility)
 	holding_phone = true
 	_fall_vo_base_db = _fall_audio.volume_db
 
@@ -129,7 +132,7 @@ func _input(event: InputEvent) -> void:
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(look_pitch_max_angle), deg_to_rad(look_pitch_max_angle))
 
 func _update_fall_voice(delta: float) -> void:
-	if is_on_floor():
+	if %ScreamCast.is_colliding():
 		_airborne_time = 0.0
 		if _fall_vo_started:
 			_fade_out_fall_voice()
@@ -194,3 +197,13 @@ func scan_timer_end():
 			print("BAD VIBES DETECTED")
 			SignalBus.baddie_scanned.emit(current_scan_target)
 			current_scan_target.caught()
+
+func update_left_hand_visibility(val: bool) -> void:
+	if left_hand_tween:
+		left_hand_tween.kill()
+
+	left_hand_tween = get_tree().create_tween()
+	if val:
+		left_hand_tween.tween_property(%LeftHand, "position", initial_left_hand_position, 0.1)
+	else:
+		left_hand_tween.tween_property(%LeftHand, "position", Vector3(-0.85, initial_left_hand_position.y, initial_left_hand_position.z), 0.1)
