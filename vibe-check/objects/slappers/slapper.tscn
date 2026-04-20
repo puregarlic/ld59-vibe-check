@@ -5,14 +5,16 @@
 [ext_resource type="Script" uid="uid://hqnt5v2oycog" path="res://objects/slappers/slapper_animation_manager.gd" id="3_wr7b3"]
 [ext_resource type="SpriteFrames" uid="uid://uvd21xlhrp1w" path="res://objects/slappers/assets/animations/directions_variant1.tres" id="4_33oxu"]
 [ext_resource type="AudioStream" uid="uid://db5hq5cbi5p5u" path="res://objects/slappers/assets/huh.mp3" id="5_wr7b3"]
+[ext_resource type="Texture2D" uid="uid://c4x4kf26ouddh" path="res://objects/slappers/assets/AlertEffect.png" id="6_pyk75"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aslyu"]
 height = 1.7
 
-[node name="Slapper" type="CharacterBody3D" unique_id=1884064883 node_paths=PackedStringArray("scan_alert_audio")]
+[node name="Slapper" type="CharacterBody3D" unique_id=1884064883 node_paths=PackedStringArray("scan_alert_audio", "scan_alert_visual")]
 collision_layer = 8
 script = ExtResource("1_y7cy8")
 scan_alert_audio = NodePath("AudioStreamPlayer3D")
+scan_alert_visual = NodePath("Alarm")
 
 [node name="Animated Sprite" type="AnimatedSprite3D" parent="." unique_id=1262946104]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.17898059, 0)
@@ -31,5 +33,12 @@ script = ExtResource("3_kd8f1")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1046356688]
 stream = ExtResource("5_wr7b3")
 
+[node name="Alarm" type="Sprite3D" parent="." unique_id=727403242]
+transform = Transform3D(0.08034206, -0.059541192, 0, 0.059541192, 0.08034206, 0, 0, 0, 0.1, 0.16698417, 1.3286732, 0)
+visible = false
+billboard = 1
+texture = ExtResource("6_pyk75")
+
 [connection signal="transition_to" from="AI" to="." method="_on_ai_transition_to"]
 [connection signal="transition_to" from="AI" to="Animated Sprite" method="_on_ai_transition_to"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

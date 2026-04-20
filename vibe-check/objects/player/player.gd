@@ -31,11 +31,21 @@ var scan_target : Slapper
 var current_scan_target : Slapper
 var scanning : bool = false
 
-var holding_phone : bool = true
+var holding_phone : bool :
+	get: return holding_phone
+	set(value):
+		if value:
+			%RightHand.visible = true
+			%RightHandEmpty.visible = false
+		else:
+			%RightHand.visible = false
+			%RightHandEmpty.visible = true
+		holding_phone = value
 
 
 func _ready() -> void:
 	%ScanTimer.timeout.connect(scan_timer_end)
+	holding_phone = true
 
 func _physics_process(delta: float) -> void:
 	velocity.y += -gravity * delta

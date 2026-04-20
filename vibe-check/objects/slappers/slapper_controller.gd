@@ -6,6 +6,7 @@ signal slap_triggered
 
 @export var vibe = Types.Vibe.GOOD
 @export var scan_alert_audio: AudioStreamPlayer3D
+@export var scan_alert_visual: Sprite3D
 
 @onready var _ai: Node = $AI
 @onready var _animated_sprite: AnimatedSprite3D = $"Animated Sprite"
@@ -186,5 +187,10 @@ func _on_ai_transition_to(phase: Types.Phase, state: Types.TransitionState) -> v
 			velocity = Vector3.ZERO
 			if scan_alert_audio:
 				scan_alert_audio.play()
+				scan_alert_visual.visible = true
 		Types.Phase.SLAPPING:
 			velocity = Vector3.ZERO
+
+
+func _on_audio_stream_player_3d_finished() -> void:
+	scan_alert_visual.visible = false
