@@ -59,7 +59,7 @@ texture = ExtResource("3_gnkmh")
 
 [node name="LeftHand" type="Sprite3D" parent="Camera3D" unique_id=569488683]
 unique_name_in_owner = true
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.5500599, -0.24912758, -0.5)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.45859087, -0.21774393, -0.43039203)
 texture = ExtResource("3_jnjyq")
 
 [node name="ScanTimer" type="Timer" parent="." unique_id=217176576]
