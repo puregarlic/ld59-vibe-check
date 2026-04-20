@@ -31,6 +31,10 @@ var _fall_vo_base_db : float = 0.0
 var _fall_fade_tween : Tween = null
 @onready var _fall_audio : AudioStreamPlayer = $FallAudio
 
+@onready var scanner_progress_audio : AudioStreamPlayer = $ScannerProgressAudio
+@onready var postive_scan_audio : AudioStreamPlayer = $PositiveScanResultAudio
+@onready var bad_vibes_scan_audio : AudioStreamPlayer = $BadVibesScanResultAudio
+
 var movement : Callable
 
 #head bobbing variables
@@ -131,15 +135,18 @@ func _physics_process(delta: float) -> void:
 		%ScanTimer.start()
 		scanning = true
 		print("we're scanning a target!")
+		scanner_progress_audio.play()
 	if Input.is_action_just_released("interact") and scanning == true and holding_phone == true:
 		%ScanTimer.stop()
 		current_scan_target = null
 		scanning = false
+		scanner_progress_audio.stop()
 		print("we broke from our target")
 	if Input.is_action_pressed("interact") and scan_target != current_scan_target and scanning == true and holding_phone == true:
 		%ScanTimer.stop()
 		current_scan_target = null
 		scanning = false
+		scanner_progress_audio.stop()
 		print("we broke from our target")
 
 
@@ -216,14 +223,20 @@ func receive_slap(from_position: Vector3) -> void:
 	scanning = false
 
 func scan_timer_end():
+	var positive_scan_audio = postive_scan_audio
+	var bad_vibes_scan_audio = bad_vibes_scan_audio
+	var scanner_progress_audio = scanner_progress_audio
+	
 	print("timer out")
 	if Input.is_action_pressed("interact") and scan_target == current_scan_target and scanning == true:
-		print("scan complete")
 		SignalBus.scan_success.emit()
+		scanner_progress_audio.stop()
 		if current_scan_target.vibe == Types.Vibe.GOOD:
+			positive_scan_audio.play()
 			pass_vibe_check = true
 			print("GOOD VIBES FOUND")
 		if current_scan_target.vibe == Types.Vibe.BAD:
+			bad_vibes_scan_audio.play()
 			pass_vibe_check = false
 			print("BAD VIBES DETECTED")
 			SignalBus.baddie_scanned.emit(current_scan_target)
