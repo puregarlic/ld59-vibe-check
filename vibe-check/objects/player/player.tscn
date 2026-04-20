@@ -7,21 +7,21 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oslkc"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_jnjyq"]
+viewport_path = NodePath("PhoneUiViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_gnkmh"]
 viewport_path = NodePath("PhoneUiViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xkryw"]
-viewport_path = NodePath("PhoneUiViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ow0dq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkryw"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_gnkmh")
+albedo_texture = SubResource("ViewportTexture_jnjyq")
 emission_enabled = true
-emission_texture = SubResource("ViewportTexture_xkryw")
+emission_texture = SubResource("ViewportTexture_gnkmh")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_m4kly"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_ow0dq"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_ow0dq")
+material = SubResource("StandardMaterial3D_xkryw")
 size = Vector2(0.922, 2.027)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cqmt1"]
@@ -51,7 +51,7 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.31603372, -0.13180
 
 [node name="MeshInstance3D2" parent="Camera3D/RightHand" index="2" unique_id=1908146493]
 transform = Transform3D(0.58681905, -0.619062, -0.5219256, 0.08237629, 0.6868761, -0.722092, 0.80551714, 0.38074338, 0.45406765, -1.4904782, 0.5164744, 1.0345821)
-mesh = SubResource("PlaneMesh_m4kly")
+mesh = SubResource("PlaneMesh_ow0dq")
 
 [node name="PhoneHandTemp" type="MeshInstance3D" parent="Camera3D" unique_id=573273421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.2, -0.5)

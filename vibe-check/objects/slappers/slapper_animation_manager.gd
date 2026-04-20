@@ -15,6 +15,9 @@ func _update_directional_animation() -> void:
 	slapper_forward.y = 0.0
 	slapper_forward = slapper_forward.normalized()
 
+	if not is_instance_valid(player_reference):
+		return
+
 	var dir_to_player = global_position.direction_to(player_reference.global_position)
 	dir_to_player.y = 0.0
 	dir_to_player = dir_to_player.normalized()
