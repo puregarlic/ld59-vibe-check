@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cf34usbu1r8j1"]
 
+[ext_resource type="Script" uid="uid://oa8sj8pepjfu" path="res://gui/main_hud/main_hud.gd" id="1_60r6i"]
+
 [node name="MarginContainer" type="MarginContainer" unique_id=748537357]
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,11 +12,13 @@ theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
+script = ExtResource("1_60r6i")
 
 [node name="FeedbackText" type="VBoxContainer" parent="." unique_id=2012832699]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="FeedbackText" unique_id=1535582455]
+[node name="Text" type="RichTextLabel" parent="FeedbackText" unique_id=1535582455]
+unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
@@ -23,5 +27,12 @@ theme_override_font_sizes/bold_italics_font_size = 40
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/mono_font_size = 40
 bbcode_enabled = true
-text = "[wave amp=20.0 freq=3.0][tornado radius=1.0 freq=70.0 connected=1]Baddies Remaining: [b]0[/b][/tornado][/wave]"
+text = "[wave amp=20.0 freq=3.0][shake rate=30.0 level=10 connected=0]Baddies Remaining: [b]0[/b][/shake][/wave]"
 fit_content = true
+
+[node name="Timer" type="Timer" parent="." unique_id=841739249]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

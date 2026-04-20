@@ -36,6 +36,10 @@ player=""
 bad=""
 map_manager=""
 
+[gui]
+
+theme/custom_font="uid://d0t1al73n1hvo"
+
 [input]
 
 forward={
