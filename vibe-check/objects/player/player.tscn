@@ -88,7 +88,15 @@ volume_db = -2.0
 stream = ExtResource("7_xgwla")
 volume_db = -4.0
 
+[node name="PositiveScanResultVoiceLine" type="AudioStreamPlayer" parent="." unique_id=710561714]
+stream = ExtResource("7_xgwla")
+volume_db = -4.0
+
 [node name="BadVibesScanResultAudio" type="AudioStreamPlayer" parent="." unique_id=1938324456]
+stream = ExtResource("8_bi5m7")
+volume_db = -10.0
+
+[node name="BadVibesScanResultVoiceLine" type="AudioStreamPlayer" parent="." unique_id=918565835]
 stream = ExtResource("8_bi5m7")
 volume_db = -4.0
 

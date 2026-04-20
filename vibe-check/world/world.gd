@@ -144,7 +144,7 @@ func instantiate_level() -> void:
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	state = WorldState.ROOMS
-	
+
 	$Music.stream = level_intro_stream
 	$Music.play()
 	await $Music.finished
