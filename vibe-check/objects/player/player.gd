@@ -30,12 +30,20 @@ var _fall_vo_started : bool = false
 var _fall_vo_base_db : float = 0.0
 var _fall_fade_tween : Tween = null
 @onready var _fall_audio : AudioStreamPlayer = $FallAudio
+@onready var _jump_land_audio : AudioStreamPlayer = $JumpLandAudio
 
 @onready var scanner_progress_audio : AudioStreamPlayer = $ScannerProgressAudio
 @onready var postive_scan_audio : AudioStreamPlayer = $PositiveScanResultAudio
 @onready var bad_vibes_scan_audio : AudioStreamPlayer = $BadVibesScanResultAudio
 
 @onready var footstep_audio : AudioStreamPlayer3D = $FootstepsAudio
+
+const FOOTSTEP_STREAMS: Array[AudioStream] = [
+	preload("res://sfx/other/17 Footstep Vibe Check_ps1_11k_lpf14k_8b.wav"),
+	preload("res://sfx/other/18 Footstep Vibe Check_ps1_11k_lpf14k_8b.wav"),
+]
+var _footstep_index: int = 0
+var _prev_bob_sin: float = 0.0
 
 var movement : Callable
 
@@ -113,8 +121,15 @@ func _physics_process(delta: float) -> void:
 	if _coyote_timer > 0.0 and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_impulse
 		_coyote_timer = 0.0
+		_jump_land_audio.stream = VoicePools.random_pick(VoicePools.JUMPING)
+		_jump_land_audio.play()
 
+	var just_landed := not _was_on_floor and is_on_floor()
 	_was_on_floor = is_on_floor()
+
+	if just_landed:
+		_jump_land_audio.stream = VoicePools.random_pick(VoicePools.LANDING)
+		_jump_land_audio.play()
 
 	move_and_slide()
 
@@ -130,6 +145,13 @@ func _physics_process(delta: float) -> void:
 	%RightHandEmpty.transform.origin = (headbob(headbob_time) * (Vector3.UP * 0.2)) + initial_right_hand_empty_position
 	if left_hand_bob:
 		%LeftHand.transform.origin = (headbob(headbob_time) * (Vector3.UP * -0.2)) + initial_left_hand_position
+
+	var bob_sin := sin(headbob_time * headbob_frequency)
+	if is_on_floor() and not _in_knockback and (_prev_bob_sin >= 0.0) != (bob_sin >= 0.0):
+		footstep_audio.stream = FOOTSTEP_STREAMS[_footstep_index]
+		footstep_audio.play()
+		_footstep_index = (_footstep_index + 1) % FOOTSTEP_STREAMS.size()
+	_prev_bob_sin = bob_sin
 
 	scan_target = %ScanCast.get_collider()
 	if Input.is_action_just_pressed("interact") and scan_target != null and holding_phone == true:
