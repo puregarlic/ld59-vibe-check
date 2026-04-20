@@ -53,7 +53,7 @@ func _spawn_slappers() -> void:
 			slapper.variation = Types.SlapperVariant.J1
 		else:
 			slapper.variation = Types.SlapperVariant.G
-		get_tree().root.add_child(slapper)
+		get_tree().get_first_node_in_group("world").add_child(slapper)
 		slapper.global_position = pos
 		placed.append(pos)
 		spawned += 1

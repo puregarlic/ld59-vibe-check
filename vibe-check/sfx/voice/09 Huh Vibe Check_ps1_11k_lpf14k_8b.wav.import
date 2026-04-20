@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1y5f27d4pwvp"
+path="res://.godot/imported/09 Huh Vibe Check_ps1_11k_lpf14k_8b.wav-71e991803e223dd91dc3af6f121aa1e1.sample"
+
+[deps]
+
+source_file="res://sfx/voice/09 Huh Vibe Check_ps1_11k_lpf14k_8b.wav"
+dest_files=["res://.godot/imported/09 Huh Vibe Check_ps1_11k_lpf14k_8b.wav-71e991803e223dd91dc3af6f121aa1e1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

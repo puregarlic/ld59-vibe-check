@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://gui/psx_filter/psx_filter.gdshader" id="1_psx_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psx"]
+shader = ExtResource("1_psx_shader")
+shader_parameter/render_resolution = Vector2(320, 180)
+shader_parameter/color_levels = 32
+shader_parameter/dither_strength = 1.75
+
+[node name="PSXFilter" type="CanvasLayer"]
+layer = 100
+
+[node name="Filter" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+material = SubResource("ShaderMaterial_psx")

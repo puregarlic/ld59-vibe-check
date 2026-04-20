@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ka5ugu6t66oe"
+path="res://.godot/imported/07 Falling Death Vibe Check_ps1_11k_lpf14k_8b.wav-cb4b6d23de4572c1569e7e8d0864591c.sample"
+
+[deps]
+
+source_file="res://sfx/voice/07 Falling Death Vibe Check_ps1_11k_lpf14k_8b.wav"
+dest_files=["res://.godot/imported/07 Falling Death Vibe Check_ps1_11k_lpf14k_8b.wav-cb4b6d23de4572c1569e7e8d0864591c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

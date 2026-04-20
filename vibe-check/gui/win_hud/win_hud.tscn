@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dcvybciyjydca" path="res://gui/win_hud/win_hud.gd" id="1_0ux83"]
 
 [sub_resource type="Gradient" id="Gradient_0ux83"]
-colors = PackedColorArray(1, 1, 1, 0.47058824, 1, 1, 1, 0.47058824)
+colors = PackedColorArray(0, 0, 0, 0.47058824, 0, 0, 0, 0.47058824)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_kp30d"]
 gradient = SubResource("Gradient_0ux83")
@@ -46,4 +46,4 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="MarginContainer/Timer" to="MarginContainer" method="_on_timer_timeout"]
+[connection signal="timeout" from="MarginContainer/Timer" to="." method="_on_timer_timeout"]

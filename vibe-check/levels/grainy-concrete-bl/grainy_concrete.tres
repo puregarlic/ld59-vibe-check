@@ -1,0 +1,26 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://b8v3c1grainyc"]
+
+[ext_resource type="Texture2D" uid="uid://gnhp8xnc1ar8" path="res://levels/grainy-concrete-bl/grainy-concrete_albedo.png" id="1_albedo"]
+[ext_resource type="Texture2D" uid="uid://chfurrkvvhjih" path="res://levels/grainy-concrete-bl/grainy-concrete_normal-ogl.png" id="2_normal"]
+[ext_resource type="Texture2D" uid="uid://gf3d2oiobc5e" path="res://levels/grainy-concrete-bl/grainy-concrete_roughness.png" id="3_rough"]
+[ext_resource type="Texture2D" uid="uid://cdhyheedcffeg" path="res://levels/grainy-concrete-bl/grainy-concrete_metallic.png" id="4_metal"]
+[ext_resource type="Texture2D" uid="uid://dl5wukf3g620g" path="res://levels/grainy-concrete-bl/grainy-concrete_ao.png" id="5_ao"]
+
+[resource]
+resource_name = "grainy_concrete"
+texture_filter = 5
+specular = 0.0
+albedo_texture = ExtResource("1_albedo")
+metallic_texture = ExtResource("4_metal")
+metallic_texture_channel = 0
+roughness = 1.0
+roughness_texture = ExtResource("3_rough")
+roughness_texture_channel = 0
+normal_enabled = true
+normal_texture = ExtResource("2_normal")
+ao_enabled = true
+ao_texture = ExtResource("5_ao")
+ao_texture_channel = 0
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true

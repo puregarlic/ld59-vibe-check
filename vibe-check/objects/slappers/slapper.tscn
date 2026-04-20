@@ -5,17 +5,18 @@
 [ext_resource type="Script" uid="uid://tqnhvosmy2jj" path="res://objects/slappers/slapper_ai.gd" id="3_kd8f1"]
 [ext_resource type="Script" uid="uid://hqnt5v2oycog" path="res://objects/slappers/slapper_animation_manager.gd" id="3_wr7b3"]
 [ext_resource type="SpriteFrames" uid="uid://dyq2axv0vkuvl" path="res://objects/slappers/slapper2.tres" id="4_qvbqv"]
-[ext_resource type="AudioStream" uid="uid://db5hq5cbi5p5u" path="res://objects/slappers/assets/huh.mp3" id="5_wr7b3"]
 [ext_resource type="Texture2D" uid="uid://c4x4kf26ouddh" path="res://objects/slappers/assets/AlertEffect.png" id="6_pyk75"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aslyu"]
 height = 1.7
 
-[node name="Slapper" type="CharacterBody3D" unique_id=1884064883 node_paths=PackedStringArray("scan_alert_audio", "scan_alert_visual")]
+[node name="Slapper" type="CharacterBody3D" unique_id=1884064883 node_paths=PackedStringArray("scan_alert_audio", "scan_alert_visual", "pre_slap_audio", "slap_impact_audio")]
 collision_layer = 8
 script = ExtResource("1_y7cy8")
 scan_alert_audio = NodePath("AudioStreamPlayer3D")
 scan_alert_visual = NodePath("Alarm")
+pre_slap_audio = NodePath("PreSlapAudio")
+slap_impact_audio = NodePath("SlapImpactAudio")
 
 [node name="Animated Sprite" type="AnimatedSprite3D" parent="." unique_id=1262946104 node_paths=PackedStringArray("slapper")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.17898059, 0)
@@ -34,7 +35,10 @@ shape = SubResource("CapsuleShape3D_aslyu")
 script = ExtResource("3_kd8f1")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1046356688]
-stream = ExtResource("5_wr7b3")
+
+[node name="PreSlapAudio" type="AudioStreamPlayer3D" parent="." unique_id=1046356689]
+
+[node name="SlapImpactAudio" type="AudioStreamPlayer3D" parent="." unique_id=1046356690]
 
 [node name="Alarm" type="Sprite3D" parent="." unique_id=727403242]
 transform = Transform3D(0.08034206, -0.059541192, 0, 0.059541192, 0.08034206, 0, 0, 0, 0.1, 0.16698417, 1.3286732, 0)
