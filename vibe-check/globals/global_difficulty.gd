@@ -1,6 +1,6 @@
 extends Node
 
-const HEAT_GROWTH_PER_SECOND: float = 0.05
+const HEAT_GROWTH_PER_SECOND: float = 0.0005
 const HEAT_MAX: float = 10.0
 const MOVEMENT_HEAT_DAMPENING: float = 0.5
 

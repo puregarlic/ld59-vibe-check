@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bt5g06vcvti36"]
 
+[ext_resource type="Script" uid="uid://bmwnw7sqkjr3d" path="res://levels/world_environment.gd" id="1_iuhjy"]
 [ext_resource type="PackedScene" uid="uid://vwph3t41sjuk" path="res://objects/player/player.tscn" id="1_ogrup"]
 [ext_resource type="Script" uid="uid://w506qydhvxfd" path="res://levels/map_manager.gd" id="3_ogrup"]
 [ext_resource type="PackedScene" uid="uid://c7j5redmovla" path="res://objects/slappers/slapper.tscn" id="3_qx38l"]
@@ -44,6 +45,7 @@ light_specular = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=547818075]
 environment = SubResource("Environment_2rvaj")
+script = ExtResource("1_iuhjy")
 
 [node name="Map Geometry" type="Node3D" parent="." unique_id=1676576505]
 
