@@ -89,5 +89,5 @@ func _on_ai_transition_to(phase: Types.Phase, _state: Types.TransitionState) -> 
 			stop()
 			SignalBus.baddie_killed.emit()
 			var tween = get_tree().create_tween()
-			tween.tween_property(self, "global_position", Vector3(global_position.x, global_position.y - 10, global_position.z), 5.0)
+			tween.tween_property(slapper, "global_position", Vector3(global_position.x, global_position.y - 10, global_position.z), 5.0)
 			tween.tween_callback(slapper.queue_free)

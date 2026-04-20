@@ -43,6 +43,8 @@ func get_closest_baddie() -> Node:
 	var closest : Node = null
 	var closest_distance : float = 0.0
 	for baddie in baddies:
+		if baddie._current_phase == Types.Phase.CAUGHT:
+			continue
 		var distance = player.global_position.distance_to(baddie.global_position)
 		if closest == null:
 			closest = baddie
