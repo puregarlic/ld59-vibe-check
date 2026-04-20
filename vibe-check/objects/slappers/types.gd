@@ -1,6 +1,6 @@
 class_name Types
 
-enum Phase { PAUSED, TURNING, MOVING, SCAN_ALERT, SCAN_CHARGE, SLAPPING }
+enum Phase { PAUSED, TURNING, MOVING, SCAN_ALERT, SCAN_CHARGE, SLAPPING, CAUGHT }
 enum Vibe { GOOD, BAD }
 enum SlapperVariant {J1, G}
 

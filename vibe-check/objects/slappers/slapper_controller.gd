@@ -195,3 +195,6 @@ func _on_ai_transition_to(phase: Types.Phase, state: Types.TransitionState) -> v
 
 func _on_audio_stream_player_3d_finished() -> void:
 	scan_alert_visual.visible = false
+
+func caught() -> void:
+	_ai.start_caught()

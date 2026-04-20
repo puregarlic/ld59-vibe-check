@@ -13,6 +13,7 @@ var remaining : int = 0
 func _ready() -> void:
 	update_text(remaining, GlobalDifficulty.heat_multiplier)
 	SignalBus.baddie_scanned.connect(_on_timer_timeout)
+	SignalBus.baddie_killed.connect(_on_timer_timeout)
 
 func _process(delta: float) -> void:
 	if %Timer.is_stopped():

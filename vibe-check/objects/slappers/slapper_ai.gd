@@ -28,6 +28,9 @@ func end_scan_response() -> void:
 func start_slap() -> void:
 	_enter(Types.Phase.SLAPPING)
 
+func start_caught() -> void:
+	_enter(Types.Phase.CAUGHT)
+
 func _enter(phase: Types.Phase) -> void:
 	_phase = phase
 	_timer.stop()
@@ -49,6 +52,8 @@ func _advance() -> void:
 			_enter(Types.Phase.PAUSED)
 		Types.Phase.SCAN_ALERT:
 			_enter(Types.Phase.SCAN_CHARGE)
+		Types.Phase.CAUGHT:
+			_enter(Types.Phase.CAUGHT)
 
 func _duration_for(phase: Types.Phase) -> float:
 	match phase:
