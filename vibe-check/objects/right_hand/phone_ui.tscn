@@ -12,7 +12,6 @@ bg_color = Color(0.8784314, 1, 0.23137255, 1)
 skew = Vector2(0.87, 0)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_0uy6i"]
-resource_local_to_scene = true
 frames = 4
 pause = true
 frame_0/texture = ExtResource("1_1ynx6")

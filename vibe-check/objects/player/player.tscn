@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rqp3ou2ecut5" path="res://objects/player/player.gd" id="1_0pn13"]
 [ext_resource type="PackedScene" uid="uid://c25fuq4ujs31n" path="res://objects/right_hand/right_hand.tscn" id="2_g7ett"]
-[ext_resource type="Script" uid="uid://bvl8t7jgigwxo" path="res://objects/player/scan_timer.gd" id="2_ssrue"]
+[ext_resource type="Script" path="res://objects/player/scan_timer.gd" id="2_ssrue"]
 [ext_resource type="Texture2D" uid="uid://6ex5vf4cfqxc" path="res://objects/player/assets/LeftHand.png" id="3_jnjyq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oslkc"]
@@ -28,8 +28,7 @@ size = Vector2(0.922, 2.027)
 size = Vector3(0.2, 0.02, 0.5)
 
 [node name="Player" type="CharacterBody3D" unique_id=54693143]
-collision_layer = 35
-collision_mask = 17
+collision_layer = 32
 script = ExtResource("1_0pn13")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=231747960]
