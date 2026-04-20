@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bmwnw7sqkjr3d" path="res://levels/world_environment.gd" id="3_qx38l"]
 [ext_resource type="PackedScene" path="res://gui/psx_filter/psx_filter.tscn" id="4_psx_filter"]
 [ext_resource type="Material" uid="uid://b8v3c1grainyc" path="res://levels/grainy-concrete-bl/grainy_concrete.tres" id="5_concrete"]
+[ext_resource type="Texture2D" uid="uid://nvdx2quf7lfc" path="res://levels/handcrafted-pirate-ship-model-with-intricate-detailing-500x500.png" id="8_nrxw6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_enq1c"]
 sky_top_color = Color(0.38400003, 0.5642667, 0.8, 1)
@@ -725,5 +726,10 @@ monitorable = false
 shape = SubResource("BoxShape3D_u1hnl")
 
 [node name="PSXFilter" parent="." unique_id=155479558 instance=ExtResource("4_psx_filter")]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1598215142]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -200.28152, 489.43115, -206.15338)
+billboard = 1
+texture = ExtResource("8_nrxw6")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
