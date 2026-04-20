@@ -110,9 +110,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 100.0
-offset_top = 100.71
+offset_top = 140.61
 offset_right = 100.0
-offset_bottom = 100.70996
+offset_bottom = 140.60999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -134,8 +134,10 @@ text = "LMB with your phone to vibe check humans
 
 Use this to remove the bad vibes...
 
-...and to charge your phone, guiding you to the
-nearest baddie
+  ...and to charge your phone, guiding you to 
+the nearest baddie
+
+   Don't get caught!
 
 	"
 fit_content = true
