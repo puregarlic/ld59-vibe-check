@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = movement_dir.x * move_speed
 			velocity.z = movement_dir.z * move_speed
-	
+
 	if is_on_floor():
 		_coyote_timer = coyote_time
 	elif _was_on_floor and velocity.y <= 0.0:

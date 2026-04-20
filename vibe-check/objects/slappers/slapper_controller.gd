@@ -9,6 +9,7 @@ signal slap_triggered
 @export var scan_alert_visual: Sprite3D
 @export var pre_slap_audio: AudioStreamPlayer3D
 @export var slap_impact_audio: AudioStreamPlayer3D
+@export var caught_audio: AudioStreamPlayer3D
 
 @onready var _ai: Node = $AI
 @onready var _animated_sprite: AnimatedSprite3D = $"Animated Sprite"
@@ -206,4 +207,7 @@ func _on_audio_stream_player_3d_finished() -> void:
 	scan_alert_visual.visible = false
 
 func caught() -> void:
+	if caught_audio:
+		caught_audio.stream = VoicePools.random_pick(VoicePools.FALLING_DEATH)
+		caught_audio.play()
 	_ai.start_caught()
