@@ -9,6 +9,9 @@
 [ext_resource type="Material" uid="uid://b8v3c1grainyc" path="res://levels/grainy-concrete-bl/grainy_concrete.tres" id="5_concrete"]
 [ext_resource type="Script" uid="uid://c4yrqdc6fot6c" path="res://levels/torus.gd" id="5_ea44n"]
 [ext_resource type="Texture2D" uid="uid://nvdx2quf7lfc" path="res://levels/handcrafted-pirate-ship-model-with-intricate-detailing-500x500.png" id="8_nrxw6"]
+[ext_resource type="Texture2D" uid="uid://bmr5uq1yo8rxb" path="res://assets/clouds/1.png" id="cloud_1"]
+[ext_resource type="Texture2D" uid="uid://byfwy3p8c8hy1" path="res://assets/clouds/2.png" id="cloud_2"]
+[ext_resource type="Texture2D" uid="uid://b0uc1pc53a8mh" path="res://assets/clouds/3.png" id="cloud_3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_enq1c"]
 sky_top_color = Color(0.38400003, 0.5642667, 0.8, 1)
@@ -743,5 +746,245 @@ shape = SubResource("BoxShape3D_u1hnl")
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -200.28152, 489.43115, -206.15338)
 billboard = 1
 texture = ExtResource("8_nrxw6")
+
+[node name="Cloud1_1" type="Sprite3D" parent="." unique_id=100000001]
+transform = Transform3D(28, 0, 0, 0, 28, 0, 0, 0, 28, -1031.2218, 352.7881, -100)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_2" type="Sprite3D" parent="." unique_id=100000002]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 100.86716, 239.79803, 785.9677)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_11" type="Sprite3D" parent="." unique_id=2084166231]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -445.73135, 239.79803, 785.9677)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_3" type="Sprite3D" parent="." unique_id=100000003]
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 849.72864, 72.824646, 135.1568)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_12" type="Sprite3D" parent="." unique_id=1675553539]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 849.72864, 72.824646, 600.3603)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_4" type="Sprite3D" parent="." unique_id=100000004]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, -130, 239.62607, -435.59344)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_10" type="Sprite3D" parent="." unique_id=1714221026]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 194.92728, 3.522583, -435.59344)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_7" type="Sprite3D" parent="." unique_id=2058750736]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 283.02893, 422.3423, -148.34274)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_8" type="Sprite3D" parent="." unique_id=1138442996]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, -197.38681, 519.95276, 129.25189)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_9" type="Sprite3D" parent="." unique_id=62813343]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 381.5148, 519.95276, 129.25189)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_5" type="Sprite3D" parent="." unique_id=100000005]
+transform = Transform3D(44, 0, 0, 0, 44, 0, 0, 0, 44, -947.13745, 224.87845, 241.29877)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud1_6" type="Sprite3D" parent="." unique_id=100000006]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -80, 244.02637, -879.8071)
+billboard = 1
+texture = ExtResource("cloud_1")
+
+[node name="Cloud2_1" type="Sprite3D" parent="." unique_id=100000007]
+transform = Transform3D(42, 0, 0, 0, 42, 0, 0, 0, 42, 878.6234, 427.00232, -155)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_2" type="Sprite3D" parent="." unique_id=100000008]
+transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, 577.7346, 13.518616, -205)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_3" type="Sprite3D" parent="." unique_id=100000009]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -559.2309, 188.78397, 412.5591)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_4" type="Sprite3D" parent="." unique_id=100000010]
+transform = Transform3D(48, 0, 0, 0, 48, 0, 0, 0, 48, 246.6305, 285.87396, -940.47406)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_8" type="Sprite3D" parent="." unique_id=507353104]
+transform = Transform3D(48, 0, 0, 0, 48, 0, 0, 0, 48, 653.19653, 621.6983, -166.768)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_13" type="Sprite3D" parent="." unique_id=100570022]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, -240.96545, 865.79126, -991.60956)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_14" type="Sprite3D" parent="." unique_id=503915094]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 1023.6129, 613.28406, 2041.5242)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_9" type="Sprite3D" parent="." unique_id=360784322]
+transform = Transform3D(48, 0, 0, 0, 48, 0, 0, 0, 48, -347.1571, 621.6983, 117.94629)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_10" type="Sprite3D" parent="." unique_id=1721570982]
+transform = Transform3D(48, 0, 0, 0, 48, 0, 0, 0, 48, -1071.7913, 621.6983, -169.66626)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_5" type="Sprite3D" parent="." unique_id=100000011]
+transform = Transform3D(38, 0, 0, 0, 38, 0, 0, 0, 38, 603.58075, 151.53748, 463.32483)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_12" type="Sprite3D" parent="." unique_id=1339483670]
+transform = Transform3D(38, 0, 0, 0, 38, 0, 0, 0, 38, -443.85992, 477.752, -1024.5771)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_6" type="Sprite3D" parent="." unique_id=100000012]
+transform = Transform3D(27, 0, 0, 0, 27, 0, 0, 0, 27, 40, 457.53577, -616.2455)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_7" type="Sprite3D" parent="." unique_id=425641544]
+transform = Transform3D(27, 0, 0, 0, 27, 0, 0, 0, 27, 40, 575.0061, -176.63739)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud2_11" type="Sprite3D" parent="." unique_id=1576945481]
+transform = Transform3D(27, 0, 0, 0, 27, 0, 0, 0, 27, -275.70218, 1.8564758, -176.63739)
+billboard = 1
+texture = ExtResource("cloud_2")
+
+[node name="Cloud3_1" type="Sprite3D" parent="." unique_id=100000013]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, -115, 68, 303.76453)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_13" type="Sprite3D" parent="." unique_id=2133163352]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, -583.22687, 0.76412964, 303.76453)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_14" type="Sprite3D" parent="." unique_id=190319121]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 545.1901, -10.25824, 13.184174)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_2" type="Sprite3D" parent="." unique_id=100000014]
+transform = Transform3D(38, 0, 0, 0, 38, 0, 0, 0, 38, 633.2021, 357.98215, -45)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_22" type="Sprite3D" parent="." unique_id=1668638618]
+transform = Transform3D(38, 0, 0, 0, 38, 0, 0, 0, 38, 633.2021, 357.98215, 688.181)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_3" type="Sprite3D" parent="." unique_id=100000015]
+transform = Transform3D(52, 0, 0, 0, 52, 0, 0, 0, 52, 117.11453, 93, -670.2296)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_12" type="Sprite3D" parent="." unique_id=1128886456]
+transform = Transform3D(52, 0, 0, 0, 52, 0, 0, 0, 52, -77.14819, 13.2308655, -992.8566)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_4" type="Sprite3D" parent="." unique_id=100000016]
+transform = Transform3D(29, 0, 0, 0, 29, 0, 0, 0, 29, -120.23016, 225.38657, 596.8954)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_21" type="Sprite3D" parent="." unique_id=852937754]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -120.23016, 286.15408, 420.2906)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_5" type="Sprite3D" parent="." unique_id=100000017]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, -258.09604, 289.80533, 344.9629)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_7" type="Sprite3D" parent="." unique_id=212114912]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 47.52365, 521.5121, 251.46889)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_9" type="Sprite3D" parent="." unique_id=1751669249]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 234.6878, 799.4863, -291.8755)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_16" type="Sprite3D" parent="." unique_id=391665481]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 689.0697, 1112.3383, -291.8755)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_17" type="Sprite3D" parent="." unique_id=1716817046]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, -453.26318, 178.505, -1304.942)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_10" type="Sprite3D" parent="." unique_id=32737802]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 234.6878, 799.4863, 246.02942)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_11" type="Sprite3D" parent="." unique_id=73142464]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 15.003983, -2.3035583, 361.72586)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_8" type="Sprite3D" parent="." unique_id=238090523]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 47.52365, 483.03748, -529.65155)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_18" type="Sprite3D" parent="." unique_id=1082292718]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, -331.58606, 277.7279, 2765.8623)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_19" type="Sprite3D" parent="." unique_id=709312710]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, -924.237, 277.7279, -1512.7571)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_20" type="Sprite3D" parent="." unique_id=542343278]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, -924.237, 1633.5685, 363.31006)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_15" type="Sprite3D" parent="." unique_id=13077900]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 47.52365, 614.9827, -1363.949)
+billboard = 1
+texture = ExtResource("cloud_3")
+
+[node name="Cloud3_6" type="Sprite3D" parent="." unique_id=100000018]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, -523.8914, 76, -80)
+billboard = 1
+texture = ExtResource("cloud_3")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
