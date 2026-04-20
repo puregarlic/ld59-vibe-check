@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bt5g06vcvti36"]
 
-[ext_resource type="Script" uid="uid://bmwnw7sqkjr3d" path="res://levels/world_environment.gd" id="1_iuhjy"]
-[ext_resource type="Script" uid="uid://8mp0r4kismfs" path="res://levels/the_map.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://pf2nhjdqhx5i" path="res://objects/slappers/spawner.tscn" id="1_iuhjy"]
 [ext_resource type="PackedScene" uid="uid://vwph3t41sjuk" path="res://objects/player/player.tscn" id="1_ogrup"]
+[ext_resource type="Script" uid="uid://8mp0r4kismfs" path="res://levels/the_map.gd" id="1_script"]
 [ext_resource type="Script" uid="uid://w506qydhvxfd" path="res://levels/map_manager.gd" id="3_ogrup"]
+[ext_resource type="Script" uid="uid://bmwnw7sqkjr3d" path="res://levels/world_environment.gd" id="3_qx38l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_enq1c"]
 sky_top_color = Color(0.38400003, 0.5642667, 0.8, 1)
@@ -225,7 +225,7 @@ light_specular = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=547818075]
 environment = SubResource("Environment_2rvaj")
-script = ExtResource("1_iuhjy")
+script = ExtResource("3_qx38l")
 
 [node name="Map Geometry" type="Node3D" parent="." unique_id=1676576505]
 
