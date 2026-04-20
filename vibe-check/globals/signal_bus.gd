@@ -1,9 +1,6 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal next_room
-
-@warning_ignore("unused_signal")
 signal start_game
 
 @warning_ignore("unused_signal")
@@ -20,3 +17,6 @@ signal scan_progress(progress: float)
 
 @warning_ignore("unused_signal")
 signal scan_success(progress: float)
+
+@warning_ignore("unused_signal")
+signal baddie_scanned(progress: Slapper)
