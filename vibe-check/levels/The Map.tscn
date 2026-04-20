@@ -63,56 +63,48 @@ ground_probe_height = 20.0
 
 [node name="Spawner_FieldWithBuildings_TopBuilding" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1408760442 instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.32129, 23.899668, -88.47291)
-min_slap = 1
 max_slap = 6
 spawn_radius = 10.0
 ground_probe_height = 20.0
 
 [node name="Spawner_FieldWithBuildings_BelowTopBuilding2" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1502728008 instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.32129, 6.8163013, -82.05098)
-min_slap = 1
 max_slap = 6
 spawn_radius = 10.0
 ground_probe_height = 20.0
 
 [node name="Spawner_FieldWithBuildings_Behind" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1479520289 instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.32129, 6.8163013, -162.08513)
-min_slap = 1
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
 [node name="Spawner_FieldWithBuildings_MoreBehind" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=2107821300 instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.519, 6.8163013, -249.16885)
-min_slap = 1
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
 [node name="Spawner_FieldWithBuildings_SphereTop1" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=917893975 instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.827667, 47.869873, -88.90411)
-min_slap = 1
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
 [node name="Spawner_FieldWithBuildings_SphereTop2" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1979933791 instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.900085, 47.869873, -104.33467)
-min_slap = 1
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
 [node name="Spawner_FieldWithBuildings_SphereBottom" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=1762459275 instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.30436, 12.191635, -68.605286)
-min_slap = 1
 max_slap = 6
 spawn_radius = 20.0
 ground_probe_height = 20.0
 
 [node name="Spawner_FieldWithBuildings_ThePit" parent="Spawners/Spawners -- FieldWithBuildings" unique_id=382650308 instance=ExtResource("1_iuhjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.984116, 4.3452835, -210.7547)
-min_slap = 1
 max_slap = 13
 spawn_radius = 50.0
 ground_probe_height = 20.0

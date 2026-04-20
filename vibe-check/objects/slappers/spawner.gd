@@ -49,6 +49,10 @@ func _spawn_slappers() -> void:
 		if pos == null:
 			continue
 		var slapper := slapper_resource.instantiate()
+		if randi_range(0, 1) == 0:
+			slapper.variation = Types.SlapperVariant.J1
+		else:
+			slapper.variation = Types.SlapperVariant.G
 		get_tree().root.add_child(slapper)
 		slapper.global_position = pos
 		placed.append(pos)

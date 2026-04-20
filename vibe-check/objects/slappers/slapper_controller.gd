@@ -12,6 +12,7 @@ signal slap_triggered
 @onready var _animated_sprite: AnimatedSprite3D = $"Animated Sprite"
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
 @onready var map_manager_reference: MapManager = get_tree().get_first_node_in_group("map_manager")
+@onready var variation : Types.SlapperVariant = Types.SlapperVariant.J1
 
 var _current_phase: Types.Phase = Types.Phase.PAUSED
 var _target_angle: float = 0.0
