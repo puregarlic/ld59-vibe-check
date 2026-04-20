@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfdhlmy0qgglb"
+path="res://.godot/imported/Vibe Check Menu.wav-d32c3abc8dc9f74c1dd74f7228e56727.sample"
+
+[deps]
+
+source_file="res://sfx/music/Vibe Check Menu.wav"
+dest_files=["res://.godot/imported/Vibe Check Menu.wav-d32c3abc8dc9f74c1dd74f7228e56727.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
