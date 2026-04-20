@@ -26,3 +26,6 @@ signal baddie_killed(progress: Slapper)
 
 @warning_ignore("unused_signal")
 signal failed
+
+@warning_ignore("unused_signal")
+signal baddies_spawned

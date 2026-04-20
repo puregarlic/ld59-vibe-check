@@ -8,21 +8,21 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oslkc"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_gnkmh"]
+viewport_path = NodePath("PhoneUiViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_xkryw"]
 viewport_path = NodePath("PhoneUiViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ow0dq"]
-viewport_path = NodePath("PhoneUiViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4kly"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ow0dq"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_xkryw")
+albedo_texture = SubResource("ViewportTexture_gnkmh")
 emission_enabled = true
-emission_texture = SubResource("ViewportTexture_ow0dq")
+emission_texture = SubResource("ViewportTexture_xkryw")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_xgwla"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_m4kly"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_m4kly")
+material = SubResource("StandardMaterial3D_ow0dq")
 size = Vector2(0.922, 2.027)
 
 [node name="Player" type="CharacterBody3D" unique_id=54693143]
@@ -49,7 +49,7 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.31603372, -0.13180
 
 [node name="MeshInstance3D2" parent="Camera3D/RightHand" index="2" unique_id=1908146493]
 transform = Transform3D(0.58681905, -0.619062, -0.5219256, 0.08237629, 0.6868761, -0.722092, 0.80551714, 0.38074338, 0.45406765, -1.4904782, 0.5164744, 1.0345821)
-mesh = SubResource("PlaneMesh_xgwla")
+mesh = SubResource("PlaneMesh_m4kly")
 
 [node name="RightHandEmpty" type="Sprite3D" parent="Camera3D" unique_id=1153968424]
 unique_name_in_owner = true
@@ -58,7 +58,7 @@ visible = false
 texture = ExtResource("3_gnkmh")
 
 [node name="LeftHandTemp" type="Sprite3D" parent="Camera3D" unique_id=569488683]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.5454517, -0.24912758, -0.5)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.5499829, -0.24912758, -0.5)
 texture = ExtResource("3_jnjyq")
 
 [node name="ScanTimer" type="Timer" parent="." unique_id=217176576]

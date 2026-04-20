@@ -36,6 +36,7 @@ window/stretch/mode="viewport"
 player=""
 map_manager=""
 bad=""
+world=""
 
 [gui]
 

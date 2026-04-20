@@ -17,6 +17,7 @@ func _ready() -> void:
 	update_stopwatch(elapsed)
 	SignalBus.baddie_scanned.connect(_on_timer_timeout)
 	SignalBus.baddie_killed.connect(_on_timer_timeout)
+	SignalBus.baddies_spawned.connect(_on_timer_timeout)
 
 func _process(delta: float) -> void:
 	if %Timer.is_stopped():

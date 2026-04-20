@@ -19,6 +19,7 @@ func _ready() -> void:
 var _pending_spawners: int = 0
 
 func _on_spawner_complete(_spawner: Node) -> void:
+	print("_on_spawner_complete: %s" % _pending_spawners)
 	_pending_spawners -= 1
 	if _pending_spawners <= 0:
 		_assign_bad_vibes()
@@ -32,6 +33,7 @@ func _assign_bad_vibes() -> void:
 		slapper.vibe = Types.Vibe.BAD
 		if not slapper.is_in_group("bad"):
 			slapper.add_to_group("bad")
+	SignalBus.baddies_spawned.emit()
 
 func phone_slap_trigger(from_position: Vector3) -> void:
 	print("phone spawned")

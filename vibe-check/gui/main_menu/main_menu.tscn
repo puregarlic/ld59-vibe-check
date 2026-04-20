@@ -1,34 +1,104 @@
-[gd_scene load_steps=6 format=3 uid="uid://deocyps7hifio"]
+[gd_scene format=3 uid="uid://deocyps7hifio"]
 
+[ext_resource type="Material" uid="uid://ngo2lx2s5asu" path="res://gui/main_menu/main_menu_shader.tres" id="1_2snu5"]
 [ext_resource type="Script" uid="uid://bh2t42hjvrxp4" path="res://gui/main_menu/main_menu.gd" id="1_85nol"]
-[ext_resource type="Texture2D" uid="uid://dtdh3db48isp8" path="res://icon.svg" id="1_ahke7"]
+[ext_resource type="Texture2D" uid="uid://0l43xjqr4rrl" path="res://phone_slap_stuff/assets/PhoneFront.png" id="2_hr6mf"]
+[ext_resource type="Texture2D" uid="uid://ct48qu2pr0kj3" path="res://phone_slap_stuff/assets/PhoneLeft.png" id="3_2snu5"]
+[ext_resource type="Texture2D" uid="uid://d1023aunrwacy" path="res://phone_slap_stuff/assets/PhoneBack.png" id="4_1ljrn"]
+[ext_resource type="Texture2D" uid="uid://8g0frop7imia" path="res://phone_slap_stuff/assets/PhoneRight.png" id="5_tqn21"]
+[ext_resource type="Texture2D" uid="uid://d38krxwd6v0w6" path="res://objects/slappers/assets/Slapper1/J1_Forward_N.png" id="6_vj2jv"]
+[ext_resource type="StyleBox" uid="uid://tpewn27gg0i5" path="res://gui/main_menu/new_style_box_flat.tres" id="7_1ljrn"]
+[ext_resource type="Texture2D" uid="uid://cakobc75sb75c" path="res://objects/slappers/assets/Slapper1/J1_ForwardRight_N.png" id="7_kovib"]
+[ext_resource type="Texture2D" uid="uid://cex0fyg5c6vnq" path="res://objects/slappers/assets/Slapper1/J1_Right_N.png" id="8_i57ss"]
+[ext_resource type="StyleBox" uid="uid://da5l2xo2isqsd" path="res://gui/main_menu/new_style_box_flat_hover.tres" id="8_tqn21"]
+[ext_resource type="Texture2D" uid="uid://be52s5mfinvc8" path="res://objects/slappers/assets/Slapper1/J1_BackRight_N.png" id="9_pyvjg"]
+[ext_resource type="Texture2D" uid="uid://darxr80v0wkfk" path="res://objects/slappers/assets/Slapper1/J1_Back_N.png" id="10_7l718"]
+[ext_resource type="Texture2D" uid="uid://h1keelnbl4wj" path="res://objects/slappers/assets/Slapper1/J1_BackLeft_N.png" id="11_lpdr5"]
+[ext_resource type="Texture2D" uid="uid://bvt4c37s57m28" path="res://objects/slappers/assets/Slapper1/J1_Left_N.png" id="12_pv4g5"]
+[ext_resource type="Texture2D" uid="uid://c4jo3lb3r154b" path="res://objects/slappers/assets/Slapper1/J1_ForwardLeft_N.png" id="13_lxf0i"]
+[ext_resource type="Texture2D" uid="uid://bjxvwlmwn8hrt" path="res://objects/slappers/assets/Slapper2/G_Forward_N.png" id="14_2o5n2"]
+[ext_resource type="Texture2D" uid="uid://7cvjkhxnopu1" path="res://objects/slappers/assets/Slapper2/G_ForwardRight_N.png" id="15_ga6ea"]
+[ext_resource type="Texture2D" uid="uid://crmojujsk18mx" path="res://objects/slappers/assets/Slapper2/G_Right_N.png" id="16_0kpjq"]
+[ext_resource type="Texture2D" uid="uid://dpogumt3hw20m" path="res://objects/slappers/assets/Slapper2/G_BackRight_N.png" id="17_1bjaa"]
+[ext_resource type="Texture2D" uid="uid://6hbwybwy2uvj" path="res://objects/slappers/assets/Slapper2/G_Back_N.png" id="18_giu8i"]
+[ext_resource type="Texture2D" uid="uid://063m38jhh7sw" path="res://objects/slappers/assets/Slapper2/G_BackLeft_N.png" id="19_8ky2b"]
+[ext_resource type="Texture2D" uid="uid://bu4pf7pdylbpr" path="res://objects/slappers/assets/Slapper2/G_Left_N.png" id="20_4jf02"]
+[ext_resource type="Texture2D" uid="uid://cx78vmo571051" path="res://objects/slappers/assets/Slapper2/G_ForwardLeft_N.png" id="21_uddkr"]
 
-[sub_resource type="Gradient" id="Gradient_ahke7"]
-offsets = PackedFloat32Array(0, 0.2661654, 0.64360905, 1)
-colors = PackedColorArray(0.36720002, 0.49656007, 0.72, 1, 0.027541667, 0.05, 0.011500001, 1, 0.49139997, 0.91, 0.91, 1, 0.0184, 0.08, 0.07692, 1)
+[sub_resource type="Gradient" id="Gradient_2snu5"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_85nol"]
-gradient = SubResource("Gradient_ahke7")
-fill = 1
-fill_from = Vector2(1, 1)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1ljrn"]
+gradient = SubResource("Gradient_2snu5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qy2xc"]
 
-[node name="MainMenu" type="TextureRect"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_nhfc4"]
+frames = 4
+speed_scale = 9.0
+frame_0/texture = ExtResource("2_hr6mf")
+frame_1/texture = ExtResource("3_2snu5")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_1ljrn")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_tqn21")
+frame_3/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_34axr"]
+frames = 8
+speed_scale = 10.0
+frame_0/texture = ExtResource("6_vj2jv")
+frame_1/texture = ExtResource("7_kovib")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("8_i57ss")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("9_pyvjg")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("10_7l718")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("11_lpdr5")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("12_pv4g5")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("13_lxf0i")
+frame_7/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_uutro"]
+frames = 8
+speed_scale = 10.0
+frame_0/texture = ExtResource("14_2o5n2")
+frame_1/texture = ExtResource("15_ga6ea")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("16_0kpjq")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("17_1bjaa")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("18_giu8i")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("19_8ky2b")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("20_4jf02")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("21_uddkr")
+frame_7/duration = 1.0
+
+[node name="MainMenu" type="TextureRect" unique_id=171197644]
+material = ExtResource("1_2snu5")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_85nol")
+texture = SubResource("GradientTexture1D_1ljrn")
 script = ExtResource("1_85nol")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1910318016]
 material = SubResource("ShaderMaterial_qy2xc")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -78.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 200
@@ -36,55 +106,91 @@ theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 200
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=1684339162]
 layout_mode = 2
 theme_override_constants/h_separation = 200
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/GridContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/GridContainer" unique_id=1772880200]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 80
-theme_override_font_sizes/bold_font_size = 80
-theme_override_font_sizes/bold_italics_font_size = 80
-theme_override_font_sizes/italics_font_size = 80
-theme_override_font_sizes/mono_font_size = 80
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/bold_font_size = 100
+theme_override_font_sizes/bold_italics_font_size = 100
+theme_override_font_sizes/italics_font_size = 100
+theme_override_font_sizes/mono_font_size = 100
 bbcode_enabled = true
 text = "[wave]Vibe Check[/wave]"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer" unique_id=52916791]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_ahke7")
-stretch_mode = 4
+texture = SubResource("AnimatedTexture_nhfc4")
+expand_mode = 4
+stretch_mode = 3
 
-[node name="Play" type="Button" parent="MarginContainer/GridContainer"]
+[node name="Play" type="Button" parent="MarginContainer/GridContainer" unique_id=1099916648]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("7_1ljrn")
+theme_override_styles/hover = ExtResource("8_tqn21")
 text = "Play"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GridContainer" unique_id=1629918246]
+visible = false
 layout_mode = 2
 
-[node name="Options" type="Button" parent="MarginContainer/GridContainer"]
+[node name="Options" type="Button" parent="MarginContainer/GridContainer" unique_id=883973033]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Options"
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/GridContainer" unique_id=2033642993]
 layout_mode = 2
 
-[node name="Quit" type="Button" parent="MarginContainer/GridContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/GridContainer" unique_id=383892190]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("7_1ljrn")
+theme_override_styles/hover = ExtResource("8_tqn21")
 text = "Quit"
+
+[node name="J" type="TextureRect" parent="." unique_id=1506626560]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 986.0
+offset_top = 593.0
+offset_right = -660.0
+offset_bottom = -51.377808
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_34axr")
+
+[node name="G" type="TextureRect" parent="." unique_id=1841801388]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1542.0
+offset_top = 606.0
+offset_right = -113.0
+offset_bottom = -52.686646
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_uutro")
 
 [connection signal="pressed" from="MarginContainer/GridContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/GridContainer/Quit" to="." method="_on_quit_pressed"]

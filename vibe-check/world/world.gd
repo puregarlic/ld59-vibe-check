@@ -27,13 +27,18 @@ func _ready() -> void:
 	SignalBus.unpause.connect(unpause)
 	SignalBus.baddie_scanned.connect(baddie_scanned)
 	SignalBus.failed.connect(loss)
+	SignalBus.baddies_spawned.connect(get_baddies)
 
-	await get_tree().get_root().ready
+func get_baddies():
+	baddies = get_tree().get_nodes_in_group("bad")
+	print(baddies.size())
 
 func baddie_scanned(baddie: Slapper) -> void:
 	var i := baddies.find(baddie)
+	print(baddies.size())
 	if i >= 0:
 		baddies.remove_at(i)
+		print("Removed baddie: %s" % baddies.size())
 		if baddies.is_empty():
 			win()
 
@@ -59,6 +64,10 @@ func start_menu() -> void:
 		child.queue_free()
 	var menu := main_menu_scene.instantiate()
 	gui.add_child(menu)
+
+	for child in get_children():
+		if child.name != "VoiceAudio":
+			child.queue_free()
 
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	state = WorldState.MAIN_MENU
