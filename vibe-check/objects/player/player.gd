@@ -16,10 +16,13 @@ var _coyote_timer : float = 0.0
 var _was_on_floor : bool = false
 var mouse_sensitivity : float = 0.002
 
-const FALL_VO_THRESHOLD : float = 1.2
+const FALL_VO_THRESHOLD : float = 0.5
 const FALL_VO_FADE_TIME : float = 0.18
 const FALL_VO_FADE_TARGET_DB : float = -40.0
+const FALL_DEATH_DISTANCE : float = 22.0
 var _airborne_time : float = 0.0
+var _fall_start_y : float = 0.0
+var _fall_start_recorded : bool = false
 var _fall_vo_started : bool = false
 var _fall_vo_base_db : float = 0.0
 var _fall_fade_tween : Tween = null
@@ -132,12 +135,16 @@ func _input(event: InputEvent) -> void:
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(look_pitch_max_angle), deg_to_rad(look_pitch_max_angle))
 
 func _update_fall_voice(delta: float) -> void:
+	if _fall_vo_started and is_on_floor():
+		_fade_out_fall_voice()
+		_fall_vo_started = false
 	if %ScreamCast.is_colliding():
 		_airborne_time = 0.0
-		if _fall_vo_started:
-			_fade_out_fall_voice()
-			_fall_vo_started = false
+		_fall_start_recorded = false
 		return
+	if not _fall_start_recorded:
+		_fall_start_y = global_position.y
+		_fall_start_recorded = true
 	_airborne_time += delta
 	if _fall_vo_started or _airborne_time <= FALL_VO_THRESHOLD:
 		return
@@ -145,7 +152,8 @@ func _update_fall_voice(delta: float) -> void:
 		_fall_fade_tween.kill()
 		_fall_fade_tween = null
 	_fall_audio.volume_db = _fall_vo_base_db
-	var pool: Array = VoicePools.FALLING if _trajectory_will_find_ground() else VoicePools.FALLING_DEATH
+	var fell_far := (_fall_start_y - global_position.y) > FALL_DEATH_DISTANCE
+	var pool: Array = VoicePools.FALLING_DEATH if fell_far or not _trajectory_will_find_ground() else VoicePools.FALLING
 	_fall_audio.stream = VoicePools.random_pick(pool)
 	_fall_audio.play()
 	_fall_vo_started = true
