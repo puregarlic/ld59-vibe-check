@@ -47,6 +47,7 @@ script = ExtResource("1_0w3ga")
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=219781822]
 collision_layer = 16
 physics_material_override = SubResource("PhysicsMaterial_c3df8")
+continuous_cd = true
 freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1587236223]

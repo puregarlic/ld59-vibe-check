@@ -10,7 +10,7 @@
 height = 1.7
 
 [node name="Slapper" type="CharacterBody3D" unique_id=1884064883 node_paths=PackedStringArray("scan_alert_audio")]
-collision_layer = 9
+collision_layer = 8
 script = ExtResource("1_y7cy8")
 scan_alert_audio = NodePath("AudioStreamPlayer3D")
 
