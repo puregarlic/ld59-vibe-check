@@ -38,12 +38,16 @@ func baddie_scanned(baddie: Slapper) -> void:
 			win()
 
 func win():
+	$VoiceAudio.stream = VoicePools.SUCCESS
+	$VoiceAudio.play()
 	for child in gui.get_children():
 		child.queue_free()
 	var win_hud = win_hud_scene.instantiate()
 	gui.add_child(win_hud)
 
 func loss():
+	$VoiceAudio.stream = VoicePools.FAILURE
+	$VoiceAudio.play()
 	for child in gui.get_children():
 		child.queue_free()
 	var loss_hud = loss_hud_scene.instantiate()
@@ -84,6 +88,8 @@ func instantiate_level() -> void:
 		gui_child.queue_free()
 
 	for child in get_children():
+		if child == $VoiceAudio:
+			continue
 		child.queue_free()
 		await child.tree_exited
 
@@ -92,6 +98,9 @@ func instantiate_level() -> void:
 
 	var level = level_scene.instantiate()
 	add_child(level)
+
+	$VoiceAudio.stream = VoicePools.FIND_THEM
+	$VoiceAudio.play()
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	state = WorldState.ROOMS

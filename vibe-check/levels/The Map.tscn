@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://8mp0r4kismfs" path="res://levels/the_map.gd" id="1_script"]
 [ext_resource type="Script" uid="uid://w506qydhvxfd" path="res://levels/map_manager.gd" id="3_ogrup"]
 [ext_resource type="Script" uid="uid://bmwnw7sqkjr3d" path="res://levels/world_environment.gd" id="3_qx38l"]
+[ext_resource type="PackedScene" path="res://gui/psx_filter/psx_filter.tscn" id="4_psx_filter"]
+[ext_resource type="Material" uid="uid://b8v3c1grainyc" path="res://levels/grainy-concrete-bl/grainy_concrete.tres" id="5_concrete"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_enq1c"]
 sky_top_color = Color(0.38400003, 0.5642667, 0.8, 1)
@@ -211,9 +213,9 @@ spawn_radius = 100.0
 ground_probe_height = 20.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=429812943]
-transform = Transform3D(1, 0, 0, 0, -0.9854078, 0.17020957, 0, -0.17020957, -0.9854078, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -0.8906337, 0.45472127, 0, -0.45472127, -0.8906337, 0, 0, 0)
 light_color = Color(1, 0.991, 0.90999997, 1)
-light_specular = 2.0
+light_specular = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=547818075]
 environment = SubResource("Environment_2rvaj")
@@ -225,253 +227,306 @@ script = ExtResource("3_qx38l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.62335, -12, 50.46112)
 use_collision = true
 size = Vector3(195, 26, 105.79297)
+material = ExtResource("5_concrete")
 
 [node name="Trench" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1494595386]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.47513, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.47513, -11.891602, 0)
 operation = 2
 use_collision = true
-size = Vector3(14.641052, 26, 125.200195)
+size = Vector3(14.641052, 49.783203, 125.200195)
+material = ExtResource("5_concrete")
 
 [node name="Trench9" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=719634100]
-transform = Transform3D(-0.78167284, 0, -0.6236887, 0, 1, 0, 0.6236887, 0, -0.78167284, -12.102432, -0.5565262, 11.391113)
+transform = Transform3D(-0.78167284, 0, -0.6236887, 0, 1, 0, 0.6236887, 0, -0.78167284, -12.102432, -11.492195, 11.391113)
 operation = 2
 use_collision = true
-size = Vector3(7.535797, 29.89502, 198.84113)
+size = Vector3(7.535797, 51.766357, 198.84113)
+material = ExtResource("5_concrete")
 
 [node name="Trench2" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=21814222]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.203156, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.203156, -16.985107, 0)
 operation = 2
 use_collision = true
-size = Vector3(8.506958, 26, 125.200195)
+size = Vector3(8.506958, 59.970215, 125.200195)
+material = ExtResource("5_concrete")
 
 [node name="Trench3" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=477013524]
-transform = Transform3D(0.9754886, 0, 0.22005054, 0, 1, 0, -0.22005054, 0, 0.9754886, -23.655441, 0, 1.0784073)
+transform = Transform3D(0.9754886, 0, 0.22005054, 0, 1, 0, -0.22005054, 0, 0.9754886, -23.655441, -10.3479, 1.0784073)
 operation = 2
 use_collision = true
-size = Vector3(8.506958, 26, 157.17352)
+size = Vector3(8.506958, 46.6958, 157.17352)
+material = ExtResource("5_concrete")
 
 [node name="Trench4" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1082329547]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2424164, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2424164, -9.143311, 0)
 operation = 2
 use_collision = true
-size = Vector3(8.506958, 26, 125.200195)
+size = Vector3(8.506958, 44.28662, 125.200195)
+material = ExtResource("5_concrete")
 
 [node name="Trench5" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1273736772]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9861, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9861, -12.626221, 0)
 operation = 2
 use_collision = true
-size = Vector3(19.661194, 26, 125.200195)
+size = Vector3(19.661194, 51.25244, 125.200195)
+material = ExtResource("5_concrete")
 
 [node name="Trench6" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1422659599]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.86026, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.86026, -13.5271, 0)
 operation = 2
 use_collision = true
-size = Vector3(8.506958, 26, 125.200195)
+size = Vector3(8.506958, 53.0542, 125.200195)
+material = ExtResource("5_concrete")
 
 [node name="Trench7" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=739383839]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.95654, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.95654, -12.586914, 0)
 operation = 2
 use_collision = true
-size = Vector3(8.506958, 26, 125.200195)
+size = Vector3(8.506958, 51.17383, 125.200195)
+material = ExtResource("5_concrete")
 
 [node name="Trench8" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1247198223]
-transform = Transform3D(0.44775906, 0, 0.89415425, 0, 1, 0, -0.89415425, 0, 0.44775906, 41.680923, 1.3909836, -36.908466)
+transform = Transform3D(0.44775906, 0, 0.89415425, 0, 1, 0, -0.89415425, 0, 0.44775906, 41.680923, -11.576057, -36.908466)
 operation = 2
 use_collision = true
-size = Vector3(8.506958, 26, 146.03967)
+size = Vector3(8.506958, 51.934082, 146.03967)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=713819747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.07759, 19.918373, 12.522385)
 size = Vector3(26.173584, 36.72412, 50)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=521509003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.032227, 31.646217, -21.141335)
 size = Vector3(32.675537, 60.17981, 46.543457)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=441024767]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 26.058487, 55.525024, 0.95913696)
 size = Vector3(32.675537, 85.58864, 32.148193)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1379651131]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -9.032227, 45.664078, -22.713013)
 size = Vector3(32.675537, 108.39996, 32.148193)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1034789100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.479202, 8.655006, 20.064964)
 size = Vector3(32.675537, 14.197388, 46.543457)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1431255758]
 transform = Transform3D(0.9592351, 0, -0.2826093, 0, 1, 0, 0.2826093, 0, 0.9592351, 59.217102, 18.124153, -46.961235)
 size = Vector3(61.55359, 33.13568, 12.042625)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=977660936]
 transform = Transform3D(0.9592351, 0, -0.2826093, 0, 1, 0, 0.2826093, 0, 0.9592351, 80.542114, 18.124153, 26.518158)
 size = Vector3(23.629333, 33.13568, 10.790085)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=2075937429]
 transform = Transform3D(0.98917025, 0, 0.14677367, 0, 1, 0, -0.14677367, 0, 0.98917025, 76.54376, 18.124153, 47.221756)
 size = Vector3(31.713593, 33.13568, 10.790085)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=24652437]
 transform = Transform3D(0.96432227, 0.2647315, 0, -0.2647315, 0.96432227, 0, 0, 0, 1, 6.759369, 24.616306, 18.525856)
 size = Vector3(88.00778, 2.8788452, 1.2018433)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=960058081]
 transform = Transform3D(0.14762746, 0.04052757, -0.9882123, -0.44571108, 0.8946776, -0.029892456, 0.8829201, 0.44487026, 0.15014257, 63.836945, 23.325506, -21.540508)
 size = Vector3(44.23094, 2.8788452, 1.2018433)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1867262222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2767334, 11.556313, -18.212502)
 size = Vector3(42.89685, 20, 40.68579)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=383189020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.80661, 4.045023, 51.314133)
 size = Vector3(33.8078, 20, 7.2512817)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/FallingPlatform" unique_id=1828002050]
 transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, -89.21129, 11.556313, -34.25249)
 size = Vector3(28.130371, 20, 50)
+material = ExtResource("5_concrete")
 
 [node name="The Thunderdome" type="CSGBox3D" parent="Map Geometry" unique_id=1786336926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.00654, -12.181351, 69.76349)
 use_collision = true
 size = Vector3(75, 26, 79)
+material = ExtResource("5_concrete")
 
 [node name="Great Wall2" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=1990078247]
 transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 11.599304, 56.175697, -35.23191)
 use_collision = true
 size = Vector3(107.52731, 40.66394, 79)
+material = ExtResource("5_concrete")
 
 [node name="Great Wall" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=693553704]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.24958, 34.088013, -35.23191)
 use_collision = true
 size = Vector3(91.753845, 10, 79)
+material = ExtResource("5_concrete")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map Geometry/The Thunderdome" unique_id=1915874331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.457314, 2.2315807, -7.180847)
 radius = 1.0
 height = 25.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map Geometry/The Thunderdome" unique_id=320633610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.457314, 1.5974016, -1.1184845)
 radius = 1.0
 height = 25.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map Geometry/The Thunderdome" unique_id=1257787484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.189144, 0)
 radius = 15.0
 height = 100.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=1250255141]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.03115, 9.748388, -3.2874298)
 size = Vector3(30, 15, 1)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=1024211711]
 transform = Transform3D(0.6844834, 0, 0.7290284, 0, 1, 0, -0.7290284, 0, 0.6844834, -20.178307, 19.534065, 17.228539)
 size = Vector3(30, 15, 1)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=448325933]
 transform = Transform3D(0.68454707, 0, -0.72896856, 0, 1, 0, 0.72896856, 0, 0.68454707, 18.030807, 42.499554, 17.228539)
 size = Vector3(30, 15, 1)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=551576114]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.671135, 28.227028, 22.22799)
 size = Vector3(30, 15, 1)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=260981936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.58017, 19.534065, 26.068398)
 size = Vector3(30, 25, 15)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Map Geometry/The Thunderdome/CSGBox3D4" unique_id=311142212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0783806, 0)
 operation = 2
 size = Vector3(35, 15, 12)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map Geometry/The Thunderdome" unique_id=2108279755]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.03115, 19.534065, -23.510017)
 size = Vector3(23.258545, 15, 1)
+material = ExtResource("5_concrete")
 
 [node name="Bridge3" type="CSGBox3D" parent="Map Geometry" unique_id=772155489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.20094)
 use_collision = true
 size = Vector3(15, 2, 45)
+material = ExtResource("5_concrete")
 
 [node name="Bridge3" type="CSGBox3D" parent="Map Geometry/Bridge3" unique_id=926218268]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9068756, 0, 20.045048)
 use_collision = true
 size = Vector3(10, 2, 125)
+material = ExtResource("5_concrete")
 
 [node name="Interstitial_Platform" type="CSGBox3D" parent="Map Geometry" unique_id=1982399715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.389946, -34.376476, 50.913033)
 use_collision = true
 size = Vector3(15, 75, 15)
+material = ExtResource("5_concrete")
 
 [node name="Bridge2" type="CSGBox3D" parent="Map Geometry" unique_id=1468321522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.63571, -20.580032, -29.137512)
 use_collision = true
 size = Vector3(25, 75, 100)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/Bridge2" unique_id=277847880]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.157486, 29.025251, -32.74259)
 operation = 2
 size = Vector3(40, 13, 10)
+material = ExtResource("5_concrete")
 
 [node name="FieldWithBuildings" type="CSGBox3D" parent="Map Geometry" unique_id=2037754855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, -155.88127)
 use_collision = true
 size = Vector3(195, 26, 200)
+material = ExtResource("5_concrete")
 
 [node name="Building1" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=1020656875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.63571, 22, 63.123344)
 size = Vector3(50, 20, 50)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Building1" unique_id=1449370227]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.106, 0, 0)
 operation = 2
 size = Vector3(40, 18, 40)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Building1" unique_id=922080065]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5014114, 0, -8.840958)
 size = Vector3(5, 20, 25)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Building1/CSGBox3D" unique_id=1081900113]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.287735, -2.2665596, 10.063255)
 size = Vector3(5, 15, 10)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Building1" unique_id=536010821]
 transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 5.483246, -0.4722824, -26.735481)
 size = Vector3(38.426025, 2, 5)
+material = ExtResource("5_concrete")
 
 [node name="Asssemblage" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=1541210594]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -67.14183, 14.489624, -4.88002)
 size = Vector3(70, 30, 10)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Asssemblage" unique_id=388012891]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -32.05156, 0, -12.115265)
 size = Vector3(45, 20, 10)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Asssemblage/CSGBox3D" unique_id=1076964076]
 transform = Transform3D(0.5041508, 0, 0.8636156, 0, 1, 0, -0.8636156, 0, 0.5041508, 15.529537, 0, 34.97026)
 size = Vector3(45, 20, 10)
+material = ExtResource("5_concrete")
 
 [node name="Cylinder" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=473225740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.126297, 32.1766, 54.932358)
 radius = 40.0
 height = 40.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings/Cylinder" unique_id=709443332]
 transform = Transform3D(0.9063077, -0.42261824, 0, 0.42261824, 0.9063077, 0, 0, 0, 1, -69.87164, 4.944914, 3.016388)
 size = Vector3(67.492615, 2, 1)
+material = ExtResource("5_concrete")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Map Geometry/FieldWithBuildings/Cylinder" unique_id=1591150529]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.192833, 0)
 radius = 20.0
 radial_segments = 30
 rings = 50
+material = ExtResource("5_concrete")
 
 [node name="The Hole" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=933153236]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.42271, 0, -41.223846)
@@ -479,49 +534,58 @@ operation = 2
 radius = 55.0
 height = 50.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="HolePillar1" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=193546286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.772694, -12.88431, -37.615067)
 radius = 5.0
 height = 50.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="HolePillar2" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=2075048738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.916195, -13.094334, -52.52719)
 radius = 10.0
 height = 50.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="HolePillar3" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=2010342511]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.871796, -17.62777, -52.52719)
 radius = 8.0
 height = 50.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="HolePillar4" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=1561100305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.786919, -20.285954, -75.23013)
 radius = 5.0
 height = 60.965332
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="BackAccess" type="CSGCylinder3D" parent="Map Geometry/FieldWithBuildings" unique_id=1759283677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.81981, -16.34889, -84.4848)
 radius = 2.0
 height = 60.965332
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=2144444770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.118446, -25.518093, -95.21973)
 size = Vector3(15, 100, 15)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=1401133608]
 transform = Transform3D(0.8866802, -0.4623832, 0, 0.4623832, 0.8866802, 0, 0, 0, 1, 91.50944, 3.997841, -53.332535)
 size = Vector3(15, 10, 15)
+material = ExtResource("5_concrete")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Map Geometry/FieldWithBuildings" unique_id=1612875182]
 transform = Transform3D(-0.97854507, 0, 0.20603335, 0, 1, 0, -0.20603335, 0, -0.97854507, -38.99486, -8.589418, -71.56746)
 use_collision = true
 size = Vector3(117.26902, 78.01953, 10)
+material = ExtResource("5_concrete")
 
 [node name="StartingRoom" type="CSGBox3D" parent="Map Geometry" unique_id=1287994912]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -529,6 +593,7 @@ use_collision = true
 collision_layer = 17
 collision_mask = 17
 size = Vector3(13, 1, 20)
+material = ExtResource("5_concrete")
 
 [node name="LeftWall" type="CSGCylinder3D" parent="Map Geometry/StartingRoom" unique_id=1003721119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 0)
@@ -536,6 +601,7 @@ use_collision = true
 radius = 13.0
 height = 19.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="LeftWallCuttout" type="CSGCylinder3D" parent="Map Geometry/StartingRoom/LeftWall" unique_id=1915237238]
 transform = Transform3D(0.48151785, 0, 0, 0, 1, 0, 0, 0, 1, 10.083, 2.5, 0)
@@ -543,6 +609,7 @@ operation = 2
 radius = 11.0
 height = 4.0
 sides = 36
+material = ExtResource("5_concrete")
 
 [node name="RightWall" type="CSGCylinder3D" parent="Map Geometry/StartingRoom" unique_id=1710884540]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 14.5, 0, 0)
@@ -550,6 +617,7 @@ use_collision = true
 radius = 13.0
 height = 19.0
 sides = 50
+material = ExtResource("5_concrete")
 
 [node name="RightWallCuttout" type="CSGCylinder3D" parent="Map Geometry/StartingRoom/RightWall" unique_id=1655395134]
 transform = Transform3D(0.48151785, 0, 0, 0, 1, 0, 0, 0, 1, 10.083, 2.5, 0)
@@ -557,11 +625,13 @@ operation = 2
 radius = 11.0
 height = 4.0
 sides = 36
+material = ExtResource("5_concrete")
 
 [node name="Bridge" type="CSGBox3D" parent="Map Geometry" unique_id=39466753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.22838)
 use_collision = true
 size = Vector3(15, 2, 45)
+material = ExtResource("5_concrete")
 
 [node name="Character" parent="." unique_id=824811208 groups=["player"] instance=ExtResource("1_ogrup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2937584, 4.54288)
@@ -570,7 +640,7 @@ headbob_amplitude = 0.06
 
 [node name="MapManager" type="Node3D" parent="." unique_id=405946474 groups=["map_manager"]]
 script = ExtResource("3_ogrup")
-num_bad_slappers = 50
+num_bad_slappers = 10
 
 [node name="Area3D" type="Area3D" parent="." unique_id=318167548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -90.74876, 0)
@@ -580,5 +650,7 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1607256451]
 shape = SubResource("BoxShape3D_u1hnl")
+
+[node name="PSXFilter" parent="." unique_id=155479558 instance=ExtResource("4_psx_filter")]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

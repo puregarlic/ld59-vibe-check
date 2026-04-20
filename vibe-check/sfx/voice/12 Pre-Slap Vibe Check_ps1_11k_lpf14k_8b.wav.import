@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crvrgmalgeywn"
+path="res://.godot/imported/12 Pre-Slap Vibe Check_ps1_11k_lpf14k_8b.wav-8ede728a0b164a01e0a46bba7d755c43.sample"
+
+[deps]
+
+source_file="res://sfx/voice/12 Pre-Slap Vibe Check_ps1_11k_lpf14k_8b.wav"
+dest_files=["res://.godot/imported/12 Pre-Slap Vibe Check_ps1_11k_lpf14k_8b.wav-8ede728a0b164a01e0a46bba7d755c43.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

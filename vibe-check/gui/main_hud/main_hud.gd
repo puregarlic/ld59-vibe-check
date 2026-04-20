@@ -8,16 +8,30 @@ extends MarginContainer
 	#[/wave]
 
 @onready var label := %Text
+@onready var stopwatch_label := %Stopwatch
 var remaining : int = 0
+var elapsed : float = 0.0
 
 func _ready() -> void:
 	update_text(remaining, GlobalDifficulty.heat_multiplier)
+	update_stopwatch(elapsed)
 	SignalBus.baddie_scanned.connect(_on_timer_timeout)
 	SignalBus.baddie_killed.connect(_on_timer_timeout)
 
 func _process(delta: float) -> void:
 	if %Timer.is_stopped():
 		%Timer.start()
+	elapsed += delta
+	update_stopwatch(elapsed)
+
+func update_stopwatch(seconds: float) -> void:
+	var minutes := int(seconds) / 60
+	var secs := int(seconds) % 60
+	var hundredths := int(fmod(seconds, 1.0) * 100.0)
+	stopwatch_label.clear()
+	stopwatch_label.push_bold()
+	stopwatch_label.append_text("%02d:%02d.%02d" % [minutes, secs, hundredths])
+	stopwatch_label.pop()
 
 func update_text(remaining: int, difficulty: float):
 	var color := Color.WHITE

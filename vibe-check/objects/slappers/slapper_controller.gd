@@ -7,6 +7,8 @@ signal slap_triggered
 @export var vibe = Types.Vibe.GOOD
 @export var scan_alert_audio: AudioStreamPlayer3D
 @export var scan_alert_visual: Sprite3D
+@export var pre_slap_audio: AudioStreamPlayer3D
+@export var slap_impact_audio: AudioStreamPlayer3D
 
 @onready var _ai: Node = $AI
 @onready var _animated_sprite: AnimatedSprite3D = $"Animated Sprite"
@@ -169,6 +171,9 @@ func _on_slap_hold_finished() -> void:
 	_ai.end_scan_response()
 
 func _on_slap_triggered() -> void:
+	if slap_impact_audio:
+		slap_impact_audio.stream = VoicePools.SLAP_IMPACT
+		slap_impact_audio.play()
 	player_reference.receive_slap(global_position)
 	map_manager_reference.phone_slap_trigger(global_position)
 
@@ -187,10 +192,14 @@ func _on_ai_transition_to(phase: Types.Phase, state: Types.TransitionState) -> v
 		Types.Phase.SCAN_ALERT:
 			velocity = Vector3.ZERO
 			if scan_alert_audio:
+				scan_alert_audio.stream = VoicePools.random_pick(VoicePools.HUH)
 				scan_alert_audio.play()
 				scan_alert_visual.visible = true
 		Types.Phase.SLAPPING:
 			velocity = Vector3.ZERO
+			if pre_slap_audio:
+				pre_slap_audio.stream = VoicePools.random_pick(VoicePools.PRE_SLAP)
+				pre_slap_audio.play()
 
 
 func _on_audio_stream_player_3d_finished() -> void:

@@ -66,4 +66,6 @@ unique_name_in_owner = true
 one_shot = true
 script = ExtResource("2_ssrue")
 
+[node name="FallAudio" type="AudioStreamPlayer" parent="." unique_id=217176577]
+
 [editable path="Camera3D/RightHand"]

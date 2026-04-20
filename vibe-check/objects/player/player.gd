@@ -16,6 +16,15 @@ var _coyote_timer : float = 0.0
 var _was_on_floor : bool = false
 var mouse_sensitivity : float = 0.002
 
+const FALL_VO_THRESHOLD : float = 1.2
+const FALL_VO_FADE_TIME : float = 0.18
+const FALL_VO_FADE_TARGET_DB : float = -40.0
+var _airborne_time : float = 0.0
+var _fall_vo_started : bool = false
+var _fall_vo_base_db : float = 0.0
+var _fall_fade_tween : Tween = null
+@onready var _fall_audio : AudioStreamPlayer = $FallAudio
+
 var movement : Callable
 
 #head bobbing variables
@@ -46,6 +55,7 @@ var holding_phone : bool :
 func _ready() -> void:
 	%ScanTimer.timeout.connect(scan_timer_end)
 	holding_phone = true
+	_fall_vo_base_db = _fall_audio.volume_db
 
 func _physics_process(delta: float) -> void:
 	velocity.y += -gravity * delta
@@ -81,6 +91,8 @@ func _physics_process(delta: float) -> void:
 	if _in_knockback and is_on_floor():
 		_in_knockback = false
 
+	_update_fall_voice(delta)
+
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$Camera3D.transform.origin = headbob(headbob_time) + Vector3(0, 1, 0)
 
@@ -114,6 +126,47 @@ func _input(event: InputEvent) -> void:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(look_pitch_max_angle), deg_to_rad(look_pitch_max_angle))
+
+func _update_fall_voice(delta: float) -> void:
+	if is_on_floor():
+		_airborne_time = 0.0
+		if _fall_vo_started:
+			_fade_out_fall_voice()
+			_fall_vo_started = false
+		return
+	_airborne_time += delta
+	if _fall_vo_started or _airborne_time <= FALL_VO_THRESHOLD:
+		return
+	if _fall_fade_tween != null and _fall_fade_tween.is_valid():
+		_fall_fade_tween.kill()
+		_fall_fade_tween = null
+	_fall_audio.volume_db = _fall_vo_base_db
+	var pool: Array = VoicePools.FALLING if _trajectory_will_find_ground() else VoicePools.FALLING_DEATH
+	_fall_audio.stream = VoicePools.random_pick(pool)
+	_fall_audio.play()
+	_fall_vo_started = true
+
+func _fade_out_fall_voice() -> void:
+	if _fall_fade_tween != null and _fall_fade_tween.is_valid():
+		_fall_fade_tween.kill()
+	_fall_fade_tween = create_tween()
+	_fall_fade_tween.tween_property(_fall_audio, "volume_db", FALL_VO_FADE_TARGET_DB, FALL_VO_FADE_TIME)
+	_fall_fade_tween.tween_callback(_fall_audio.stop)
+	_fall_fade_tween.tween_callback(func(): _fall_audio.volume_db = _fall_vo_base_db)
+
+func _trajectory_will_find_ground() -> bool:
+	var space := get_world_3d().direct_space_state
+	var horiz := Vector3(velocity.x, 0.0, velocity.z)
+	var samples := [0.3, 0.6, 1.0, 1.5, 2.0]
+	for t in samples:
+		var pos: Vector3 = global_position + horiz * t
+		var from: Vector3 = pos + Vector3.UP * 0.2
+		var to: Vector3 = pos + Vector3.DOWN * 60.0
+		var query := PhysicsRayQueryParameters3D.create(from, to)
+		query.exclude = [self.get_rid()]
+		if not space.intersect_ray(query).is_empty():
+			return true
+	return false
 
 func receive_slap(from_position: Vector3) -> void:
 	var dir = global_position - from_position
