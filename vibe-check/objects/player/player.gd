@@ -58,6 +58,7 @@ var bad_vibes_proximity : float = 1.0
 var pass_vibe_check : bool
 var scan_target : Slapper
 var current_scan_target : Slapper
+var _last_scan_target : Slapper
 var scanning : bool = false :
 	get: return scanning
 	set(value):
@@ -155,20 +156,26 @@ func _physics_process(delta: float) -> void:
 
 	scan_target = %ScanCast.get_collider()
 	if Input.is_action_just_pressed("interact") and scan_target != null and holding_phone == true:
+		if scan_target != _last_scan_target:
+			%ScanTimer.force_reset()
 		current_scan_target = scan_target
-		%ScanTimer.wait_time = scan_time * bad_vibes_proximity
+		var remaining: float = 1.0 - %ScanTimer._last_progress
+		%ScanTimer._progress_start = %ScanTimer._last_progress
+		%ScanTimer.wait_time = scan_time * bad_vibes_proximity * remaining
 		%ScanTimer.start()
 		scanning = true
 		print("we're scanning a target!")
 		scanner_progress_audio.play()
 	if Input.is_action_just_released("interact") and scanning == true and holding_phone == true:
 		%ScanTimer.stop()
+		_last_scan_target = current_scan_target
 		current_scan_target = null
 		scanning = false
 		scanner_progress_audio.stop()
 		print("we broke from our target")
 	if Input.is_action_pressed("interact") and scan_target != current_scan_target and scanning == true and holding_phone == true:
 		%ScanTimer.stop()
+		_last_scan_target = current_scan_target
 		current_scan_target = null
 		scanning = false
 		scanner_progress_audio.stop()
