@@ -7,19 +7,47 @@ var gui : Control
 
 @onready var level_scene : PackedScene = preload("res://levels/The Map.tscn")
 @onready var main_hud_scene : PackedScene = preload("res://gui/main_hud/main_hud.tscn")
+@onready var win_hud_scene : PackedScene = preload("res://gui/win_hud/win_hud.tscn")
+@onready var loss_hud_scene : PackedScene = preload("res://gui/loss_hud/loss_hud.tscn")
 
 @onready var pause_menu_scene : PackedScene = preload("res://gui/pause_menu/pause_menu.tscn")
+
 
 @onready var room_number : int = 0
 
 enum WorldState {MAIN_MENU, ROOMS, PAUSED}
 @onready var state : WorldState = WorldState.MAIN_MENU
 
+var baddies := []
+
 func _ready() -> void:
 	SignalBus.start_game.connect(instantiate_level)
 	SignalBus.start_menu.connect(start_menu)
 	SignalBus.pause.connect(pause_menu)
 	SignalBus.unpause.connect(unpause)
+	SignalBus.baddie_scanned.connect(baddie_scanned)
+	SignalBus.failed.connect(loss)
+
+	await get_tree().get_root().ready
+
+func baddie_scanned(baddie: Slapper) -> void:
+	var i := baddies.find(baddie)
+	if i >= 0:
+		baddies.remove_at(i)
+		if baddies.is_empty():
+			win()
+
+func win():
+	for child in gui.get_children():
+		child.queue_free()
+	var win_hud = win_hud_scene.instantiate()
+	gui.add_child(win_hud)
+
+func loss():
+	for child in gui.get_children():
+		child.queue_free()
+	var loss_hud = loss_hud_scene.instantiate()
+	gui.add_child(loss_hud)
 
 func start_menu() -> void:
 	room_number = 0
@@ -54,6 +82,10 @@ func unpause() -> void:
 func instantiate_level() -> void:
 	for gui_child in gui.get_children():
 		gui_child.queue_free()
+
+	for child in get_children():
+		child.queue_free()
+		await child.tree_exited
 
 	var main_hud := main_hud_scene.instantiate()
 	gui.add_child(main_hud)
