@@ -7,6 +7,7 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var coyote_time : float = 0.12
 @export var speed : float = 14.0
 @export var sprint_speed : float = 28.0
+@export var scan_move_speed : float = 5.0
 @export var slap_horizontal_force : float = 5.0
 @export var slap_vertical_force : float = 3.0
 @export var look_pitch_max_angle : int = 80
@@ -19,6 +20,8 @@ var mouse_sensitivity : float = 0.002
 const FALL_VO_THRESHOLD : float = 0.5
 const FALL_VO_FADE_TIME : float = 0.18
 const FALL_VO_FADE_TARGET_DB : float = -40.0
+const FALL_VO_DUCK_DB : float = 9.0
+const FALL_VO_DEATH_DUCK_DB : float = 13.0
 const FALL_DEATH_DISTANCE : float = 22.0
 var _airborne_time : float = 0.0
 var _fall_start_y : float = 0.0
@@ -87,9 +90,13 @@ func _physics_process(delta: float) -> void:
 		var input := Input.get_vector("left", "right", "forward", "back")
 		var movement_dir := transform.basis * Vector3(input.x, 0, input.y)
 		movement_dir = movement_dir.normalized()
-		velocity.x = movement_dir.x * move_speed
-		velocity.z = movement_dir.z * move_speed
-
+		if scanning == true:
+			velocity.x = movement_dir.x * scan_move_speed
+			velocity.z = movement_dir.z * scan_move_speed
+		else:
+			velocity.x = movement_dir.x * move_speed
+			velocity.z = movement_dir.z * move_speed
+	
 	if is_on_floor():
 		_coyote_timer = coyote_time
 	elif _was_on_floor and velocity.y <= 0.0:
@@ -165,9 +172,11 @@ func _update_fall_voice(delta: float) -> void:
 	if _fall_fade_tween != null and _fall_fade_tween.is_valid():
 		_fall_fade_tween.kill()
 		_fall_fade_tween = null
-	_fall_audio.volume_db = _fall_vo_base_db
 	var fell_far := (_fall_start_y - global_position.y) > FALL_DEATH_DISTANCE
-	var pool: Array = VoicePools.FALLING_DEATH if fell_far or not _trajectory_will_find_ground() else VoicePools.FALLING
+	var use_death := fell_far or not _trajectory_will_find_ground()
+	_fall_audio.volume_db = _fall_vo_base_db - (FALL_VO_DEATH_DUCK_DB if use_death else FALL_VO_DUCK_DB)
+	var pool: Array = VoicePools.FALLING_DEATH if use_death else VoicePools.FALLING
+	_fall_audio.bus = &"Echo" if use_death else &"Master"
 	_fall_audio.stream = VoicePools.random_pick(pool)
 	_fall_audio.play()
 	_fall_vo_started = true
