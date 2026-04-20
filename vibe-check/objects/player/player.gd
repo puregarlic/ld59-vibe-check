@@ -17,7 +17,7 @@ var _coyote_timer : float = 0.0
 var _was_on_floor : bool = false
 var mouse_sensitivity : float = 0.002
 
-const FALL_VO_THRESHOLD : float = 0.5
+const FALL_VO_THRESHOLD: float = 1.1
 const FALL_VO_FADE_TIME : float = 0.18
 const FALL_VO_FADE_TARGET_DB : float = -40.0
 const FALL_VO_DUCK_DB : float = 9.0
@@ -166,7 +166,7 @@ func _update_fall_voice(delta: float) -> void:
 	if _fall_vo_started and is_on_floor():
 		_fade_out_fall_voice()
 		_fall_vo_started = false
-	if %ScreamCast.is_colliding():
+	if %ScreamCast.is_colliding() and %ScreamCast.get_collision_normal().y > 0.7:
 		_airborne_time = 0.0
 		_fall_start_recorded = false
 		return
@@ -176,6 +176,7 @@ func _update_fall_voice(delta: float) -> void:
 	_airborne_time += delta
 	if _fall_vo_started or _airborne_time <= FALL_VO_THRESHOLD:
 		return
+
 	if _fall_fade_tween != null and _fall_fade_tween.is_valid():
 		_fall_fade_tween.kill()
 		_fall_fade_tween = null

@@ -22,7 +22,7 @@ var _turn_speed: float = 0.0
 var _slap_cooldown_remaining: float = 0.0
 var _slap_hold_timer: Timer
 
-const SCAN_DETECTION_ANGLE: float = 45.0
+const SCAN_DETECTION_ANGLE: float = 112.5
 const SCAN_CHARGE_SPEED: float = 8.0
 const SCAN_TURN_SPEED: float = 5.0
 const SLAP_DISTANCE: float = 2.0

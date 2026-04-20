@@ -87,8 +87,7 @@ func _on_ai_transition_to(phase: Types.Phase, _state: Types.TransitionState) -> 
 			animation = "caught"
 			frame = randi_range(0, 1)
 			stop()
+			SignalBus.baddie_killed.emit()
 			var tween = get_tree().create_tween()
 			tween.tween_property(self, "global_position", Vector3(global_position.x, global_position.y - 10, global_position.z), 5.0)
 			tween.tween_callback(slapper.queue_free)
-			await tween.finished
-			SignalBus.baddie_killed.emit()

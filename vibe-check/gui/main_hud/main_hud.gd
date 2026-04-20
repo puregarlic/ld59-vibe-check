@@ -18,9 +18,8 @@ var guide_tween : Tween
 func _ready() -> void:
 	update_text(remaining, GlobalDifficulty.heat_multiplier)
 	update_stopwatch(elapsed)
-	SignalBus.baddie_scanned.connect(_on_timer_timeout)
-	SignalBus.baddie_killed.connect(_on_timer_timeout)
-	SignalBus.baddies_spawned.connect(_on_timer_timeout)
+	SignalBus.baddies_spawned.connect(_on_baddies_spawned)
+	SignalBus.baddie_killed.connect(_on_baddie_killed)
 
 func _process(delta: float) -> void:
 	if %Timer.is_stopped():
@@ -58,11 +57,13 @@ func update_text(remaining: int, difficulty: float):
 	label.append_text("[/shake]")
 	label.append_text("[/wave]")
 
-func get_remaining_baddies() -> int:
-	return get_tree().get_nodes_in_group("bad").size()
+func _on_baddies_spawned() -> void:
+	remaining = get_tree().get_nodes_in_group("bad").size()
+	update_text(remaining, GlobalDifficulty.heat_multiplier)
 
-func _on_timer_timeout() -> void:
-	update_text(get_remaining_baddies(), GlobalDifficulty.heat_multiplier)
+func _on_baddie_killed() -> void:
+	remaining -= 1
+	update_text(remaining, GlobalDifficulty.heat_multiplier)
 
 func _on_prompt_timer_timeout() -> void:
 	var tween : Tween = get_tree().create_tween()
