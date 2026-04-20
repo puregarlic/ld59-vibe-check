@@ -3,13 +3,23 @@ class_name Phone
 
 
 @onready var body: RigidBody3D = $RigidBody3D
+@onready var raycast: RayCast3D = %RayCast3D
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
-@onready var phone_pickup_area : Area3D = $Area3D
+@onready var phone_pickup_area : Area3D = %Area3D
 @onready var pickup_delay : Timer = %PickupDelayTimer
+
+@export var impulse_multiplier : float = 1.0
 
 func _ready() -> void:
 	phone_pickup_area.monitoring = false
 	pickup_delay.start()
+
+func _process(delta: float) -> void:
+	if raycast.is_colliding():
+		var impulse = Vector3.UP * randf_range(1.0, 10.0)
+		impulse.x = randf_range(1.0, 4.0)
+		impulse.z = randf_range(1.0, 4.0)
+		body.apply_impulse(impulse * impulse_multiplier)
 
 func _on_pickup_delay_timeout() -> void:
 	phone_pickup_area.monitoring = true

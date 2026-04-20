@@ -9,8 +9,11 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c3df8"]
 bounce = 0.8
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0jy6t"]
+radius = 1.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jy6t"]
-size = Vector3(0.24, 0.4, 0.08)
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_c3df8"]
 size = Vector3(0.24, 0.4, 0.08)
@@ -38,9 +41,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_0jy6t"]
-radius = 1.0
-
 [node name="Phone" type="Node3D" unique_id=863160446]
 script = ExtResource("1_0w3ga")
 
@@ -49,6 +49,14 @@ collision_layer = 16
 physics_material_override = SubResource("PhysicsMaterial_c3df8")
 freeze = true
 continuous_cd = true
+
+[node name="Area3D" type="Area3D" parent="RigidBody3D" unique_id=256843547]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D" unique_id=2123632839]
+shape = SubResource("SphereShape3D_0jy6t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1587236223]
 shape = SubResource("BoxShape3D_0jy6t")
@@ -64,7 +72,7 @@ billboard = 1
 texture = SubResource("PlaceholderTexture2D_c3df8")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="RigidBody3D" unique_id=353155463]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -0.36764115, 0)
 offset = Vector2(0, 250)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_12cyx")
@@ -72,16 +80,13 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.6532163
 
-[node name="Area3D" type="Area3D" parent="." unique_id=256843547]
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2123632839]
-shape = SubResource("SphereShape3D_0jy6t")
+[node name="RayCast3D" type="RayCast3D" parent="RigidBody3D" unique_id=1680047376]
+unique_name_in_owner = true
+target_position = Vector3(0, -0.3, 0)
 
 [node name="PickupDelayTimer" type="Timer" parent="." unique_id=653805980]
 unique_name_in_owner = true
 one_shot = true
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="RigidBody3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="PickupDelayTimer" to="." method="_on_pickup_delay_timeout"]
