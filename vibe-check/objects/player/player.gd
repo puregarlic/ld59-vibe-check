@@ -41,7 +41,11 @@ var bad_vibes_proximity : float = 1.0
 var pass_vibe_check : bool
 var scan_target : Slapper
 var current_scan_target : Slapper
-var scanning : bool = false
+var scanning : bool = false :
+	get: return scanning
+	set(value):
+		change_phone_height(value)
+		scanning = value
 
 var holding_phone : bool :
 	get: return holding_phone
@@ -55,6 +59,11 @@ var holding_phone : bool :
 		holding_phone = value
 @onready var initial_left_hand_position = %LeftHand.position
 var left_hand_tween: Tween
+var left_hand_bob: bool = true
+@onready var initial_right_hand_position = %RightHand.position
+@onready var raised_right_hand_position = initial_right_hand_position + (Vector3.UP * 0.07)
+var right_hand_tween: Tween
+@onready var initial_right_hand_empty_position = %RightHandEmpty.position
 
 
 func _ready() -> void:
@@ -102,6 +111,11 @@ func _physics_process(delta: float) -> void:
 
 	headbob_time += delta * velocity.length() * float(is_on_floor())
 	$Camera3D.transform.origin = headbob(headbob_time) + Vector3(0, 1, 0)
+	if not scanning:
+		%RightHand.transform.origin = (headbob(headbob_time) * (Vector3.UP * 0.2)) + initial_right_hand_position
+	%RightHandEmpty.transform.origin = (headbob(headbob_time) * (Vector3.UP * 0.2)) + initial_right_hand_empty_position
+	if left_hand_bob:
+		%LeftHand.transform.origin = (headbob(headbob_time) * (Vector3.UP * -0.2)) + initial_left_hand_position
 
 	scan_target = %ScanCast.get_collider()
 	if Input.is_action_just_pressed("interact") and scan_target != null and holding_phone == true:
@@ -122,7 +136,7 @@ func _physics_process(delta: float) -> void:
 		print("we broke from our target")
 
 
-func headbob(headbob_time):
+func headbob(headbob_time: float) -> Vector3:
 	var headbob_position = Vector3.ZERO
 	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
 	headbob_position.x = cos(headbob_time * headbob_frequency / 2) * headbob_amplitude
@@ -213,5 +227,19 @@ func update_left_hand_visibility(val: bool) -> void:
 	left_hand_tween = get_tree().create_tween()
 	if val:
 		left_hand_tween.tween_property(%LeftHand, "position", initial_left_hand_position, 0.1)
+		left_hand_tween.tween_callback(set_left_bob.bind(true))
 	else:
+		set_left_bob(false)
 		left_hand_tween.tween_property(%LeftHand, "position", Vector3(-0.85, initial_left_hand_position.y, initial_left_hand_position.z), 0.1)
+
+func set_left_bob(val: bool) -> void:
+	left_hand_bob = val
+
+func change_phone_height(val: bool) -> void:
+	if right_hand_tween:
+			right_hand_tween.kill()
+	right_hand_tween = get_tree().create_tween()
+	if val:
+		right_hand_tween.tween_property(%RightHand, "position", raised_right_hand_position, 0.1)
+	else:
+		right_hand_tween.tween_property(%RightHand, "position", initial_right_hand_position, 0.1)
