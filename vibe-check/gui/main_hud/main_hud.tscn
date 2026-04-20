@@ -1,31 +1,11 @@
 [gd_scene format=3 uid="uid://cf34usbu1r8j1"]
 
 [ext_resource type="Script" uid="uid://oa8sj8pepjfu" path="res://gui/main_hud/main_hud.gd" id="1_60r6i"]
+[ext_resource type="FontFile" uid="uid://b4l6qnvqcc2bw" path="res://gui/fonts/AzeretMono-Italic-VariableFont_wght.ttf" id="2_w641y"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_60r6i"]
 resource_local_to_scene = true
 load_path = "res://.godot/imported/TutorialHand.png-f91d02a94d6888dca75817c9e6e7ee62.ctex"
-
-[sub_resource type="FontFile" id="FontFile_60r6i"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/40/0/ascent = 0.0
-cache/0/40/0/descent = 0.0
-cache/0/40/0/underline_position = 0.0
-cache/0/40/0/underline_thickness = 0.0
-cache/0/40/0/scale = 1.0
 
 [node name="MarginContainer" type="MarginContainer" unique_id=748537357]
 anchors_preset = 15
@@ -130,9 +110,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 100.0
-offset_top = 80.0
+offset_top = 100.71
 offset_right = 100.0
-offset_bottom = 80.0
+offset_bottom = 100.70996
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -143,11 +123,11 @@ theme_override_colors/font_shadow_color = Color(0.89, 1, 0.95783335, 1)
 theme_override_colors/table_odd_row_bg = Color(1, 0, 0, 1)
 theme_override_colors/table_even_row_bg = Color(1, 0, 0, 1)
 theme_override_colors/table_border = Color(1, 0, 0, 1)
-theme_override_fonts/normal_font = SubResource("FontFile_60r6i")
-theme_override_font_sizes/normal_font_size = 40
-theme_override_font_sizes/bold_font_size = 40
-theme_override_font_sizes/bold_italics_font_size = 40
-theme_override_font_sizes/italics_font_size = 40
+theme_override_fonts/normal_font = ExtResource("2_w641y")
+theme_override_font_sizes/normal_font_size = 33
+theme_override_font_sizes/bold_font_size = 33
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
 theme_override_font_sizes/mono_font_size = 16
 bbcode_enabled = true
 text = "LMB with your phone to vibe check humans
