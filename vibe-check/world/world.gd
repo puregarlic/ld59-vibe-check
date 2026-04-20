@@ -6,7 +6,7 @@ var gui : Control
 @onready var main_menu_scene : PackedScene = preload("res://gui/main_menu/main_menu.tscn")
 
 @onready var level_scene : PackedScene = preload("res://levels/The Map.tscn")
-@onready var room_gui_scene : PackedScene = preload("res://gui/rooms/rooms.tscn")
+@onready var main_hud_scene : PackedScene = preload("res://gui/main_hud/main_hud.tscn")
 
 @onready var pause_menu_scene : PackedScene = preload("res://gui/pause_menu/pause_menu.tscn")
 
@@ -16,7 +16,6 @@ enum WorldState {MAIN_MENU, ROOMS, PAUSED}
 @onready var state : WorldState = WorldState.MAIN_MENU
 
 func _ready() -> void:
-	SignalBus.next_room.connect(change_room)
 	SignalBus.start_game.connect(instantiate_level)
 	SignalBus.start_menu.connect(start_menu)
 	SignalBus.pause.connect(pause_menu)
@@ -52,23 +51,14 @@ func unpause() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	state = WorldState.ROOMS
 
-func change_room() -> void:
-	room_number += 1
-	var child = get_child(0)
-	child.queue_free()
-
-	instantiate_level()
-
 func instantiate_level() -> void:
 	for gui_child in gui.get_children():
 		gui_child.queue_free()
 
-	#var room_gui : RoomInterface = room_gui_scene.instantiate()
-	#gui.add_child(room_gui)
-	#room_gui.set_room_number(room_number)
+	var main_hud := main_hud_scene.instantiate()
+	gui.add_child(main_hud)
 
 	var level = level_scene.instantiate()
-	#level.set_room(room_number)
 	add_child(level)
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

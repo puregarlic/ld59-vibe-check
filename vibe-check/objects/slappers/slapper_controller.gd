@@ -7,8 +7,6 @@ signal slap_triggered
 @export var vibe = Types.Vibe.GOOD
 @export var scan_alert_audio: AudioStreamPlayer3D
 
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 @onready var _ai: Node = $AI
 @onready var _animated_sprite: AnimatedSprite3D = $"Animated Sprite"
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
@@ -26,6 +24,15 @@ const SCAN_TURN_SPEED: float = 5.0
 const SLAP_DISTANCE: float = 2.0
 const SLAP_COOLDOWN: float = 10.0
 const SLAP_HOLD_DURATION: float = 0.5
+const EDGE_PROBE_DISTANCE: float = 1.5
+const EDGE_PROBE_DEPTH: float = 3.0
+const SPAWN_GRAVITY_DURATION: float = 1.0
+const FALL_DESPAWN_DURATION: float = 5.0
+
+var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var _gravity_active: bool = true
+var _spawn_grace_remaining: float = SPAWN_GRAVITY_DURATION
+var _off_floor_time: float = 0.0
 
 func _ready() -> void:
 	scan_detected.connect(_ai.on_scan_detected)
@@ -56,10 +63,60 @@ func _physics_process(delta: float) -> void:
 	if _should_check_scan() and _player_in_detection_cone():
 		scan_detected.emit()
 
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+	if is_on_floor():
+		_gravity_active = false
+		_off_floor_time = 0.0
+	else:
+		_off_floor_time += delta
+		if _off_floor_time > FALL_DESPAWN_DURATION:
+			queue_free()
+			return
+		if _gravity_active:
+			_spawn_grace_remaining -= delta
+			if _spawn_grace_remaining <= 0.0:
+				_gravity_active = false
+
+	if _gravity_active:
+		velocity.y -= _gravity * delta
+	else:
+		velocity.y = 0.0
+
+	if not _gravity_active and _edge_ahead():
+		if _current_phase == Types.Phase.MOVING:
+			_redirect_from_edge()
+		else:
+			velocity.x = 0.0
+			velocity.z = 0.0
 
 	move_and_slide()
+
+func _edge_ahead() -> bool:
+	var horizontal = Vector3(velocity.x, 0.0, velocity.z)
+	if horizontal.length_squared() < 0.01:
+		return false
+	return not _ground_at(global_position + horizontal.normalized() * EDGE_PROBE_DISTANCE)
+
+func _ground_at(point: Vector3) -> bool:
+	var from = point + Vector3.UP * 0.1
+	var to = point + Vector3.DOWN * EDGE_PROBE_DEPTH
+	var space = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [self.get_rid()]
+	return not space.intersect_ray(query).is_empty()
+
+func _redirect_from_edge() -> void:
+	var speed = Vector3(velocity.x, 0.0, velocity.z).length()
+	if speed < 0.01:
+		speed = 1.0 * GlobalDifficulty.movement_multiplier()
+	for i in range(8):
+		var candidate_angle = randf_range(-PI, PI)
+		var forward = Vector3(-sin(candidate_angle), 0.0, -cos(candidate_angle))
+		if _ground_at(global_position + forward * EDGE_PROBE_DISTANCE):
+			rotation.y = candidate_angle
+			velocity = forward * speed
+			return
+	rotation.y += PI
+	velocity = Vector3(-velocity.x, 0.0, -velocity.z)
 
 func _is_being_scanned() -> bool:
 	return (

@@ -128,4 +128,5 @@ func scan_timer_end():
 		if current_scan_target.vibe == Types.Vibe.BAD:
 			pass_vibe_check = false
 			print("BAD VIBES DETECTED")
+			SignalBus.baddie_scanned.emit(current_scan_target)
 			#current_scan_target.obliterate()
