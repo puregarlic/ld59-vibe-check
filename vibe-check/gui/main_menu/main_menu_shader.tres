@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ngo2lx2s5asu"]
+
+[ext_resource type="Shader" uid="uid://d125h2qs1j72u" path="res://gui/main_menu/main_menu_shader.gdshader" id="1_j6s6y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j6s6y"]
+noise_type = 3
+frequency = 0.0673
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j6s6y"]
+noise = SubResource("FastNoiseLite_j6s6y")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_j6s6y")
+shader_parameter/NOISE_PATTERN = SubResource("NoiseTexture2D_j6s6y")

@@ -18,7 +18,11 @@ func _process(delta: float) -> void:
 	if raycast.is_colliding():
 		var impulse = Vector3.UP * randf_range(1.0, 10.0)
 		impulse.x = randf_range(1.0, 4.0)
+		if randi_range(0, 1) == 0:
+			impulse.x = -impulse.x
 		impulse.z = randf_range(1.0, 4.0)
+		if randi_range(0, 1) == 0:
+			impulse.z = -impulse.z
 		body.apply_impulse(impulse * impulse_multiplier)
 
 func _on_pickup_delay_timeout() -> void:

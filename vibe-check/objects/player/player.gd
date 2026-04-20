@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
 	if not _in_knockback:
 		var input := Input.get_vector("left", "right", "forward", "back")
 		var movement_dir := transform.basis * Vector3(input.x, 0, input.y)
+		movement_dir = movement_dir.normalized()
 		velocity.x = movement_dir.x * move_speed
 		velocity.z = movement_dir.z * move_speed
 
