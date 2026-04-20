@@ -218,7 +218,7 @@ func receive_slap(from_position: Vector3) -> void:
 	var dir = global_position - from_position
 	dir.y = 0.0
 	dir = dir.normalized()
-	var heat = GlobalDifficulty.heat_multiplier
+	var heat = lerp(1.0, GlobalDifficulty.heat_multiplier, 0.5)
 	velocity.x = dir.x * slap_horizontal_force * heat
 	velocity.z = dir.z * slap_horizontal_force * heat
 	velocity.y = slap_vertical_force * heat

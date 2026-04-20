@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if raycast.is_colliding():
-		var impulse = Vector3.UP * randf_range(1.0, 10.0 * 0.1 * GlobalDifficulty.heat_multiplier)
+		var impulse = Vector3.UP * randf_range(1.0, 10.0 * 0.1 * lerp(1.0, GlobalDifficulty.heat_multiplier, 0.5))
 		impulse.x = randf_range(1.0, 4.0)
 		if randi_range(0, 1) == 0:
 			impulse.x = -impulse.x
