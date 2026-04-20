@@ -35,6 +35,8 @@ var _fall_fade_tween : Tween = null
 @onready var postive_scan_audio : AudioStreamPlayer = $PositiveScanResultAudio
 @onready var bad_vibes_scan_audio : AudioStreamPlayer = $BadVibesScanResultAudio
 
+@onready var footstep_audio : AudioStreamPlayer3D = $FootstepsAudio
+
 var movement : Callable
 
 #head bobbing variables
@@ -107,14 +109,15 @@ func _physics_process(delta: float) -> void:
 		_coyote_timer = coyote_time
 	else:
 		_coyote_timer = max(_coyote_timer - delta, 0.0)
-
+	
 	if _coyote_timer > 0.0 and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_impulse
 		_coyote_timer = 0.0
-
+	
 	_was_on_floor = is_on_floor()
+	
 	move_and_slide()
-
+	
 	if _in_knockback and is_on_floor():
 		_in_knockback = false
 
