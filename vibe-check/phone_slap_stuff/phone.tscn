@@ -52,6 +52,8 @@ phone_bounce_audio = NodePath("PhoneBouncePlayer")
 collision_layer = 16
 physics_material_override = SubResource("PhysicsMaterial_c3df8")
 freeze = true
+contact_monitor = true
+max_contacts_reported = 1
 continuous_cd = true
 
 [node name="Area3D" type="Area3D" parent="RigidBody3D" unique_id=256843547]

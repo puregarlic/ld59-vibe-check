@@ -6,32 +6,31 @@ class_name Phone
 
 
 @onready var body: RigidBody3D = $RigidBody3D
-@onready var raycast: RayCast3D = %RayCast3D
 @onready var player_reference: Player = get_tree().get_first_node_in_group("player")
 @onready var phone_pickup_area : Area3D = %Area3D
 @onready var pickup_delay : Timer = %PickupDelayTimer
 
 @export var impulse_multiplier : float = 1.0
 
-var _was_colliding: bool = false
+var _bounce_count: int = 0
 
 func _ready() -> void:
 	phone_pickup_area.monitoring = false
 	pickup_delay.start()
 
-func _process(delta: float) -> void:
-	var colliding := raycast.is_colliding()
-	if colliding and not _was_colliding:
-		var impulse = Vector3.UP * randf_range(1.0, 10.0 * 0.1 * lerp(1.0, GlobalDifficulty.heat_multiplier, 0.5))
-		impulse.x = randf_range(1.0, 4.0)
-		if randi_range(0, 1) == 0:
-			impulse.x = -impulse.x
-		impulse.z = randf_range(1.0, 4.0)
-		if randi_range(0, 1) == 0:
-			impulse.z = -impulse.z
-		body.apply_impulse(impulse * impulse_multiplier)
-		phone_bounce_audio.play()
-	_was_colliding = colliding
+func _on_rigid_body_3d_body_entered(_body: Node) -> void:
+	if body.linear_velocity.length() < 3.0 or _bounce_count >= 15:
+		return
+	_bounce_count += 1
+	var impulse = Vector3.UP * randf_range(1.0, 10.0 * 0.1 * lerp(1.0, GlobalDifficulty.heat_multiplier, 0.5))
+	impulse.x = randf_range(1.0, 4.0)
+	if randi_range(0, 1) == 0:
+		impulse.x = -impulse.x
+	impulse.z = randf_range(1.0, 4.0)
+	if randi_range(0, 1) == 0:
+		impulse.z = -impulse.z
+	body.apply_impulse(impulse * impulse_multiplier)
+	phone_bounce_audio.play()
 
 
 func _on_pickup_delay_timeout() -> void:
