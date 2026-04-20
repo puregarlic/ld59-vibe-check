@@ -10,6 +10,9 @@ var heat_multiplier: float = 1.0
 func _ready() -> void:
 	heat_multiplier = INITIAL_HEAT_MULTIPLER
 
+func reset() -> void:
+	heat_multiplier = INITIAL_HEAT_MULTIPLER
+
 func _process(delta: float) -> void:
 	heat_multiplier = minf(heat_multiplier + HEAT_GROWTH_PER_SECOND * delta, HEAT_MAX)
 

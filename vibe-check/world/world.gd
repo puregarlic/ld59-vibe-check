@@ -73,6 +73,7 @@ func win():
 	gui.add_child(win_hud)
 
 func loss():
+	GlobalDifficulty.reset()
 	$Music.stream_paused = true
 	$VoiceAudio.stream = VoicePools.FAILURE
 	$VoiceAudio.play()
