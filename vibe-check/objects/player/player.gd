@@ -7,6 +7,7 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var coyote_time : float = 0.12
 @export var speed : float = 14.0
 @export var sprint_speed : float = 28.0
+@export var scan_move_speed : float = 5.0
 @export var slap_horizontal_force : float = 5.0
 @export var slap_vertical_force : float = 3.0
 @export var look_pitch_max_angle : int = 80
@@ -89,9 +90,13 @@ func _physics_process(delta: float) -> void:
 		var input := Input.get_vector("left", "right", "forward", "back")
 		var movement_dir := transform.basis * Vector3(input.x, 0, input.y)
 		movement_dir = movement_dir.normalized()
-		velocity.x = movement_dir.x * move_speed
-		velocity.z = movement_dir.z * move_speed
-
+		if scanning == true:
+			velocity.x = movement_dir.x * scan_move_speed
+			velocity.z = movement_dir.z * scan_move_speed
+		else:
+			velocity.x = movement_dir.x * move_speed
+			velocity.z = movement_dir.z * move_speed
+	
 	if is_on_floor():
 		_coyote_timer = coyote_time
 	elif _was_on_floor and velocity.y <= 0.0:
