@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://x6etwx16lkxe"
+path="res://.godot/imported/Rising Tea Kettle Tone.wav-fc1c582c209f46fafbeb50549aa0a967.sample"
+
+[deps]
+
+source_file="res://sfx/synthesized_sfx/Rising Tea Kettle Tone.wav"
+dest_files=["res://.godot/imported/Rising Tea Kettle Tone.wav-fc1c582c209f46fafbeb50549aa0a967.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

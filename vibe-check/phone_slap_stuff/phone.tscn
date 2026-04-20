@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ct48qu2pr0kj3" path="res://phone_slap_stuff/assets/PhoneLeft.png" id="3_hi10i"]
 [ext_resource type="Texture2D" uid="uid://d1023aunrwacy" path="res://phone_slap_stuff/assets/PhoneBack.png" id="4_0m0g6"]
 [ext_resource type="Texture2D" uid="uid://8g0frop7imia" path="res://phone_slap_stuff/assets/PhoneRight.png" id="5_lmhuc"]
+[ext_resource type="AudioStream" uid="uid://bhjnhjewldkmr" path="res://sfx/synthesized_sfx/Phone Launched Sound.wav" id="6_hi10i"]
+[ext_resource type="AudioStream" uid="uid://bby6silgjsfbo" path="res://sfx/synthesized_sfx/Phone Bounce Sound.wav" id="7_0m0g6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c3df8"]
 bounce = 0.8
@@ -41,8 +43,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Phone" type="Node3D" unique_id=863160446]
+[node name="Phone" type="Node3D" unique_id=863160446 node_paths=PackedStringArray("phone_launch_audio", "phone_bounce_audio")]
 script = ExtResource("1_0w3ga")
+phone_launch_audio = NodePath("PhoneLaunchWhooshPlayer")
+phone_bounce_audio = NodePath("PhoneBouncePlayer")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=219781822]
 collision_layer = 16
@@ -88,5 +92,14 @@ target_position = Vector3(0, -0.3, 0)
 unique_name_in_owner = true
 one_shot = true
 
+[node name="PhoneLaunchWhooshPlayer" type="AudioStreamPlayer3D" parent="." unique_id=377985007]
+stream = ExtResource("6_hi10i")
+emission_angle_enabled = true
+
+[node name="PhoneBouncePlayer" type="AudioStreamPlayer3D" parent="." unique_id=1757866454]
+stream = ExtResource("7_0m0g6")
+emission_angle_enabled = true
+
+[connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
 [connection signal="body_entered" from="RigidBody3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="PickupDelayTimer" to="." method="_on_pickup_delay_timeout"]

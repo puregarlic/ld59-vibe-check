@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bhjnhjewldkmr"
+path="res://.godot/imported/Phone Launched Sound.wav-4fbea13aeba6a70b806c4b747aae9df0.sample"
+
+[deps]
+
+source_file="res://sfx/synthesized_sfx/Phone Launched Sound.wav"
+dest_files=["res://.godot/imported/Phone Launched Sound.wav-4fbea13aeba6a70b806c4b747aae9df0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

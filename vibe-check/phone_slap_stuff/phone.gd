@@ -1,6 +1,9 @@
 extends Node3D
 class_name Phone
 
+@export var phone_launch_audio: AudioStreamPlayer3D
+@export var phone_bounce_audio: AudioStreamPlayer3D
+
 
 @onready var body: RigidBody3D = $RigidBody3D
 @onready var raycast: RayCast3D = %RayCast3D
@@ -16,7 +19,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if raycast.is_colliding():
-		var impulse = Vector3.UP * randf_range(1.0, 10.0)
+		var impulse = Vector3.UP * randf_range(1.0, 10.0 * 0.1 * GlobalDifficulty.heat_multiplier)
 		impulse.x = randf_range(1.0, 4.0)
 		if randi_range(0, 1) == 0:
 			impulse.x = -impulse.x
@@ -24,6 +27,8 @@ func _process(delta: float) -> void:
 		if randi_range(0, 1) == 0:
 			impulse.z = -impulse.z
 		body.apply_impulse(impulse * impulse_multiplier)
+		phone_bounce_audio.play()
+
 
 func _on_pickup_delay_timeout() -> void:
 	phone_pickup_area.monitoring = true
@@ -37,6 +42,7 @@ func slap(slapper_global_pos: Vector3) -> void:
 	var horizontal_dir := (slapper_dir_from_phone * Vector3(1, 0, 1)).normalized()
 	var left_right_dir := horizontal_dir.rotated(Vector3.UP, PI/2 if randi_range(0, 1) else -PI/2)
 	body.linear_velocity += left_right_dir * 2.0 + Vector3(0, 5.0, 0)
+	phone_launch_audio.play()
 	#body.angular_velocity += Vector3(2, 3, 4)
 
 
