@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://4f6skfjdkd76" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cs3t31xfsrywp" path="res://world/world.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://0rbsywhiaero" path="res://splash_screen.tscn" id="2_h2yge"]
 
 [node name="Main" type="Node" unique_id=1695867837]
 script = ExtResource("1_0xm2m")
-
-[node name="World" parent="." unique_id=2024507716 instance=ExtResource("1_ig7tw")]
 
 [node name="GUI" type="AspectRatioContainer" parent="." unique_id=864065388]
 anchors_preset = 15
@@ -15,3 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 ratio = 1.777
+
+[node name="TextureRect" parent="GUI" unique_id=2086148278 instance=ExtResource("2_h2yge")]
+layout_mode = 2
+world_scene = ExtResource("1_ig7tw")
