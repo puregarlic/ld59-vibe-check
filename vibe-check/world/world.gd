@@ -35,6 +35,7 @@ func _ready() -> void:
 	SignalBus.baddie_scanned.connect(baddie_scanned)
 	SignalBus.failed.connect(loss)
 	SignalBus.baddies_spawned.connect(get_baddies)
+	start_menu()
 
 func _setup_echo_bus() -> void:
 	pass

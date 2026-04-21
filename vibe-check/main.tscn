@@ -6,6 +6,7 @@
 
 [node name="Main" type="Node" unique_id=1695867837]
 script = ExtResource("1_0xm2m")
+world_scene = ExtResource("1_ig7tw")
 
 [node name="GUI" type="AspectRatioContainer" parent="." unique_id=864065388]
 anchors_preset = 15
