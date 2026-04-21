@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://0rbsywhiaero"]
+
+[ext_resource type="Script" uid="uid://biuicknk4waic" path="res://splash_screen.gd" id="1_arguk"]
+[ext_resource type="StyleBox" uid="uid://tpewn27gg0i5" path="res://gui/main_menu/new_style_box_flat.tres" id="1_el3v4"]
+[ext_resource type="StyleBox" uid="uid://da5l2xo2isqsd" path="res://gui/main_menu/new_style_box_flat_hover.tres" id="2_arguk"]
+
+[sub_resource type="Gradient" id="Gradient_74eti"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r8bb4"]
+gradient = SubResource("Gradient_74eti")
+
+[node name="TextureRect" type="TextureRect" unique_id=2086148278]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_r8bb4")
+script = ExtResource("1_arguk")
+
+[node name="Button" type="Button" parent="." unique_id=81247274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 720.0
+offset_top = 444.0
+offset_right = -719.9999
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("1_el3v4")
+theme_override_styles/hover = ExtResource("2_arguk")
+text = "Play"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
