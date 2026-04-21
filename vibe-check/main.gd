@@ -1,8 +1,12 @@
 extends Node
 class_name Main
 
-@onready var world : World = $World
+@export var world_scene: PackedScene
 
 func _ready() -> void:
-	world.gui = $GUI
-	world.start_menu()
+	if not OS.has_feature("web"):
+		for child in $GUI.get_children():
+			child.queue_free()
+		var world = world_scene.instantiate()
+		world.gui = $GUI
+		add_child(world)
